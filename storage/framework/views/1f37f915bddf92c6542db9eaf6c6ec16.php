@@ -1,0 +1,1 @@
+<?php echo e($text); ?><?php /**PATH /home/u536896586/domains/kactto.space/public_html/resources/views/vendor/mail/text/text.blade.php ENDPATH**/ ?>

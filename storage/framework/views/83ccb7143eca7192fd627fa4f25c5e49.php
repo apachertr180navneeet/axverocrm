@@ -1,0 +1,1 @@
+<h1>Hello refference-create</h1><?php /**PATH /home/u972418887/domains/kactto.com/public_html/crmhr/resources/views/refference/index.blade.php ENDPATH**/ ?>
