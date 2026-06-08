@@ -557,4 +557,13 @@ return array(
     'SelectaDepartment' => 'Select a current department.',
     'changeWeeklyTimesheetStatusConfirmation' => 'Are you sure you want to change the status of this weekly timesheet?',
     'submitWeeklyTimesheetConfirmation' => 'Are you sure you want to submit this weekly timesheet? You will not be able to edit it later.',
+
+    // Executive Retainer
+    'maxEntries' => 'You can add maximum :count entries.',
+    'atLeastOneRow' => 'You must keep at least one row.',
+    'applicationSubmitted' => 'Your Executive Retainer application has been submitted successfully. Application ID: :id',
+    'paymentFailedDesc' => 'Your payment could not be processed. Please try again.',
+    'noApplications' => 'No Executive Retainer applications found.',
+    'restoreConfirmation' => 'Are you sure you want to restore this application?',
+    'forceDeleteConfirmation' => 'This action cannot be undone. Are you sure you want to permanently delete this application?',
 );

@@ -1,2 +1,0 @@
-<link rel="stylesheet" href="<?php echo e(asset('vendor/css/daterangepicker.css')); ?>">
-<?php /**PATH /home/u972418887/domains/kactto.com/public_html/crmhr/resources/views/sections/daterange_css.blade.php ENDPATH**/ ?>

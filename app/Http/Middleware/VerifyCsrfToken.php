@@ -20,5 +20,7 @@ class VerifyCsrfToken extends Middleware
         '/lead-form/ticket-store',
         'payu/success',
         'payu/failure',
+        'executive-retainer/payment-success',
+        'executive-retainer/payment-failure',
     ];
 }

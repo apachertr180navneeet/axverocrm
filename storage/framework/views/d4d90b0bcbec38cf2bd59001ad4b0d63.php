@@ -846,6 +846,71 @@
 <?php unset($__componentOriginal75a60586017d0cb41cbff8f75f4a3989); ?>
 <?php endif; ?>
                 <?php endif; ?>
+
+                <?php if(in_array('employee', user_roles())): ?>
+                <?php if (isset($component)) { $__componentOriginal75a60586017d0cb41cbff8f75f4a3989 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal75a60586017d0cb41cbff8f75f4a3989 = $attributes; } ?>
+<?php $component = App\View\Components\SubMenuItem::resolve(['link' => route('executive-retainer.create'),'text' => __('app.menu.applyExecutiveRetainer')] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('sub-menu-item'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(App\View\Components\SubMenuItem::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal75a60586017d0cb41cbff8f75f4a3989)): ?>
+<?php $attributes = $__attributesOriginal75a60586017d0cb41cbff8f75f4a3989; ?>
+<?php unset($__attributesOriginal75a60586017d0cb41cbff8f75f4a3989); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal75a60586017d0cb41cbff8f75f4a3989)): ?>
+<?php $component = $__componentOriginal75a60586017d0cb41cbff8f75f4a3989; ?>
+<?php unset($__componentOriginal75a60586017d0cb41cbff8f75f4a3989); ?>
+<?php endif; ?>
+                <?php if (isset($component)) { $__componentOriginal75a60586017d0cb41cbff8f75f4a3989 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal75a60586017d0cb41cbff8f75f4a3989 = $attributes; } ?>
+<?php $component = App\View\Components\SubMenuItem::resolve(['link' => route('executive-retainer.my-applications'),'text' => __('app.menu.myExecutiveApplications')] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('sub-menu-item'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(App\View\Components\SubMenuItem::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal75a60586017d0cb41cbff8f75f4a3989)): ?>
+<?php $attributes = $__attributesOriginal75a60586017d0cb41cbff8f75f4a3989; ?>
+<?php unset($__attributesOriginal75a60586017d0cb41cbff8f75f4a3989); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal75a60586017d0cb41cbff8f75f4a3989)): ?>
+<?php $component = $__componentOriginal75a60586017d0cb41cbff8f75f4a3989; ?>
+<?php unset($__componentOriginal75a60586017d0cb41cbff8f75f4a3989); ?>
+<?php endif; ?>
+                <?php endif; ?>
+                <?php if(in_array('admin', user_roles())): ?>
+                <?php if (isset($component)) { $__componentOriginal75a60586017d0cb41cbff8f75f4a3989 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal75a60586017d0cb41cbff8f75f4a3989 = $attributes; } ?>
+<?php $component = App\View\Components\SubMenuItem::resolve(['link' => route('admin.executive-retainer.index'),'text' => __('app.menu.executiveRetainerList')] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('sub-menu-item'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(App\View\Components\SubMenuItem::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal75a60586017d0cb41cbff8f75f4a3989)): ?>
+<?php $attributes = $__attributesOriginal75a60586017d0cb41cbff8f75f4a3989; ?>
+<?php unset($__attributesOriginal75a60586017d0cb41cbff8f75f4a3989); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal75a60586017d0cb41cbff8f75f4a3989)): ?>
+<?php $component = $__componentOriginal75a60586017d0cb41cbff8f75f4a3989; ?>
+<?php unset($__componentOriginal75a60586017d0cb41cbff8f75f4a3989); ?>
+<?php endif; ?>
+                <?php endif; ?>
                 
                 <!-- NAV ITEM - CUSTOM MODULES  -->
                 <?php $__currentLoopData = $worksuitePlugins; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>

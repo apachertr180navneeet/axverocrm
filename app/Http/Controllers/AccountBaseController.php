@@ -43,11 +43,16 @@ class AccountBaseController extends Controller
 
     public function adminSpecific()
     {
+        if (!user()) {
+            $this->adminTheme = admin_theme();
+            $this->invoiceSetting = invoice_setting();
+            $this->modules = [];
+            return;
+        }
 
         abort_403(!user()->admin_approval && request()->ajax());
 
         if (!user()->admin_approval && Route::currentRouteName() != 'account_unverified') {
-            // send() is added to force redirect from here rather return to called function
             return redirect(route('account_unverified'))->send();
         }
 
@@ -87,30 +92,39 @@ class AccountBaseController extends Controller
         $this->smtpSetting = smtp_setting();
         $this->pusherSettings = pusher_settings();
 
-        App::setLocale(user()->locale);
-        Carbon::setLocale(user()->locale);
-        setlocale(LC_TIME, user()->locale . '_' . mb_strtoupper($this->company->locale));
+        if (user()) {
+            App::setLocale(user()->locale);
+            Carbon::setLocale(user()->locale);
+            setlocale(LC_TIME, user()->locale . '_' . mb_strtoupper($this->company->locale));
+        }
 
         $this->user = user();
-        $this->unreadNotificationCount = count($this->user?->unreadNotifications);
-        $this->stickyNotes = $this->user->sticky;
+        $this->unreadNotificationCount = $this->user ? count($this->user->unreadNotifications) : 0;
+        $this->stickyNotes = $this->user?->sticky;
 
         $this->worksuitePlugins = worksuite_plugins();
 
         $this->checkListTotal = GlobalSetting::CHECKLIST_TOTAL;
 
-        if (in_array('admin', user_roles())) {
+        $roles = user_roles();
+
+        if ($roles && in_array('admin', $roles)) {
             $this->appTheme = admin_theme();
             $this->checkListCompleted = GlobalSetting::checkListCompleted();
         }
-        else if (in_array('client', user_roles())) {
+        else if ($roles && in_array('client', $roles)) {
             $this->appTheme = client_theme();
         }
-        else {
+        else if ($this->user) {
             $this->appTheme = employee_theme();
         }
+        else {
+            $this->appTheme = admin_theme();
+        }
 
-        $this->sidebarUserPermissions = sidebar_user_perms();
+        if ($this->user) {
+            $this->sidebarUserPermissions = sidebar_user_perms();
+        }
     }
 
     public function logProjectActivity($projectId, $text)

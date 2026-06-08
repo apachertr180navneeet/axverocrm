@@ -22,6 +22,7 @@ use App\Http\Controllers\PublicLeadGdprController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Payment\PayuController;
 use App\Http\Controllers\HiringController;
+use App\Http\Controllers\ExecutiveRetainerPaymentController;
 
 Route::get('/', function () {
     return redirect(route('login'));
@@ -29,6 +30,10 @@ Route::get('/', function () {
 
 Route::post('/payu/success', [PayuController::class, 'paymentSuccess'])->name('payu.success');
 Route::post('/payu/failure', [PayuController::class, 'paymentFailure'])->name('payu.failure');
+
+// Executive Retainer PayU payment callbacks (public, no auth required)
+Route::post('/executive-retainer/payment-success', [ExecutiveRetainerPaymentController::class, 'paymentSuccess'])->name('executive-retainer.payment.success');
+Route::post('/executive-retainer/payment-failure', [ExecutiveRetainerPaymentController::class, 'paymentFailure'])->name('executive-retainer.payment.failure');
 
 Route::get('/invitation/{code}', [RegisterController::class, 'invitation'])->name('invitation');
 Route::post('/invitation/accept-invite', [RegisterController::class, 'acceptInvite'])->name('accept_invite');

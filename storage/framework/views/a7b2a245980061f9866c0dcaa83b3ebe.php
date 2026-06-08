@@ -1,2 +1,0 @@
-<link rel="stylesheet" href="<?php echo e(asset('vendor/css/daterangepicker.css')); ?>">
-<?php /**PATH /home/u536896586/domains/crmaxvero.in/public_html/resources/views/sections/daterange_css.blade.php ENDPATH**/ ?>

@@ -131,6 +131,8 @@ use App\Http\Controllers\OfferLetterController;
 use App\Http\Controllers\Payment\PayuController;
 use App\Http\Controllers\RefferenceController;
 use App\Http\Controllers\HiringController;
+use App\Http\Controllers\ExecutiveRetainerController;
+use App\Http\Controllers\Admin\ExecutiveRetainerController as AdminExecutiveRetainerController;
 
 
 
@@ -990,5 +992,18 @@ Route::get(
 
 
     // Advnace Income Route
+
+
+    // Executive Retainer Application Routes (user-facing form)
+    Route::get('/executive-retainer/apply', [ExecutiveRetainerController::class, 'create'])->name('executive-retainer.create');
+    Route::post('/executive-retainer/store', [ExecutiveRetainerController::class, 'store'])->name('executive-retainer.store');
+
+    // User's own applications (listing)
+    Route::get('/my-executive-applications', [ExecutiveRetainerController::class, 'myApplications'])->name('executive-retainer.my-applications');
+
+    // Admin  (with soft delete)
+    Route::resource('executive-retainer', AdminExecutiveRetainerController::class)->except(['show'])->names('admin.executive-retainer');
+    Route::post('/executive-retainer/{id}/restore', [AdminExecutiveRetainerController::class, 'restore'])->name('admin.executive-retainer.restore');
+    Route::delete('/executive-retainer/{id}/force-delete', [AdminExecutiveRetainerController::class, 'forceDelete'])->name('admin.executive-retainer.force-delete');
     
 });
