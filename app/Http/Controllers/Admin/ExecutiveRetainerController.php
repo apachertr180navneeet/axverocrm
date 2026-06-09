@@ -34,7 +34,7 @@ class ExecutiveRetainerController extends AccountBaseController
         }
 
         $applications = $query->latest()->paginate(15);
-        $pageTitle = 'Executive & Retainer Applications';
+        $pageTitle = 'Additional Income';
         return view('admin.executive-retainer.index', array_merge($this->data, compact('applications', 'pageTitle')));
     }
 
