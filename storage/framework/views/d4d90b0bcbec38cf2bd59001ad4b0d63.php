@@ -845,9 +845,7 @@
 <?php $component = $__componentOriginal75a60586017d0cb41cbff8f75f4a3989; ?>
 <?php unset($__componentOriginal75a60586017d0cb41cbff8f75f4a3989); ?>
 <?php endif; ?>
-                <?php endif; ?>
-
-                <?php if(in_array('employee', user_roles())): ?>
+                <?php elseif(in_array('employee', user_roles())): ?>
                 <?php if (isset($component)) { $__componentOriginal75a60586017d0cb41cbff8f75f4a3989 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal75a60586017d0cb41cbff8f75f4a3989 = $attributes; } ?>
 <?php $component = App\View\Components\SubMenuItem::resolve(['link' => route('executive-retainer.create'),'text' => __('app.menu.applyExecutiveRetainer')] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>

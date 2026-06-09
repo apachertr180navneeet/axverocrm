@@ -287,9 +287,7 @@
                 <x-sub-menu-item :link="route('hiring.create')" :text="__('app.menu.hiring')" />
                 @if(in_array('admin', user_roles()))
                 <x-sub-menu-item :link="route('advance-income.list')" :text="__('app.menu.AgentList')" />
-                @endif
-
-                @if(in_array('employee', user_roles()))
+                @elseif(in_array('employee', user_roles()))
                 <x-sub-menu-item :link="route('executive-retainer.create')" :text="__('app.menu.applyExecutiveRetainer')" />
                 <x-sub-menu-item :link="route('executive-retainer.my-applications')" :text="__('app.menu.myExecutiveApplications')" />
                 @endif
