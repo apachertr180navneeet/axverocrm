@@ -455,7 +455,7 @@ return array(
         'weeklyTimesheets' => 'Weekly Timesheets',
         'applyExecutiveRetainer' => 'Apply Executive Retainer',
         'myExecutiveApplications' => 'My Executive Applications',
-        'executiveRetainerList' => 'Additional Income',
+        'executiveRetainerList' => 'Advance Income Form',
     ),
     'parentId' => 'Parent',
     'childId' => 'Child',

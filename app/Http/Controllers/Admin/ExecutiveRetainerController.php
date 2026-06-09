@@ -34,7 +34,7 @@ class ExecutiveRetainerController extends AccountBaseController
         }
 
         $applications = $query->latest()->paginate(15);
-        $pageTitle = 'Additional Income';
+        $pageTitle = 'Advance Income Form';
         return view('admin.executive-retainer.index', array_merge($this->data, compact('applications', 'pageTitle')));
     }
 
@@ -42,7 +42,7 @@ class ExecutiveRetainerController extends AccountBaseController
     {
         abort_403(!in_array('admin', user_roles()));
         $executives = HrExecutiveReport::select('name', 'mobile')->distinct()->orderBy('name')->get();
-        $pageTitle = 'Add Application';
+        $pageTitle = 'Add Advance Income Form';
         return view('admin.executive-retainer.create', array_merge($this->data, compact('executives', 'pageTitle')));
     }
 
