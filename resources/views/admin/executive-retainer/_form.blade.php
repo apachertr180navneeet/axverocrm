@@ -22,20 +22,18 @@
     margin-top: 32px;
   }
 
+  .field-error {
+    color: #dc3545;
+    font-size: 12px;
+    margin-top: 4px;
+  }
+
   @media (max-width:768px) {
     .remove-row {
       margin-top: 10px;
     }
   }
 </style>
-
-@if($errors->any())
-  <div class="alert alert-danger">
-    <ul class="mb-0">
-      @foreach($errors->all() as $e)<li>{{ $e }}</li>@endforeach
-    </ul>
-  </div>
-@endif
 
 <x-form :method="$application ? 'PUT' : 'POST'"
   :action="$application ? route('admin.executive-retainer.update', $application->id) : route('admin.executive-retainer.store')"
@@ -48,14 +46,17 @@
       <div class="col-md-4">
         <x-forms.text fieldId="name" :fieldLabel="__('app.name')" fieldName="name" fieldRequired="true"
           :fieldPlaceholder="__('placeholders.name')" :fieldValue="old('name', $application->name ?? '')" />
+        @error('name')<div class="field-error">{{ $message }}</div>@enderror
       </div>
       <div class="col-md-4">
         <x-forms.text fieldId="mobile" :fieldLabel="__('app.mobile')" fieldName="mobile" fieldRequired="true"
           :fieldPlaceholder="__('placeholders.mobile')" :fieldValue="old('mobile', $application->mobile ?? '')" />
+        @error('mobile')<div class="field-error">{{ $message }}</div>@enderror
       </div>
       <div class="col-md-4">
         <x-forms.email fieldId="email" :fieldLabel="__('app.email')" fieldName="email" fieldRequired="true"
           :fieldPlaceholder="__('placeholders.email')" :fieldValue="old('email', $application->email ?? '')" />
+        @error('email')<div class="field-error">{{ $message }}</div>@enderror
       </div>
       <div class="col-md-4">
         <x-forms.select fieldId="post" :fieldLabel="__('app.post')" fieldName="post" fieldRequired="true">
@@ -63,10 +64,12 @@
           <option value="HR Executive" {{ old('post', $application->post ?? '') == 'HR Executive' ? 'selected' : '' }}>HR Executive</option>
           <option value="Retainer" {{ old('post', $application->post ?? '') == 'Retainer' ? 'selected' : '' }}>@lang('app.retainer')</option>
         </x-forms.select>
+        @error('post')<div class="field-error">{{ $message }}</div>@enderror
       </div>
       <div class="col-md-4">
         <x-forms.datepicker fieldId="date_of_joining" fieldPlaceholder="Select Date" :fieldLabel="__('app.dateOfJoining')" fieldName="date_of_joining" fieldRequired="true"
           :fieldValue="old('date_of_joining', isset($application) ? $application->date_of_joining->format('Y-m-d') : date('Y-m-d'))" />
+        @error('date_of_joining')<div class="field-error">{{ $message }}</div>@enderror
       </div>
     </div>
 
@@ -88,17 +91,20 @@
                       <option value="{{ $exe->name }}" data-mobile="{{ $exe->mobile }}" {{ old("hired_executives.$index.name", $exec['name'] ?? '') == $exe->name ? 'selected' : '' }}>{{ $exe->name }}</option>
                     @endforeach
                   </select>
+                  @error('hired_executives.' . $index . '.name')<div class="field-error">{{ $message }}</div>@enderror
                 </div>
                 <div class="col-md-3 mb-2">
                   @if($loop->first)<x-forms.label fieldId="executive-mobile-{{ $index }}" :fieldLabel="__('app.mobile')" />@endif
                   <input type="text" name="hired_executives[{{ $index }}][mobile]" class="form-control height-35 f-14 executive-mobile"
                     data-index="{{ $index }}" value="{{ old("hired_executives.$index.mobile", $exec['mobile'] ?? '') }}"
                     readonly placeholder="@lang('placeholders.autoFilled')">
+                  @error('hired_executives.' . $index . '.mobile')<div class="field-error">{{ $message }}</div>@enderror
                 </div>
                 <div class="col-md-3 mb-2">
                   @if($loop->first)<x-forms.label fieldId="executive-date-{{ $index }}" :fieldLabel="__('app.joiningDate')" />@endif
                   <input type="date" name="hired_executives[{{ $index }}][joining_date]" class="form-control height-35 f-14"
                     value="{{ old("hired_executives.$index.joining_date", $exec['joining_date'] ?? date('Y-m-d')) }}">
+                  @error('hired_executives.' . $index . '.joining_date')<div class="field-error">{{ $message }}</div>@enderror
                 </div>
                 <div class="col-md-2 mb-2 text-center">
                   @if(!$loop->first)
@@ -134,16 +140,19 @@
                       <option value="{{ $exe->name }}" data-mobile="{{ $exe->mobile }}" {{ old("hired_retainers.$index.name", $ret['name'] ?? '') == $exe->name ? 'selected' : '' }}>{{ $exe->name }}</option>
                     @endforeach
                   </select>
+                  @error('hired_retainers.' . $index . '.name')<div class="field-error">{{ $message }}</div>@enderror
                 </div>
                 <div class="col-md-3 mb-2">
                   @if($loop->first)<x-forms.label fieldId="retainer-mobile-{{ $index }}" :fieldLabel="__('app.mobile')" />@endif
                   <input type="text" name="hired_retainers[{{ $index }}][mobile]" class="form-control height-35 f-14 retainer-mobile"
                     data-index="{{ $index }}" value="{{ old("hired_retainers.$index.mobile", $ret['mobile'] ?? '') }}" readonly placeholder="@lang('placeholders.autoFilled')">
+                  @error('hired_retainers.' . $index . '.mobile')<div class="field-error">{{ $message }}</div>@enderror
                 </div>
                 <div class="col-md-3 mb-2">
                   @if($loop->first)<x-forms.label fieldId="retainer-date-{{ $index }}" :fieldLabel="__('app.joiningDate')" />@endif
                   <input type="date" name="hired_retainers[{{ $index }}][joining_date]" class="form-control height-35 f-14"
                     value="{{ old("hired_retainers.$index.joining_date", $ret['joining_date'] ?? date('Y-m-d')) }}">
+                  @error('hired_retainers.' . $index . '.joining_date')<div class="field-error">{{ $message }}</div>@enderror
                 </div>
                 <div class="col-md-2 mb-2 text-center">
                   @if(!$loop->first)
@@ -176,16 +185,19 @@
                   <option value="{{ $exe->name }}" data-mobile="{{ $exe->mobile }}" {{ old('retainer_detail.name', $application->retainer_detail['name'] ?? '') == $exe->name ? 'selected' : '' }}>{{ $exe->name }}</option>
                 @endforeach
               </select>
+              @error('retainer_detail.name')<div class="field-error">{{ $message }}</div>@enderror
             </div>
             <div class="col-md-3 mb-2">
               <x-forms.label fieldId="retainerMobile" :fieldLabel="__('app.mobile')" />
               <input type="text" name="retainer_detail[mobile]" id="retainerMobile" class="form-control height-35 f-14"
                 value="{{ old('retainer_detail.mobile', $application->retainer_detail['mobile'] ?? '') }}" readonly placeholder="@lang('placeholders.autoFilled')">
+              @error('retainer_detail.mobile')<div class="field-error">{{ $message }}</div>@enderror
             </div>
             <div class="col-md-3 mb-2">
               <x-forms.label fieldId="retainerDetailDate" :fieldLabel="__('app.joiningDate')" />
               <input type="date" name="retainer_detail[joining_date]" id="retainerDetailDate" class="form-control height-35 f-14"
                 value="{{ old('retainer_detail.joining_date', $application->retainer_detail['joining_date'] ?? date('Y-m-d')) }}">
+              @error('retainer_detail.joining_date')<div class="field-error">{{ $message }}</div>@enderror
             </div>
           </div>
         </div>
@@ -245,6 +257,18 @@
     let mobile = $(this).find(':selected').data('mobile');
     let idx = $(this).data('index');
     $(`input.retainer-mobile[data-index="${idx}"]`).val(mobile || '');
+  });
+
+  // Remove empty rows before form submit
+  $('form').on('submit', function () {
+    $('.executive-row').each(function () {
+      var name = $(this).find('.executive-name-select').val();
+      if (!name) { $(this).remove(); }
+    });
+    $('.retainer-row').each(function () {
+      var name = $(this).find('.retainer-name-select').val();
+      if (!name) { $(this).remove(); }
+    });
   });
 
   $('#post').change(function () {

@@ -1331,7 +1331,7 @@ return array(
     'executiveName' => 'Executive Name',
     'retainerName' => 'Retainer Name',
     'hireExecutives' => 'Hiring',
-    'hireRetainers' => 'Hire HR Retainers',
+    'hireRetainers' => 'Retainers',
     'retainerJoinDetail' => 'Retainer Joining Detail',
     'applicantDetails' => 'Applicant Details',
     'joiningDate' => 'Joining Date',
