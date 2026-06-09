@@ -35,7 +35,15 @@ class ExecutiveRetainerController extends AccountBaseController
 
         $applications = $query->latest()->paginate(15);
         $pageTitle = 'Advance Income Form';
-        return view('admin.executive-retainer.index', array_merge($this->data, compact('applications', 'pageTitle')));
+
+        $stats = [
+            'total' => ExecutiveRetainerApplication::count(),
+            'pending' => ExecutiveRetainerApplication::where('payment_status', 'pending')->count(),
+            'success' => ExecutiveRetainerApplication::where('payment_status', 'success')->count(),
+            'failed' => ExecutiveRetainerApplication::where('payment_status', 'failed')->count(),
+        ];
+
+        return view('admin.executive-retainer.index', array_merge($this->data, compact('applications', 'pageTitle', 'stats')));
     }
 
     public function create()
