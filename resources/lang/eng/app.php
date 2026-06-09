@@ -1314,6 +1314,9 @@ return array(
     'hiring' => 'Hiring',
 
     // Executive Retainer
+    'hiring' => 'Hiring',
+    'jobpost' => 'Job Post',
+    'jobPost' => 'Job Post',
     'retainer' => 'Retainer',
     'dateOfJoining' => 'Date of Joining',
     'addAnotherExecutive' => 'Add Another Executive',
@@ -1333,8 +1336,12 @@ return array(
     'hireExecutives' => 'Hiring',
     'hireRetainers' => 'Retainers',
     'retainerJoinDetail' => 'Retainer Joining Detail',
+    'applicationDetails' => 'Application Details',
     'applicantDetails' => 'Applicant Details',
     'joiningDate' => 'Joining Date',
     'proceedToPay' => 'Proceed to Pay :amount',
+    'txnid' => 'Transaction ID',
+    'paidAt' => 'Paid At',
+    'payuResponse' => 'PayU Response',
 );
 

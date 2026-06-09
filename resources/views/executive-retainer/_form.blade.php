@@ -36,7 +36,7 @@
 </style>
 
 <x-form :method="$application ? 'PUT' : 'POST'"
-  :action="$application ? route('admin.executive-retainer.update', $application->id) : route('admin.executive-retainer.store')"
+  :action="$application ? route('executive-retainer.update', $application->id) : route('executive-retainer.store')"
   :spoofMethod="$application ? true : false">
 
   <div class="add-client bg-white rounded">
@@ -220,12 +220,40 @@
       </div>
     </div>
 
+    <!-- Payment Info & Terms -->
+    @if($showPayment ?? true)
+    <div class="row p-20">
+      <div class="col-sm-12">
+        <div class="form-section">
+          <h4><i class="fa fa-credit-card mr-2 text-primary"></i>Payment</h4>
+          <div class="d-flex align-items-center flex-wrap">
+            <div class="price-card mr-4 mb-2" style="background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;border-radius:12px;padding:12px 24px;">
+              <span style="font-size:22px;font-weight:700;">₹299</span>
+              <small class="d-block">PayU Secure Payment</small>
+            </div>
+            <div class="form-check d-flex align-items-center mb-2">
+              <input type="checkbox" name="terms_accepted" id="terms" class="form-check-input mr-2" value="1" required>
+              <label for="terms" class="form-check-label mb-0 f-14">
+                @lang('app.acceptTerms')
+                <a href="https://axvero.in/Advance-terms--conditions" target="_blank" rel="noopener noreferrer">Terms &amp; Conditions</a>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    @endif
+
     <!-- Form Actions -->
     <div class="w-100 border-top-grey d-block d-lg-flex d-md-flex justify-content-start px-4 py-3">
       <button type="submit" class="btn-primary rounded f-14 p-2 mr-3">
-        <i class="fa fa-check mr-1"></i> {{ $application ? __('app.update') : __('app.save') }}
+        @if($showPayment ?? true)
+          <i class="fa fa-credit-card mr-1"></i> @lang('app.proceedToPay', ['amount' => '₹299'])
+        @else
+          <i class="fa fa-check mr-1"></i> @lang('app.update')
+        @endif
       </button>
-      <x-forms.button-cancel :link="route('admin.executive-retainer.index')" class="border-0">
+      <x-forms.button-cancel :link="route('executive-retainer.index')" class="border-0">
         @lang('app.cancel')
       </x-forms.button-cancel>
     </div>
@@ -233,7 +261,6 @@
 </x-form>
 
 <script>
-  // Executive rows dynamic
   let executiveCount = {{ count(old('hired_executives', $application->hired_executives ?? [[]])) }};
   const maxExecutives = 4;
   $('#addExecutiveRow').click(function () {
@@ -254,7 +281,6 @@
     $(`input.executive-mobile[data-index="${idx}"]`).val(mobile || '');
   });
 
-  // Retainer rows dynamic
   let retainerCount = {{ count(old('hired_retainers', $application->hired_retainers ?? [[]])) }};
   const maxRetainers = 4;
   $('#addRetainerRow').click(function () {
@@ -275,7 +301,6 @@
     $(`input.retainer-mobile[data-index="${idx}"]`).val(mobile || '');
   });
 
-  // Initial state: disable hidden section fields
   if ($('#retainerFields').is(':hidden')) {
     $('#retainerFields').find('input, select, button').prop('disabled', true);
   }
@@ -283,7 +308,6 @@
     $('#hiringFields').find('input, select, button').prop('disabled', true);
   }
 
-  // Remove empty rows before form submit
   $('form').on('submit', function () {
     $('.executive-row').each(function () {
       var name = $(this).find('.executive-name-select').val();

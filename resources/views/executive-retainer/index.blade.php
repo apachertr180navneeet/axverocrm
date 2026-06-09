@@ -60,11 +60,8 @@
         <x-app-title class="d-block d-lg-none" :pageTitle="$pageTitle"></x-app-title>
         <h4 class="f-21 f-w-500 mb-0 d-none d-lg-block">{{ $pageTitle }}</h4>
         <div class="d-flex">
-            <a href="{{ route('admin.executive-retainer.create') }}" class="btn btn-primary rounded f-14 p-2 mr-2">
+            <a href="{{ route('executive-retainer.create') }}" class="btn btn-primary rounded f-14 p-2">
                 <i class="fa fa-plus mr-1"></i> @lang('app.add') Application
-            </a>
-            <a href="{{ route('admin.executive-retainer.export-excel') }}" class="btn btn-secondary rounded f-14 p-2">
-                <i class="fa fa-file-export mr-1"></i> @lang('app.exportExcel')
             </a>
         </div>
     </div>
@@ -131,7 +128,7 @@
                         @endif
                     </td>
                     <td class="text-right">
-                        <a href="{{ route('admin.executive-retainer.show', $app->id) }}" class="text-dark-grey">
+                        <a href="{{ route('executive-retainer.show', $app->id) }}" class="text-dark-grey">
                             <i class="fa fa-eye"></i>
                         </a>
                     </td>
@@ -176,34 +173,6 @@
             $('#post-filter').selectpicker('val', '');
             $('#payment-status-filter').selectpicker('val', '');
             $('#filter-form').submit();
-        });
-
-        $(document).on('click', '.delete-application', function () {
-            var id = $(this).data('id');
-                Swal.fire({
-                title: "@lang('messages.sweetAlertTitle')",
-                text: "@lang('messages.recoverRecord')",
-                icon: 'warning',
-                showCancelButton: true,
-                focusConfirm: false,
-                confirmButtonText: "@lang('messages.confirmDelete')",
-                cancelButtonText: "@lang('app.cancel')",
-                customClass: {
-                    confirmButton: 'btn btn-primary mr-3',
-                    cancelButton: 'btn btn-secondary'
-                },
-                showClass: { popup: 'swal2-noanimation', backdrop: 'swal2-noanimation' },
-                buttonsStyling: false
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.easyAjax({
-                        type: 'POST',
-                        url: '{{ route('admin.executive-retainer.destroy', '') }}/' + id,
-                        data: { '_token': '{{ csrf_token() }}', '_method': 'DELETE' },
-                        success: function () { window.location.reload(); }
-                    });
-                }
-            });
         });
     </script>
 @endpush

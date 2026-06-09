@@ -7,6 +7,9 @@ use App\Models\ExecutiveRetainerApplication;
 use App\Models\HrExecutiveReport;
 use App\Http\Requests\ExecutiveRetainerRequest;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ExecutiveRetainerExport;
 
 class ExecutiveRetainerController extends AccountBaseController
 {
@@ -81,6 +84,29 @@ class ExecutiveRetainerController extends AccountBaseController
         return redirect()->route('admin.executive-retainer.index')->with('success', 'Application created.');
     }
 
+    public function show($id)
+    {
+        abort_403(!in_array('admin', user_roles()));
+        $application = ExecutiveRetainerApplication::withTrashed()->findOrFail($id);
+        $pageTitle = __('app.applicationDetails');
+        return view('admin.executive-retainer.show', array_merge($this->data, compact('application', 'pageTitle')));
+    }
+
+    public function exportExcel()
+    {
+        abort_403(!in_array('admin', user_roles()));
+        return Excel::download(new ExecutiveRetainerExport, 'executive-retainer.xlsx');
+    }
+
+    public function download($id)
+    {
+        abort_403(!in_array('admin', user_roles()));
+        $application = ExecutiveRetainerApplication::withTrashed()->findOrFail($id);
+        $fileName = 'executive-retainer-' . $application->id . '.pdf';
+        $pdf = Pdf::loadView('admin.executive-retainer.pdf', compact('application'));
+        return $pdf->download($fileName);
+    }
+
     public function edit($id)
     {
         abort_403(!in_array('admin', user_roles()));
@@ -147,6 +173,7 @@ class ExecutiveRetainerController extends AccountBaseController
                         'name' => $exec['name'],
                         'mobile' => $exec['mobile'],
                         'joining_date' => $exec['joining_date'] ?? null,
+                        'job_post' => $exec['job_post'] ?? null,
                     ];
                 }
             }
@@ -164,6 +191,7 @@ class ExecutiveRetainerController extends AccountBaseController
                         'name' => $ret['name'],
                         'mobile' => $ret['mobile'],
                         'joining_date' => $ret['joining_date'] ?? null,
+                        'job_post' => $ret['job_post'] ?? null,
                     ];
                 }
             }
@@ -178,6 +206,7 @@ class ExecutiveRetainerController extends AccountBaseController
                 'name' => $request->retainer_detail['name'],
                 'mobile' => $request->retainer_detail['mobile'],
                 'joining_date' => $request->retainer_detail['joining_date'],
+                'job_post' => $request->retainer_detail['job_post'] ?? null,
             ];
         }
         return null;

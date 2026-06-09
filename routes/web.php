@@ -994,15 +994,19 @@ Route::get(
     // Advnace Income Route
 
 
-    // Executive Retainer Application Routes (user-facing form)
+    // Executive Retainer Application Routes (employee-facing)
+    Route::get('/my-executive-applications', [ExecutiveRetainerController::class, 'index'])->name('executive-retainer.index');
     Route::get('/executive-retainer/apply', [ExecutiveRetainerController::class, 'create'])->name('executive-retainer.create');
     Route::post('/executive-retainer/store', [ExecutiveRetainerController::class, 'store'])->name('executive-retainer.store');
-
-    // User's own applications (listing)
-    Route::get('/my-executive-applications', [ExecutiveRetainerController::class, 'myApplications'])->name('executive-retainer.my-applications');
+    Route::get('/executive-retainer/{executive_retainer}/show', [ExecutiveRetainerController::class, 'show'])->name('executive-retainer.show');
+    Route::get('/executive-retainer/{executive_retainer}/edit', [ExecutiveRetainerController::class, 'edit'])->name('executive-retainer.edit');
+    Route::put('/executive-retainer/{executive_retainer}/update', [ExecutiveRetainerController::class, 'update'])->name('executive-retainer.update');
 
     // Admin  (with soft delete)
     Route::resource('executive-retainer', AdminExecutiveRetainerController::class)->except(['show'])->names('admin.executive-retainer');
+    Route::get('/executive-retainer/{id}/show', [AdminExecutiveRetainerController::class, 'show'])->name('admin.executive-retainer.show');
+    Route::get('/executive-retainer/{id}/download', [AdminExecutiveRetainerController::class, 'download'])->name('admin.executive-retainer.download');
+    Route::get('/executive-retainer/export/excel', [AdminExecutiveRetainerController::class, 'exportExcel'])->name('admin.executive-retainer.export-excel');
     Route::post('/executive-retainer/{id}/restore', [AdminExecutiveRetainerController::class, 'restore'])->name('admin.executive-retainer.restore');
     Route::delete('/executive-retainer/{id}/force-delete', [AdminExecutiveRetainerController::class, 'forceDelete'])->name('admin.executive-retainer.force-delete');
     

@@ -38,7 +38,7 @@ class ExecutiveRetainerPaymentController extends Controller
             'status' => 'success',
             'heading' => 'Payment Successful!',
             'message' => 'Your Executive Retainer application #' . $application->id . ' has been submitted successfully.',
-            'redirectUrl' => route('executive-retainer.my-applications'),
+            'redirectUrl' => route('executive-retainer.index'),
         ]);
     }
 
