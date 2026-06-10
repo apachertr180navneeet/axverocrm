@@ -86,7 +86,7 @@
     <div class="row p-20" id="jobPostSection">
       <div class="col-sm-12">
         <div class="form-section">
-          <h4 id="jobPostHeading"><i class="fa fa-users mr-2 text-success"></i><span id="jobPostTitle">@lang('app.hireExecutives')</span> <small class="text-muted font-weight-normal">(@lang('app.max') 4)</small></h4>
+          <h4 id="jobPostHeading"><i class="fa fa-users mr-2 text-success"></i><span id="jobPostTitle">@lang('app.hireExecutives')</span> <small class="text-muted font-weight-normal">(@lang('app.max') 7)</small></h4>
 
           <!-- Hiring fields -->
           <div id="hiringFields" style="{{ old('section_type', 'hiring') == 'retainer' ? 'display:none;' : '' }}">
@@ -94,20 +94,15 @@
               @php $hired = old('hired_executives', $application->hired_executives ?? [['name' => '', 'mobile' => '', 'joining_date' => '' , 'job_post' => '' ]]); @endphp
               @foreach($hired as $index => $exec)
                 <div class="row mb-2 executive-row align-items-end">
-                  <div class="col-md-4 mb-2">
+                  <div class="col-md-3 mb-2">
                     @if($loop->first)<x-forms.label fieldId="executive-name-{{ $index }}" :fieldLabel="__('app.executiveName')" />@endif
-                    <select name="hired_executives[{{ $index }}][name]" class="form-control height-35 f-14 executive-name-select" data-index="{{ $index }}">
-                      <option value="">-- @lang('app.select') --</option>
-                      @foreach($executives as $exe)
-                        <option value="{{ $exe->name }}" data-mobile="{{ $exe->mobile }}" {{ old("hired_executives.$index.name", $exec['name'] ?? '') == $exe->name ? 'selected' : '' }}>{{ $exe->name }}</option>
-                      @endforeach
-                    </select>
+                    <input type="text" name="hired_executives[{{ $index }}][name]" class="form-control height-35 f-14" value="{{ old("hired_executives.$index.name", $exec['name'] ?? '') }}" placeholder="@lang('app.executiveName')">
                     @error('hired_executives.' . $index . '.name')<div class="field-error">{{ $message }}</div>@enderror
                   </div>
                   <div class="col-md-3 mb-2">
                     @if($loop->first)<x-forms.label fieldId="executive-mobile-{{ $index }}" :fieldLabel="__('app.mobile')" />@endif
-                    <input type="text" name="hired_executives[{{ $index }}][mobile]" class="form-control height-35 f-14 executive-mobile" data-index="{{ $index }}"
-                      value="{{ old("hired_executives.$index.mobile", $exec['mobile'] ?? '') }}" readonly placeholder="@lang('placeholders.autoFilled')">
+                    <input type="text" name="hired_executives[{{ $index }}][mobile]" class="form-control height-35 f-14"
+                      value="{{ old("hired_executives.$index.mobile", $exec['mobile'] ?? '') }}" placeholder="@lang('app.mobile')">
                     @error('hired_executives.' . $index . '.mobile')<div class="field-error">{{ $message }}</div>@enderror
                   </div>
                   <div class="col-md-3 mb-2">
@@ -133,7 +128,7 @@
             <button type="button" id="addExecutiveRow" class="btn btn-sm btn-outline-success rounded f-12 mt-2">
               <i class="fa fa-plus-circle mr-1"></i> @lang('app.addAnotherExecutive')
             </button>
-            <small class="text-muted d-block mt-1">@lang('app.maxEntries', ['count' => 4])</small>
+            <small class="text-muted d-block mt-1">@lang('app.maxEntries', ['count' => 7])</small>
           </div>
 
           <!-- Retainer fields -->
@@ -142,20 +137,15 @@
               @php $retainers = old('hired_retainers', $application->hired_retainers ?? [['name' => '', 'mobile' => '', 'joining_date' => '']]); @endphp
               @foreach($retainers as $index => $ret)
                 <div class="row mb-2 retainer-row align-items-end">
-                  <div class="col-md-4 mb-2">
+                  <div class="col-md-3 mb-2">
                     @if($loop->first)<x-forms.label fieldId="retainer-name-{{ $index }}" :fieldLabel="__('app.retainerName')" />@endif
-                    <select name="hired_retainers[{{ $index }}][name]" class="form-control height-35 f-14 retainer-name-select" data-index="{{ $index }}">
-                      <option value="">-- @lang('app.select') --</option>
-                      @foreach($executives as $exe)
-                        <option value="{{ $exe->name }}" data-mobile="{{ $exe->mobile }}" {{ old("hired_retainers.$index.name", $ret['name'] ?? '') == $exe->name ? 'selected' : '' }}>{{ $exe->name }}</option>
-                      @endforeach
-                    </select>
+                    <input type="text" name="hired_retainers[{{ $index }}][name]" class="form-control height-35 f-14" value="{{ old("hired_retainers.$index.name", $ret['name'] ?? '') }}" placeholder="@lang('app.retainerName')">
                     @error('hired_retainers.' . $index . '.name')<div class="field-error">{{ $message }}</div>@enderror
                   </div>
                   <div class="col-md-3 mb-2">
                     @if($loop->first)<x-forms.label fieldId="retainer-mobile-{{ $index }}" :fieldLabel="__('app.mobile')" />@endif
-                    <input type="text" name="hired_retainers[{{ $index }}][mobile]" class="form-control height-35 f-14 retainer-mobile" data-index="{{ $index }}"
-                      value="{{ old("hired_retainers.$index.mobile", $ret['mobile'] ?? '') }}" readonly placeholder="@lang('placeholders.autoFilled')">
+                    <input type="text" name="hired_retainers[{{ $index }}][mobile]" class="form-control height-35 f-14"
+                      value="{{ old("hired_retainers.$index.mobile", $ret['mobile'] ?? '') }}" placeholder="@lang('app.mobile')">
                     @error('hired_retainers.' . $index . '.mobile')<div class="field-error">{{ $message }}</div>@enderror
                   </div>
                   <div class="col-md-3 mb-2">
@@ -181,7 +171,7 @@
             <button type="button" id="addRetainerRow" class="btn btn-sm btn-outline-info rounded f-12 mt-2">
               <i class="fa fa-plus-circle mr-1"></i> @lang('app.addAnotherRetainer')
             </button>
-            <small class="text-muted d-block mt-1">@lang('app.maxEntries', ['count' => 4])</small>
+            <small class="text-muted d-block mt-1">@lang('app.maxEntries', ['count' => 7])</small>
           </div>
         </div>
       </div>
@@ -235,45 +225,37 @@
 <script>
   // Executive rows dynamic
   let executiveCount = {{ count(old('hired_executives', $application->hired_executives ?? [[]])) }};
-  const maxExecutives = 4;
+  const maxExecutives = 7;
   $('#addExecutiveRow').click(function () {
-    if (executiveCount >= maxExecutives) { alert('@lang('messages.maxEntries', ['count' => 4])'); return; }
+    if (executiveCount >= maxExecutives) { Swal.fire({ icon: 'error', title: '@lang('messages.maxEntries', ['count' => 7])', timer: 3000, showConfirmButton: false }); return; }
     let idx = executiveCount;
-    let newRow = `<div class="row mb-2 executive-row align-items-end"><div class="col-md-4 mb-2"><select name="hired_executives[${idx}][name]" class="form-control height-35 f-14 executive-name-select" data-index="${idx}"><option value="">-- @lang('app.select') HR Executive --</option>@foreach($executives as $exe)<option value="{{ $exe->name }}" data-mobile="{{ $exe->mobile }}">{{ $exe->name }}</option>@endforeach</select></div><div class="col-md-3 mb-2"><input type="text" name="hired_executives[${idx}][mobile]" class="form-control height-35 f-14 executive-mobile" data-index="${idx}" readonly placeholder="@lang('placeholders.autoFilled')"></div><div class="col-md-3 mb-2"><input type="date" name="hired_executives[${idx}][joining_date]" class="form-control height-35 f-14" value="{{ date('Y-m-d') }}"></div><div class="col-md-2 mb-2 text-center"><button type="button" class="btn btn-sm btn-danger remove-executive rounded f-12 p-1 mt-3"><i class="fa fa-trash-alt"></i></button></div></div>`;
+    let newRow = `<div class="row mb-2 executive-row align-items-end"><div class="col-md-4 mb-2"><input type="text" name="hired_executives[${idx}][name]" class="form-control height-35 f-14" placeholder="@lang('app.executiveName')"></div><div class="col-md-3 mb-2"><input type="text" name="hired_executives[${idx}][mobile]" class="form-control height-35 f-14" placeholder="@lang('app.mobile')"></div><div class="col-md-3 mb-2"><input type="date" name="hired_executives[${idx}][joining_date]" class="form-control height-35 f-14" value="{{ date('Y-m-d') }}"></div><div class="col-md-2 mb-2 text-center"><button type="button" class="btn btn-sm btn-danger remove-executive rounded f-12 p-1 mt-3"><i class="fa fa-trash-alt"></i></button></div></div>`;
     $('#executiveRows').append(newRow);
     executiveCount++;
   });
   $(document).on('click', '.remove-executive', function () {
-    if ($('.executive-row').length === 1) { alert('@lang('messages.atLeastOneRow')'); return; }
+    if ($('.executive-row').length === 1) { Swal.fire({ icon: 'error', title: '@lang('messages.atLeastOneRow')', timer: 3000, showConfirmButton: false }); return; }
     $(this).closest('.executive-row').remove();
     executiveCount--;
   });
-  $(document).on('change', '.executive-name-select', function () {
-    let mobile = $(this).find(':selected').data('mobile');
-    let idx = $(this).data('index');
-    $(`input.executive-mobile[data-index="${idx}"]`).val(mobile || '');
-  });
+
 
   // Retainer rows dynamic
   let retainerCount = {{ count(old('hired_retainers', $application->hired_retainers ?? [[]])) }};
-  const maxRetainers = 4;
+  const maxRetainers = 7;
   $('#addRetainerRow').click(function () {
-    if (retainerCount >= maxRetainers) { alert('@lang('messages.maxEntries', ['count' => 4])'); return; }
+    if (retainerCount >= maxRetainers) { Swal.fire({ icon: 'error', title: '@lang('messages.maxEntries', ['count' => 7])', timer: 3000, showConfirmButton: false }); return; }
     let idx = retainerCount;
-    let newRow = `<div class="row mb-2 retainer-row align-items-end"><div class="col-md-4 mb-2"><select name="hired_retainers[${idx}][name]" class="form-control height-35 f-14 retainer-name-select" data-index="${idx}"><option value="">-- @lang('app.select') HR Retainer --</option>@foreach($executives as $exe)<option value="{{ $exe->name }}" data-mobile="{{ $exe->mobile }}">{{ $exe->name }}</option>@endforeach</select></div><div class="col-md-3 mb-2"><input type="text" name="hired_retainers[${idx}][mobile]" class="form-control height-35 f-14 retainer-mobile" data-index="${idx}" readonly placeholder="@lang('placeholders.autoFilled')"></div><div class="col-md-3 mb-2"><input type="date" name="hired_retainers[${idx}][joining_date]" class="form-control height-35 f-14" value="{{ date('Y-m-d') }}"></div><div class="col-md-2 mb-2 text-center"><button type="button" class="btn btn-sm btn-danger remove-retainer rounded f-12 p-1 mt-3"><i class="fa fa-trash-alt"></i></button></div></div>`;
+    let newRow = `<div class="row mb-2 retainer-row align-items-end"><div class="col-md-4 mb-2"><input type="text" name="hired_retainers[${idx}][name]" class="form-control height-35 f-14" placeholder="@lang('app.retainerName')"></div><div class="col-md-3 mb-2"><input type="text" name="hired_retainers[${idx}][mobile]" class="form-control height-35 f-14" placeholder="@lang('app.mobile')"></div><div class="col-md-3 mb-2"><input type="date" name="hired_retainers[${idx}][joining_date]" class="form-control height-35 f-14" value="{{ date('Y-m-d') }}"></div><div class="col-md-2 mb-2 text-center"><button type="button" class="btn btn-sm btn-danger remove-retainer rounded f-12 p-1 mt-3"><i class="fa fa-trash-alt"></i></button></div></div>`;
     $('#retainerRows').append(newRow);
     retainerCount++;
   });
   $(document).on('click', '.remove-retainer', function () {
-    if ($('.retainer-row').length === 1) { alert('@lang('messages.atLeastOneRow')'); return; }
+    if ($('.retainer-row').length === 1) { Swal.fire({ icon: 'error', title: '@lang('messages.atLeastOneRow')', timer: 3000, showConfirmButton: false }); return; }
     $(this).closest('.retainer-row').remove();
     retainerCount--;
   });
-  $(document).on('change', '.retainer-name-select', function () {
-    let mobile = $(this).find(':selected').data('mobile');
-    let idx = $(this).data('index');
-    $(`input.retainer-mobile[data-index="${idx}"]`).val(mobile || '');
-  });
+
 
   // Initial state: disable hidden section fields
   if ($('#retainerFields').is(':hidden')) {
@@ -286,7 +268,7 @@
   // Remove empty rows before form submit
   $('form').on('submit', function () {
     $('.executive-row').each(function () {
-      var name = $(this).find('.executive-name-select').val();
+      var name = $(this).find('input[name$="[name]"]').val();
       if (!name) { $(this).remove(); }
     });
     $('.retainer-row').each(function () {
