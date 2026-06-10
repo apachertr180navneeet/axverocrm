@@ -1321,6 +1321,7 @@ return array(
     'dateOfJoining' => 'Date of Joining',
     'addAnotherExecutive' => 'Add Another Executive',
     'addAnotherRetainer' => 'Add Another Retainer',
+    'max' => 'Max',
     'maxEntries' => 'Max Entries',
     'paymentStatus' => 'Payment Status',
     'termsConditions' => 'Terms & Conditions',

@@ -91,7 +91,7 @@
           <!-- Hiring fields -->
           <div id="hiringFields" style="{{ old('section_type', 'hiring') == 'retainer' ? 'display:none;' : '' }}">
             <div id="executiveRows">
-              @php $hired = old('hired_executives', $application->hired_executives ?? [['name' => '', 'mobile' => '', 'joining_date' => '']]); @endphp
+              @php $hired = old('hired_executives', $application->hired_executives ?? [['name' => '', 'mobile' => '', 'joining_date' => '' , 'job_post' => '' ]]); @endphp
               @foreach($hired as $index => $exec)
                 <div class="row mb-2 executive-row align-items-end">
                   <div class="col-md-4 mb-2">
