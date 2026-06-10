@@ -456,7 +456,7 @@ return array(
         'addAutomateShift' => 'Add Automate Shift',
         'weeklyTimesheets' => 'Weekly Timesheets',
         'applyExecutiveRetainer' => 'Apply Executive Retainer',
-        'myExecutiveApplications' => 'My Executive Applications',
+        'myExecutiveApplications' => 'Advance Income Form',
         'executiveRetainerList' => 'Advance Income Form',
     ),
     'parentId' => 'Parent',

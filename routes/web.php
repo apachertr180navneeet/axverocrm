@@ -1004,7 +1004,7 @@ Route::get(
 
     // Admin  (with soft delete)
     Route::resource('executive-retainer', AdminExecutiveRetainerController::class)->except(['show'])->names('admin.executive-retainer');
-    Route::get('/executive-retainer/{id}/show', [AdminExecutiveRetainerController::class, 'show'])->name('admin.executive-retainer.show');
+    Route::get('/executive-retainer/{id}', [AdminExecutiveRetainerController::class, 'show'])->name('admin.executive-retainer.show');
     Route::get('/executive-retainer/{id}/download', [AdminExecutiveRetainerController::class, 'download'])->name('admin.executive-retainer.download');
     Route::get('/executive-retainer/export/excel', [AdminExecutiveRetainerController::class, 'exportExcel'])->name('admin.executive-retainer.export-excel');
     Route::post('/executive-retainer/{id}/restore', [AdminExecutiveRetainerController::class, 'restore'])->name('admin.executive-retainer.restore');
