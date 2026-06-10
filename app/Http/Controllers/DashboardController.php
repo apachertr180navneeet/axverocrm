@@ -13,8 +13,10 @@ use App\Models\Leave;
 use App\Models\ProjectTimeLog;
 use App\Models\ProjectTimeLogBreak;
 use App\Models\PushNotificationSetting;
-use App\Models\Task; 
+use App\Models\Task;
 use App\Models\DailyReport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\AgentRetainerExport;
 use App\Models\TaskboardColumn;
 use App\Models\Ticket;
 use App\Traits\ClientDashboard;
@@ -1135,6 +1137,11 @@ public function executiveReportPdf($id)
             ]);
         
             return $pdf->download('Retainer-'.$agent->id.'.pdf');
+        }
+
+        public function exportAgentRetainerExcel(Request $request)
+        {
+            return Excel::download(new AgentRetainerExport($request), 'agent-retainers.xlsx');
         }
 
 

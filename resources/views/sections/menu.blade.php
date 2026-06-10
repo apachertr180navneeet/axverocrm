@@ -292,7 +292,6 @@
                 @endif
                 @if(in_array('admin', user_roles()))
                 <x-sub-menu-item :link="route('admin.executive-retainer.index')" :text="__('app.menu.executiveRetainerList')" />
-                <x-sub-menu-item :link="url('/retainers')" :text="'New Retainer Form'" />
                 @endif
                 
                 <!-- NAV ITEM - CUSTOM MODULES  -->

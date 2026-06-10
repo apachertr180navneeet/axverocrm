@@ -1,24 +1,23 @@
         @extends('layouts.app')
         
-        @section('content')
-        
-        <div class="content-wrapper">
-        
-        <div class="container-fluid mt-4">
-        
-        <div class="card">
-        
-        <div class="card-header d-flex justify-content-between align-items-center">
-        
-        <h4 class="mb-0">Retainer List</h4>
-        
-        <a href="{{ route('agent_retainer.create') }}" class="btn btn-primary">
-        Add Retainer
-        </a>
-        
+@section('content')
+<div class="content-wrapper">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <x-app-title class="d-block d-lg-none" :pageTitle="$pageTitle"></x-app-title>
+        <h4 class="f-21 f-w-500 mb-0 d-none d-lg-block">{{ $pageTitle }}</h4>
+        <div class="d-flex">
+            <a href="{{ route('agent_retainer.create') }}" class="btn btn-primary rounded f-14 p-2 mr-2">
+                <i class="fa fa-plus mr-1"></i> Add Retainer
+            </a>
+            <a href="{{ route('agent_retainer.export-excel', request()->query()) }}" class="btn btn-secondary rounded f-14 p-2">
+                <i class="fa fa-file-export mr-1"></i> Export Excel
+            </a>
         </div>
-        
-        <div class="card-body">
+    </div>
+
+<div class="card">
+<div class="card-body">
         
         
         {{-- success message --}}
@@ -64,14 +63,16 @@
         <input type="date"
         name="from_date"
         value="{{ request('from_date') }}"
-        class="form-control">
+        class="form-control"
+        placeholder="From Created Date">
         </div>
         
         <div class="col-md-2 mb-2">
         <input type="date"
         name="to_date"
         value="{{ request('to_date') }}"
-        class="form-control">
+        class="form-control"
+        placeholder="To Created Date">
         </div>
         
         <div class="col-md-2 mb-2">
@@ -102,6 +103,7 @@
         <th>Mobile</th>
         <th>Gender</th>
         <th>DOB</th>
+        <th>Created At</th>
         <th width="120">Action</th>
         
         </tr>
@@ -124,6 +126,8 @@
         
         <td>{{ $row->date_of_birth }}</td>
         
+        <td>{{ $row->created_at->format('d-m-Y') }}</td>
+        
         <td>
         
         <a href="{{ route('agent_retainer.pdf',$row->id) }}"
@@ -141,7 +145,7 @@
         
         <tr>
         
-        <td colspan="6" class="text-center">
+        <td colspan="7" class="text-center">
         No Data Found
         </td>
         

@@ -1,24 +1,41 @@
         
         
-        <?php $__env->startSection('content'); ?>
-        
-        <div class="content-wrapper">
-        
-        <div class="container-fluid mt-4">
-        
-        <div class="card">
-        
-        <div class="card-header d-flex justify-content-between align-items-center">
-        
-        <h4 class="mb-0">Retainer List</h4>
-        
-        <a href="<?php echo e(route('agent_retainer.create')); ?>" class="btn btn-primary">
-        Add Retainer
-        </a>
-        
+<?php $__env->startSection('content'); ?>
+<div class="content-wrapper">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <?php if (isset($component)) { $__componentOriginal000fcba1c6c5a1e4a2897e45738ec35e = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal000fcba1c6c5a1e4a2897e45738ec35e = $attributes; } ?>
+<?php $component = App\View\Components\AppTitle::resolve(['pageTitle' => $pageTitle] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('app-title'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(App\View\Components\AppTitle::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['class' => 'd-block d-lg-none']); ?> <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal000fcba1c6c5a1e4a2897e45738ec35e)): ?>
+<?php $attributes = $__attributesOriginal000fcba1c6c5a1e4a2897e45738ec35e; ?>
+<?php unset($__attributesOriginal000fcba1c6c5a1e4a2897e45738ec35e); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal000fcba1c6c5a1e4a2897e45738ec35e)): ?>
+<?php $component = $__componentOriginal000fcba1c6c5a1e4a2897e45738ec35e; ?>
+<?php unset($__componentOriginal000fcba1c6c5a1e4a2897e45738ec35e); ?>
+<?php endif; ?>
+        <h4 class="f-21 f-w-500 mb-0 d-none d-lg-block"><?php echo e($pageTitle); ?></h4>
+        <div class="d-flex">
+            <a href="<?php echo e(route('agent_retainer.create')); ?>" class="btn btn-primary rounded f-14 p-2 mr-2">
+                <i class="fa fa-plus mr-1"></i> Add Retainer
+            </a>
+            <a href="<?php echo e(route('agent_retainer.export-excel')); ?>" class="btn btn-secondary rounded f-14 p-2">
+                <i class="fa fa-file-export mr-1"></i> Export Excel
+            </a>
         </div>
-        
-        <div class="card-body">
+    </div>
+
+<div class="card">
+<div class="card-body">
         
         
         
@@ -65,14 +82,16 @@
         <input type="date"
         name="from_date"
         value="<?php echo e(request('from_date')); ?>"
-        class="form-control">
+        class="form-control"
+        placeholder="From Created Date">
         </div>
         
         <div class="col-md-2 mb-2">
         <input type="date"
         name="to_date"
         value="<?php echo e(request('to_date')); ?>"
-        class="form-control">
+        class="form-control"
+        placeholder="To Created Date">
         </div>
         
         <div class="col-md-2 mb-2">
@@ -103,6 +122,7 @@
         <th>Mobile</th>
         <th>Gender</th>
         <th>DOB</th>
+        <th>Created At</th>
         <th width="120">Action</th>
         
         </tr>
@@ -125,6 +145,8 @@
         
         <td><?php echo e($row->date_of_birth); ?></td>
         
+        <td><?php echo e($row->created_at->format('d-m-Y')); ?></td>
+        
         <td>
         
         <a href="<?php echo e(route('agent_retainer.pdf',$row->id)); ?>"
@@ -142,7 +164,7 @@
         
         <tr>
         
-        <td colspan="6" class="text-center">
+        <td colspan="7" class="text-center">
         No Data Found
         </td>
         

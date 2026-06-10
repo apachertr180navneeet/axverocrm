@@ -27,6 +27,7 @@ class ExecutiveRetainerExport implements FromCollection, WithHeadings, WithMappi
             'Payment Status',
             'Transaction ID',
             'Paid At',
+            'Created At',
         ];
     }
 
@@ -43,6 +44,7 @@ class ExecutiveRetainerExport implements FromCollection, WithHeadings, WithMappi
             $application->payment_status,
             $application->txnid ?? '--',
             $application->paid_at ? $application->paid_at->format('d-m-Y h:i A') : '--',
+            $application->created_at ? $application->created_at->format('d-m-Y h:i A') : '--',
         ];
     }
 }
