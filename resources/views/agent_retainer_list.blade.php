@@ -10,9 +10,11 @@
             <a href="{{ route('agent_retainer.create') }}" class="btn btn-primary rounded f-14 p-2 mr-2">
                 <i class="fa fa-plus mr-1"></i> Add Retainer
             </a>
+            @if(in_array('admin', user_roles()))
             <a href="{{ route('agent_retainer.export-excel', request()->query()) }}" class="btn btn-secondary rounded f-14 p-2">
                 <i class="fa fa-file-export mr-1"></i> Export Excel
             </a>
+            @endif
         </div>
     </div>
 
