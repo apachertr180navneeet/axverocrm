@@ -20,7 +20,7 @@ class OfferLetterController extends AccountBaseController
         'host'      => 'smtp.hostinger.com',
         'port'      => 465,
         'username'  => 'hr@axvero.in',
-        'password'  => 'Axvero@2011',
+        'password'  => 'Axvero@2026#$&@',
         'from'      => 'hr@axvero.in',
         'from_name' => 'Axvero Hr',
     ];
