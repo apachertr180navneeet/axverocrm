@@ -18,7 +18,7 @@ class OtpController extends Controller
         'mail.mailers.smtp.port' => 465,
         'mail.mailers.smtp.encryption' => 'ssl',
         'mail.mailers.smtp.username' => 'verify@axvero.in',
-        'mail.mailers.smtp.password' => 'Axvero@2023',
+        'mail.mailers.smtp.password' => 'Axvero@951',
         'mail.from.address' => 'verify@axvero.in',
         'mail.from.name' => 'Axvero',
     ]);
