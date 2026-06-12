@@ -51,14 +51,14 @@ class OfferLetterController extends AccountBaseController
 
 
     public function generate()
-{
-    $this->checkOfferLetterAccess();
+    {
+        $this->checkOfferLetterAccess();
 
-    $this->pageTitle = "Generate New Offer Letter";
-    $this->user = user();
+        $this->pageTitle = "Generate New Offer Letter";
+        $this->user = user();
 
-    return view('offer-letter.generate', $this->data);
-}
+        return view('offer-letter.generate', $this->data);
+    }
 
     public function store(Request $request)
     {
@@ -194,6 +194,46 @@ class OfferLetterController extends AccountBaseController
 }
 
 
+    public function resendLetter($id)
+    {
+        $this->checkOfferLetterAccess();
+
+        $offer = OfferLetter::findOrFail($id);
+
+        if (!in_array('admin', user_roles()) && $offer->user_id != user()->id) {
+            abort(403, 'Unauthorized access');
+        }
+
+        try {
+            $pdfContent = $this->buildPdf($offer)->output();
+
+            $mailer = $this->buildMailer();
+
+            $mailable = new OfferLetterMail(
+                $offer,
+                $this->getPrefix($offer->gender),
+                $pdfContent
+            );
+            $mailable->from(
+                $this->smtpConfig['from'],
+                $this->smtpConfig['from_name']
+            );
+
+            $mailer->to($offer->email)->send($mailable);
+
+            $offer->update(['status' => 'sent']);
+
+            return redirect()
+                ->back()
+                ->with('success', 'Offer Letter resent to ' . $offer->email . ' successfully!');
+
+        } catch (\Exception $e) {
+            return redirect()
+                ->back()
+                ->with('error', 'Failed to resend email: ' . $e->getMessage());
+        }
+    }
+
     public function previewLetter(Request $request)
     {
          $this->checkOfferLetterAccess();
@@ -261,6 +301,57 @@ class OfferLetterController extends AccountBaseController
         ]);
     }
     
+    public function edit($id)
+    {
+        $this->checkOfferLetterAccess();
+
+        $offer = OfferLetter::findOrFail($id);
+
+        if (!in_array('admin', user_roles()) && $offer->user_id != user()->id) {
+            abort(403, 'Unauthorized access');
+        }
+
+        $this->pageTitle = "Edit Offer Letter";
+        $this->offer = $offer;
+
+        return view('offer-letter.edit', $this->data);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $this->checkOfferLetterAccess();
+
+        $offer = OfferLetter::findOrFail($id);
+
+        if (!in_array('admin', user_roles()) && $offer->user_id != user()->id) {
+            abort(403, 'Unauthorized access');
+        }
+
+        $request->validate([
+            'gender'         => 'required|in:Male,Female,Other',
+            'full_name'      => 'required|string|max:150',
+            'email'          => 'required|email|unique:offer_letters,email,' . $offer->id,
+            'designation'    => 'required|string|max:100',
+            'salary'         => 'required|numeric|min:0',
+            'joining_date'   => 'required|date',
+            'employment_type'=> 'required',
+        ]);
+
+        $offer->update([
+            'gender'         => $request->gender,
+            'full_name'      => $request->full_name,
+            'email'          => $request->email,
+            'designation'    => $request->designation,
+            'employment_type'=> $request->employment_type,
+            'salary'         => $request->salary,
+            'joining_date'   => $request->joining_date,
+        ]);
+
+        return redirect()
+            ->route('letter.list')
+            ->with('success', 'Offer Letter updated successfully!');
+    }
+
     public function deleteLetter($id){
         try {
              $offer = OfferLetter::where('id', $id)->delete();

@@ -117,7 +117,7 @@ select.form-control {
     color: #111827;
 }
 
-.btn-offer-generate {
+.btn-offer-update {
     height: 42px;
     border-radius: 8px;
     padding: 0 24px;
@@ -131,115 +131,13 @@ select.form-control {
     cursor: pointer;
 }
 
-.btn-offer-generate:hover {
+.btn-offer-update:hover {
     background: #4338ca;
     transform: translateY(-1px);
 }
 
-.btn-offer-generate:active {
+.btn-offer-update:active {
     transform: translateY(0);
-}
-
-/* ===== Flash Notification ===== */
-.flash-notify {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 9999;
-    min-width: 280px;
-    max-width: 380px;
-    padding: 14px 18px;
-    border-radius: 10px;
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    box-shadow: 0 8px 28px rgba(0,0,0,0.13);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    animation: flashSlideIn 0.35s cubic-bezier(0.34,1.56,0.64,1) forwards;
-    transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-.flash-notify.flash-success {
-    background: #f0fdf4;
-    border: 1.5px solid #86efac;
-    color: #166534;
-}
-
-.flash-notify.flash-error {
-    background: #fef2f2;
-    border: 1.5px solid #fca5a5;
-    color: #991b1b;
-}
-
-.flash-notify.flash-warning {
-    background: #fffbeb;
-    border: 1.5px solid #fcd34d;
-    color: #92400e;
-}
-
-.flash-notify .flash-icon {
-    font-size: 18px;
-    flex-shrink: 0;
-    margin-top: 1px;
-}
-
-.flash-notify .flash-body { flex: 1; }
-
-.flash-notify .flash-title {
-    font-weight: 700;
-    font-size: 13px;
-    margin-bottom: 2px;
-}
-
-.flash-notify .flash-msg {
-    font-size: 13px;
-    font-weight: 400;
-    opacity: 0.85;
-}
-
-.flash-notify .flash-close {
-    background: none;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-    color: inherit;
-    opacity: 0.5;
-    padding: 0;
-    line-height: 1;
-    flex-shrink: 0;
-    transition: opacity 0.15s;
-}
-
-.flash-notify .flash-close:hover { opacity: 1; }
-
-.flash-notify .flash-bar {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 3px;
-    border-radius: 0 0 10px 10px;
-    animation: flashBarShrink 5s linear forwards;
-}
-
-.flash-success .flash-bar { background: #22c55e; }
-.flash-error   .flash-bar { background: #ef4444; }
-.flash-warning .flash-bar { background: #f59e0b; }
-
-.flash-notify.flash-hiding {
-    opacity: 0;
-    transform: translateX(30px);
-}
-
-@keyframes flashSlideIn {
-    from { opacity: 0; transform: translateX(40px); }
-    to   { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes flashBarShrink {
-    from { width: 100%; }
-    to   { width: 0%; }
 }
 
 /* ===== Dark Mode ===== */
@@ -260,61 +158,23 @@ body.dark .btn-offer-preview:hover { background: #374151; color: #f9fafb; }
     .offer-card    { padding: 22px 16px 18px; }
     .offer-card h3 { font-size: 17px; margin-bottom: 16px; }
     .btn-area      { flex-direction: column !important; gap: 10px !important; }
-    .btn-offer-cancel, .btn-offer-preview, .btn-offer-generate { width: 100% !important; height: 44px; border-radius: 10px; }
-    .flash-notify  { top: 12px; right: 12px; left: 12px; max-width: 100%; }
+    .btn-offer-cancel, .btn-offer-preview, .btn-offer-update { width: 100% !important; height: 44px; border-radius: 10px; }
 }
 
 </style>
 
 @section('content')
 
-{{-- ══ Flash Messages ══════════════════════════════════════════════════════ --}}
-
-@if(session('success'))
-<div class="flash-notify flash-success" id="flashMsg">
-    <span class="flash-icon">✅</span>
-    <div class="flash-body">
-        <div class="flash-title">Success!</div>
-        <div class="flash-msg">{{ session('success') }}</div>
-    </div>
-    <button class="flash-close" onclick="dismissFlash()">✕</button>
-    <div class="flash-bar"></div>
-</div>
-@endif
-
-@if(session('error'))
-<div class="flash-notify flash-error" id="flashMsg">
-    <span class="flash-icon">❌</span>
-    <div class="flash-body">
-        <div class="flash-title">Error!</div>
-        <div class="flash-msg">{{ session('error') }}</div>
-    </div>
-    <button class="flash-close" onclick="dismissFlash()">✕</button>
-    <div class="flash-bar"></div>
-</div>
-@endif
-
-@if(session('warning'))
-<div class="flash-notify flash-warning" id="flashMsg">
-    <span class="flash-icon">⚠️</span>
-    <div class="flash-body">
-        <div class="flash-title">Warning!</div>
-        <div class="flash-msg">{{ session('warning') }}</div>
-    </div>
-    <button class="flash-close" onclick="dismissFlash()">✕</button>
-    <div class="flash-bar"></div>
-</div>
-@endif
-
 {{-- ══ Form ════════════════════════════════════════════════════════════════ --}}
 
 <div class="offer-page-bg">
     <div class="offer-card">
 
-        <h3>Generate New Offer Letter</h3>
+        <h3>Edit Offer Letter</h3>
 
-        <form method="POST" action="{{ route('offer.store') }}" id="offerForm">
+        <form method="POST" action="{{ route('offer-letters.update', $offer->id) }}" id="offerForm">
             @csrf
+            @method('POST')
 
             <div class="row form-row-gap">
 
@@ -322,9 +182,9 @@ body.dark .btn-offer-preview:hover { background: #374151; color: #f9fafb; }
                 <div class="col-md-3 col-12">
                     <label class="form-label">Gender</label>
                     <select name="gender" class="form-control">
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Other">Other</option>
+                        <option value="Male"   {{ $offer->gender == 'Male'   ? 'selected' : '' }}>Male</option>
+                        <option value="Female" {{ $offer->gender == 'Female' ? 'selected' : '' }}>Female</option>
+                        <option value="Other"  {{ $offer->gender == 'Other'  ? 'selected' : '' }}>Other</option>
                     </select>
                 </div>
 
@@ -332,16 +192,15 @@ body.dark .btn-offer-preview:hover { background: #374151; color: #f9fafb; }
                 <div class="col-md-9 col-12">
                     <label class="form-label">Candidate Full Name</label>
                     <input type="text" name="full_name" class="form-control" placeholder="Enter full name"
-                           value="{{ old('full_name') }}">
+                           value="{{ old('full_name', $offer->full_name) }}">
                 </div>
 
                 {{-- Email --}}
                 <div class="col-md-6 col-12">
                     <label class="form-label">Candidate Email</label>
                     <input type="email" name="email" class="form-control" placeholder="email@example.com"
-                           value="{{ old('email') }}">
+                           value="{{ old('email', $offer->email) }}">
                 </div>
-                
 
                 {{-- Spacer (desktop only) --}}
                 <div class="col-md-6 d-none d-md-block"></div>
@@ -350,8 +209,8 @@ body.dark .btn-offer-preview:hover { background: #374151; color: #f9fafb; }
                     <label class="form-label">Employment Type</label>
                     <select name="employment_type" class="form-control">
                         <option value="">-- Select Type --</option>
-                        <option value="Internship" {{ old('employment_type') == 'Internship' ? 'selected' : '' }}>Retainer</option>
-                        <option value="Employee" {{ old('employment_type') == 'Employee' ? 'selected' : '' }}>Employee</option>
+                        <option value="Internship" {{ old('employment_type', $offer->employment_type) == 'Internship' ? 'selected' : '' }}>Retainer</option>
+                        <option value="Employee"  {{ old('employment_type', $offer->employment_type) == 'Employee'  ? 'selected' : '' }}>Employee</option>
                     </select>
                 </div>
 
@@ -361,7 +220,7 @@ body.dark .btn-offer-preview:hover { background: #374151; color: #f9fafb; }
                     <select name="designation" class="form-control">
                         <option value="">-- Select Designation --</option>
                         @foreach(['Sales Manager','Assistant Sales Manager','Agent Relationship Manager','HR Manager','HR Executive','IT Executive','Sales Executive','IT Sales Manager','IT Manager','Social Media Manager','Trainer', 'Agent Manager','Retainer'] as $d)
-                            <option value="{{ $d }}" {{ old('designation') == $d ? 'selected' : '' }}>{{ $d }}</option>
+                            <option value="{{ $d }}" {{ old('designation', $offer->designation) == $d ? 'selected' : '' }}>{{ $d }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -370,14 +229,14 @@ body.dark .btn-offer-preview:hover { background: #374151; color: #f9fafb; }
                 <div class="col-md-6 col-12">
                     <label class="form-label">Monthly Salary (INR)</label>
                     <input type="number" name="salary" class="form-control" placeholder="e.g. 50000"
-                           value="{{ old('salary') }}">
+                           value="{{ old('salary', $offer->salary) }}">
                 </div>
 
                 {{-- Joining Date --}}
                 <div class="col-md-6 col-12">
                     <label class="form-label">Joining Date</label>
                     <input type="date" name="joining_date" class="form-control"
-                           value="{{ old('joining_date') }}">
+                           value="{{ old('joining_date', $offer->joining_date->format('Y-m-d')) }}">
                 </div>
 
             </div>
@@ -397,17 +256,12 @@ body.dark .btn-offer-preview:hover { background: #374151; color: #f9fafb; }
             {{-- Action Buttons --}}
             <div class="d-flex justify-content-end align-items-center btn-area flex-wrap" style="gap: 10px;">
 
-                <button type="button" class="btn-offer-cancel"
-                        onclick="window.history.back()">
+                <a href="{{ route('letter.list') }}" class="btn-offer-cancel" style="text-decoration:none; display:inline-flex; align-items:center;">
                     Cancel
-                </button>
+                </a>
 
-                <button type="button" class="btn-offer-preview" id="previewBtn">
-                    Preview
-                </button>
-
-                <button type="submit" class="btn-offer-generate" id="generateBtn">
-                    Generate &amp; Send
+                <button type="submit" class="btn-offer-update" id="updateBtn">
+                    Update
                 </button>
 
             </div>
@@ -419,78 +273,10 @@ body.dark .btn-offer-preview:hover { background: #374151; color: #f9fafb; }
 
 <script>
 
-// ── Flash dismiss ─────────────────────────────────────────────────────────
-function dismissFlash() {
-    const el = document.getElementById('flashMsg');
-    if (el) {
-        el.classList.add('flash-hiding');
-        setTimeout(() => el.remove(), 400);
-    }
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-    const el = document.getElementById('flashMsg');
-    if (el) setTimeout(() => dismissFlash(), 5000);
-});
-
-// ── Preview button ────────────────────────────────────────────────────────
-document.getElementById('previewBtn').addEventListener('click', function () {
-
-   const fieldNames = ['gender', 'full_name', 'email', 'employment_type', 'designation', 'salary', 'joining_date'];
-    const fields = {};
-
-    // Clear previous errors
-    document.querySelectorAll('.preview-error').forEach(e => e.remove());
-    document.querySelectorAll('.form-control').forEach(e => e.style.removeProperty('border-color'));
-
-    let hasError = false;
-
-    fieldNames.forEach(key => {
-        const el = document.querySelector(`[name="${key}"]`);
-        fields[key] = el;
-        if (!el || !el.value.trim()) {
-            hasError = true;
-            el.style.borderColor = '#ef4444';
-            const err = document.createElement('small');
-            err.className = 'preview-error text-danger d-block mt-1';
-            err.style.fontSize = '11px';
-            err.textContent = 'This field is required';
-            el.parentNode.appendChild(err);
-        }
-    });
-
-    if (hasError) return;
-
-    // Build hidden form and submit to new tab
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = '{{ route("offer-letters.preview") }}';
-    form.target = '_blank';
-
-    const csrf = document.createElement('input');
-    csrf.type  = 'hidden';
-    csrf.name  = '_token';
-    csrf.value = '{{ csrf_token() }}';
-    form.appendChild(csrf);
-
-    fieldNames.forEach(key => {
-        const input = document.createElement('input');
-        input.type  = 'hidden';
-        input.name  = key;
-        input.value = fields[key].value;
-        form.appendChild(input);
-    });
-
-    document.body.appendChild(form);
-    form.submit();
-    document.body.removeChild(form);
-});
-
-// ── Generate & Send — loading state ──────────────────────────────────────
 document.getElementById('offerForm').addEventListener('submit', function () {
-    const btn = document.getElementById('generateBtn');
+    const btn = document.getElementById('updateBtn');
     btn.disabled    = true;
-    btn.textContent = 'Sending...';
+    btn.textContent = 'Updating...';
     btn.style.opacity = '0.75';
 });
 

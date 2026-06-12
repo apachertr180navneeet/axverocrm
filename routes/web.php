@@ -200,7 +200,10 @@ Route::group(['middleware' => 'auth', 'prefix' => 'account'], function () {
         Route::post('/offer-letter/store', [OfferLetterController::class,'store'])->name('offer.store');
         Route::get('offer-letters/{id}/download', [OfferLetterController::class, 'downloadLetterPdf'])->name('offer-letters.download');
         Route::post('offer-letters/preview', [OfferLetterController::class, 'previewLetter'])->name('offer-letters.preview');
+        Route::get('offer-letters/edit/{id}', [OfferLetterController::class, 'edit'])->name('offer-letters.edit');
+        Route::post('offer-letters/update/{id}', [OfferLetterController::class, 'update'])->name('offer-letters.update');
         Route::post('offer-letters/delete/{id}', [OfferLetterController::class, 'deleteLetter'])->name('offer-letters.delete');
+        Route::post('offer-letters/resend/{id}', [OfferLetterController::class, 'resendLetter'])->name('offer-letters.resend');
 
 
         // Refference form

@@ -177,7 +177,7 @@ body {
 
 @if($offer->employment_type === 'Internship')
 
-{{-- ── INTERNSHIP: PAGE 1 ─────────────────────────────────────────── --}}
+{{-- ── INTERNSHIP: PAGE 1 (condensed) ──────────────────────────────── --}}
 <div class="page">
 
     <div class="header">
@@ -214,11 +214,6 @@ body {
             We are pleased to appoint you as a <strong>Retainer</strong> with EASY ONLINE MARKETING <strong>AXVERO</strong>, subject to the terms and conditions mentioned below:
         </p>
 
-            <!--<p class="para">-->
-            <!--    Your internship will commence from <strong>{{ $joining_fmt }}</strong> and will continue for a-->
-            <!--    period of <strong>6 months</strong>, unless terminated earlier in accordance with company policies.-->
-            <!--</p>-->
-
         {{-- Terms & Conditions --}}
         <p class="section-head">Terms &amp; Conditions:</p>
 
@@ -234,18 +229,18 @@ body {
 
         <p class="section-head">3. Working Hours & Attendance</p>
         <p class="para">
-            * You are required to mark your <strong>Clock-In attendance between 09:00 AM and 10:00 AM</strong> daily.
-            * You are required to mark your <strong>Clock-Out attendance between 06:00 PM and 06:30 PM</strong> daily.
+            * You are required to mark your <strong>Clock-In attendance between 09:00 AM and 10:00 AM</strong> daily.<br>
+            * You are required to mark your <strong>Clock-Out attendance between 06:00 PM and 06:30 PM</strong> daily.<br>
             * Attendance shall be marked through the system/platform prescribed by the company.
         </p>
 
         <p class="section-head">4. Roles & Responsibilities</p>
         <p class="para">
-            1. Marketing and promotion of the company's products and services.
-            2. Daily execution of marketing activities assigned by the company.
-            3. Recruitment and onboarding support for sales agents.
-            4. Ensuring the hiring of <strong>minimum 10 agents</strong> for the company as per business requirements.
-            5. Submission of daily work reports and updates to the reporting manager.
+            1. Marketing and promotion of the company's products and services.<br>
+            2. Daily execution of marketing activities assigned by the company.<br>
+            3. Recruitment and onboarding support for sales &amp; marketing.<br>
+            4. Ensuring the hiring of <strong>Retainer &amp; Agent</strong> for the company as per business requirements.<br>
+            5. Submission of daily work reports and updates to the reporting manager.<br>
             6. Any other related tasks assigned by the management from time to time.
         </p>
 
@@ -285,38 +280,11 @@ body {
         
         <p class="section-head">9. Acceptance</p>
         <p class="para">
-            Please sign and return a copy of this letter as a token of your acceptance of the above terms and conditions.
-            We welcome you and look forward to a successful association with AXVERO.
+            Please sign and return a copy of this letter as a token of your acceptance of the above terms and conditions. We welcome you and look forward to a successful association with AXVERO. We look forward to your contribution and hope this engagement will be a valuable learning experience for you.
         </p>
 
-    </div>
-
-</div>
-{{-- ── INTERNSHIP: PAGE 2 (Closing + Signatures) ──────────────────── --}}
-<div class="page">
-
-    <div class="header">
-        @if($logo_b64)  <img src="{{ $logo_b64 }}"   class="header-logo"> @endif
-        <!--@if($header_b64)<img src="{{ $header_b64 }}" class="header-banner"> @endif-->
-        <!--<span class="header-website">https://kactto.com</span>-->
-    </div>
-
-    <div class="content">
-
-        <p class="para">
-            We look forward to your contribution and hope this internship will be a valuable
-            learning experience for you.
-        </p>
-
-        <p class="para">
-            Kindly sign and return a copy of this letter as a token of your acceptance.
-        </p>
-
-        <br>
         <p class="para">Best Regards,</p>
-        <br>
 
-        {{-- Company signature block --}}
         <table class="sign-table" cellpadding="0" cellspacing="0">
             <tr>
                 <td>
@@ -334,15 +302,10 @@ body {
             </tr>
         </table>
 
-        <br><br>
-
-        {{-- Acceptance block --}}
         <p class="section-head">Acceptance by Retainer</p>
-        <br>
         <p class="para">
             I, <strong>{{ $prefix }} {{ $offer->full_name }}</strong>, have read and understood the terms and conditions mentioned above and hereby accept the appointment as Retainer with AXVERO.
         </p>
-        <br>
         <table class="sign-table" cellpadding="0" cellspacing="0">
             <tr>
                 <td>
@@ -358,12 +321,16 @@ body {
 
 </div>
 
+</div>
+
+@endif
+
 
 {{-- ╔══════════════════════════════════════════════════════════════════╗ --}}
-{{-- ║                    EMPLOYEE LETTER (original)                   ║ --}}
+{{-- ║                    EMPLOYEE LETTER                             ║ --}}
 {{-- ╚══════════════════════════════════════════════════════════════════╝ --}}
 
-@else
+@if($offer->employment_type !== 'Internship')
 
 {{-- ── EMPLOYEE: PAGE 1 ─────────────────────────────────────────────── --}}
 <div class="page">
@@ -372,10 +339,6 @@ body {
         @if($logo_b64)
             <img src="{{ $logo_b64 }}" class="header-logo">
         @endif
-        <!--@if($header_b64)-->
-        <!--    <img src="{{ $header_b64 }}" class="header-banner">-->
-        <!--@endif-->
-        <!--<span class="header-website">https://kactto.com</span>-->
     </div>
 
     <div class="content">
@@ -420,21 +383,6 @@ body {
             the sole discretion of the Company, be confirmed as an employee or a permanent employee.
         </p>
 
-    </div>
-
-</div>
-
-{{-- ── EMPLOYEE: PAGE 2 ─────────────────────────────────────────────── --}}
-<div class="page">
-
-    <div class="header">
-        @if($logo_b64)  <img src="{{ $logo_b64 }}"   class="header-logo"> @endif
-        <!--@if($header_b64)<img src="{{ $header_b64 }}" class="header-banner"> @endif-->
-        <!--<span class="header-website">https://kactto.com</span>-->
-    </div>
-
-    <div class="content">
-
         <p class="section-head">4. Place of Posting</p>
         <p class="para">You shall be liable to be posted and work at any location across India, based on the business requirements of the Company. You may also be required to work at any existing or future place of business, branch office, project site, client location, or establishment that the Company currently operates or may subsequently acquire.</p>
         <p class="para">In addition, the Company may, at its sole discretion and depending upon business needs, permit you to work remotely or in a hybrid mode. Such remote working arrangement shall not be deemed permanent and may be modified, withdrawn, or revised by the Company at any time.</p>
@@ -450,21 +398,6 @@ body {
         <p class="section-head">7. Company Property</p>
         <p class="para">All property, equipment, documents, materials, or confidential information provided to you shall remain the property of the Company and must be returned upon cessation of engagement or upon request. Failure to return such property may result in recovery of costs.</p>
 
-    </div>
-
-</div>
-
-{{-- ── EMPLOYEE: PAGE 3 ─────────────────────────────────────────────── --}}
-<div class="page">
-
-    <div class="header">
-        @if($logo_b64)  <img src="{{ $logo_b64 }}"   class="header-logo"> @endif
-        <!--@if($header_b64)<img src="{{ $header_b64 }}" class="header-banner"> @endif-->
-        <!--<span class="header-website">https://kactto.com</span>-->
-    </div>
-
-    <div class="content">
-
         <p class="section-head">8. Borrowing and Gifts</p>
         <p class="para">You shall not borrow money from, accept gifts, rewards, or any personal compensation from any client, vendor, or person having official dealings with the Company.</p>
 
@@ -474,6 +407,19 @@ body {
         <p class="para">9.3 The Company may terminate your engagement without notice in case of misconduct, negligence, breach of contract, or loss/damage caused to the Company.</p>
         <p class="para">9.4 Final settlement shall be processed within 45 to 90 working days from the date of termination.</p>
 
+    </div>
+
+</div>
+
+{{-- ── EMPLOYEE: PAGE 2 ─────────────────────────────────────────────── --}}
+<div class="page">
+
+    <div class="header">
+        @if($logo_b64)  <img src="{{ $logo_b64 }}"   class="header-logo"> @endif
+    </div>
+
+    <div class="content">
+
         <p class="section-head">10. Confidentiality and Exclusivity</p>
         <p class="para">10.1 During your engagement, you shall devote your full time and attention to the Company's business and shall not engage in any other employment, business, or professional activity without prior written consent.</p>
         <p class="para">10.2 You shall maintain strict confidentiality of all Company information during and after your engagement.</p>
@@ -482,21 +428,6 @@ body {
 
         <p class="section-head">11. Company Policies</p>
         <p class="para">The Company reserves the right to amend, modify, or update policies and terms of engagement from time to time, and such changes shall be binding upon you.</p>
-
-    </div>
-
-</div>
-
-{{-- ── EMPLOYEE: PAGE 4 ─────────────────────────────────────────────── --}}
-<div class="page">
-
-    <div class="header">
-        @if($logo_b64)  <img src="{{ $logo_b64 }}"   class="header-logo"> @endif
-        <!--@if($header_b64)<img src="{{ $header_b64 }}" class="header-banner"> @endif-->
-        <!--<span class="header-website">https://kactto.com</span>-->
-    </div>
-
-    <div class="content">
 
         <p class="para">You will be required to enter into a Confidentiality Agreement with the Company and provide accurate information to be filled in your joining form, sending along with your appointment letter.</p>
 

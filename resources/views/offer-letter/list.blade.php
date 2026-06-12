@@ -138,7 +138,20 @@
                            class="btn btn-link text-primary fw-semibold text-decoration-none small">
                             <i class="bi bi-download me-1"></i> Download
                         </a>
-                        
+
+                        <a href="{{ route('offer-letters.edit', $letter->id) }}"
+                           class="btn btn-link text-primary fw-semibold text-decoration-none small">
+                            <i class="bi bi-pencil me-1"></i> Edit
+                        </a>
+
+                        <form action="{{ route('offer-letters.resend', $letter->id) }}" method="POST" class="d-inline">
+                            @csrf
+                            @method('POST')
+                            <button type="submit" class="btn btn-link text-primary fw-semibold text-decoration-none small">
+                                <i class="bi bi-envelope me-1"></i> Resend
+                            </button>
+                        </form>
+
                         <form action="{{ route('offer-letters.delete', $letter->id) }}" method="POST" class="d-inline"
                               onsubmit="return confirm('Are you sure you want to delete this offer letter? This action cannot be undone.')">
                             @csrf
@@ -147,12 +160,6 @@
                                 <i class="bi bi-trash me-1"></i> Delete
                             </button>
                         </form>
-                        <!-- <a href="{{ route('offer-letters.delete', $letter->id) }}"-->
-                        <!--   class="text-primary fw-semibold text-decoration-none small"-->
-                        <!--   onclick="return confirm('Are you sure you want to delete this offer letter? This action cannot be undone.')"-->
-                        <!--   >-->
-                        <!--    <i class="bi bi-trash me-1"></i> Delete-->
-                        <!--</a>-->
                     </td>
                     </tr>
                     @endforeach
