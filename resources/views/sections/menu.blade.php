@@ -203,7 +203,7 @@
   
   @if (array_intersect(['admin', 'employee'], user_roles()))
          <!--Agent & RETAINER-->
-    <x-menu-item
+    {{--  <x-menu-item
     icon="user-group"
     :link="route('agent_retainer.list')"
     :text="'Retainer'">
@@ -215,7 +215,7 @@
               d="M17 20h5V4H2v16h5M12 10a3 3 0 100-6 3 3 0 000 6zm-4 10v-2a4 4 0 018 0v2"/>
     </x-slot>
 
-</x-menu-item>
+</x-menu-item>  --}}
 
     @endif
     
@@ -284,11 +284,6 @@
                     <x-sub-menu-item :link="route('awards.index')" :text="__('app.menu.appreciation')" />
                 @endif
 
-                <x-sub-menu-item :link="route('hiring.create')" text="New Retaner" />
-                @if (in_array('admin', user_roles()))
-                    <x-sub-menu-item :link="route('awards.index')" text="New Retaner list" />
-                @endif
-
                 <x-sub-menu-item :link="route('hiring.create')" :text="__('app.menu.hiring')" />
                 @if(in_array('admin', user_roles()))
                 <x-sub-menu-item :link="route('advance-income.list')" :text="__('app.menu.AgentList')" />
@@ -305,6 +300,33 @@
                 @endforeach
             </div>
         </x-menu-item>
+    @endif
+
+    @if (!in_array('client', user_roles()))
+        <x-menu-item
+            icon="person-plus"
+            :link="route('retainer.create')"
+            :text="'New Retaner'">
+            <x-slot name="iconPath">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <line x1="19" y1="8" x2="19" y2="14"/>
+                <line x1="22" y1="11" x2="16" y2="11"/>
+            </x-slot>
+        </x-menu-item>
+        @if (in_array('admin', user_roles()))
+        <x-menu-item
+            icon="list-ul"
+            :link="route('retaner.list')"
+            :text="'New Retaner List'">
+            <x-slot name="iconPath">
+                <path fill-rule="evenodd" d="M3 4.5a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0z"/>
+                <path fill-rule="evenodd" d="M3 8a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0z"/>
+                <path fill-rule="evenodd" d="M3 11.5a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0z"/>
+                <path d="M6 4h6v1H6V4zm0 3.5h6v1H6v-1zm0 3.5h6v1H6v-1z"/>
+            </x-slot>
+        </x-menu-item>
+        @endif
     @endif
 
 <!-- NAV ITEM - WORK COLLAPSE MENU -->

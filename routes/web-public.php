@@ -41,6 +41,9 @@ Route::post('/invitation/accept-invite', [RegisterController::class, 'acceptInvi
 Route::get('/agent/create', [HiringController::class, 'create'])->name('hiring.create');
 Route::post('/agent/store', [HiringController::class, 'store'])->name('hiring.store');
 
+Route::get('/retainer/create', [HiringController::class, 'retainercreate'])->name('retainer.create');
+Route::post('/retainer/store', [HiringController::class, 'retainerstore'])->name('retainer.store');
+
 Route::get('agent-retainer/create', [RegisterController::class,'agentRetainer'])->name('agent_retainer.create');
 Route::post('agent-retainer-new/store', [RegisterController::class,'agentRetainerStore'])->name('agent_retainer_new.store');
 Route::get('/agent-retainer-success', function () {

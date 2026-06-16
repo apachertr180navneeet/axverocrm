@@ -29,7 +29,8 @@ class HiringSubmission extends Model
         'payment_status',
         'payu_response',
         'submitted_at',
-        'paid_at'
+        'paid_at',
+        'submit_type'
     ];
 
     protected $casts = [
@@ -38,6 +39,7 @@ class HiringSubmission extends Model
         'terms_accepted' => 'boolean',
         'submitted_at' => 'datetime',
         'paid_at' => 'datetime',
+        'submit_type' => 'string'
     ];
 
     // public function user()

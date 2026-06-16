@@ -26,6 +26,25 @@ class PayuController extends Controller
         ]);
     }
 
+
+    public function retainerredirectToPayu($submission)
+    {
+        $key = config('services.payu.key');
+        $salt = config('services.payu.salt');
+        $user = $submission;
+        $hashString = $key . '|' . $submission->txnid . '|' . $submission->amount . '|Form Payment|' .
+            $user->name . '|' . $user->email . '|||||||||||' . $salt;
+
+        $hash = strtolower(hash('sha512', $hashString));
+
+        return view('retainer.payu_redirect', [
+            'submission' => $submission,
+            'user' => $user,
+            'hash' => $hash,
+            'key' => $key,
+        ]);
+    }
+
     public function paymentSuccess(Request $request)
     {
         $submission = HiringSubmission::where('txnid', $request->txnid)->first();
@@ -72,7 +91,8 @@ class PayuController extends Controller
             ]);
         }
 
-        return view('payu.failure', ['submission' => $submission]);
+        $view = $submission && $submission->submit_type === 'retaner' ? 'retainer.failure' : 'hiring.failure';
+        return view($view, ['submission' => $submission]);
     }
 
     public function redirectForAdvanceIncome($submission)

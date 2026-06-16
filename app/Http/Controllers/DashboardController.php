@@ -1049,7 +1049,7 @@ public function executiveReportPdf($id)
                 }
 
 
-        public function agentRetainer()
+                public function agentRetainer()
                 {
                     $this->pageTitle = 'Retainer Form';
                     $this->user = user();
@@ -1057,7 +1057,7 @@ public function executiveReportPdf($id)
                     return view('agent_retainer', $this->data);
                 }
                                 
-                                public function storeAgentRetainer(Request $request)
+                public function storeAgentRetainer(Request $request)
                 {
                     $request->validate([
                         'name' => 'required',
@@ -1156,6 +1156,20 @@ public function executiveReportPdf($id)
             'hiringSubmissions' => $hiringSubmissions,
         ]);
         //return view('hiring.list', compact('hiringSubmissions'));
+    }
+
+
+
+    public function getretanerList()
+    {
+        $hiringSubmissions = HiringSubmission::where('submit_type', 'retaner')->orderBy('created_at', 'desc')
+            ->paginate(10);
+        $this->pageTitle = 'Retainer List';
+       // $this->globalSetting = GlobalSetting::first();
+        return view('retainer.list', [
+            ...$this->data,
+            'hiringSubmissions' => $hiringSubmissions,
+        ]);
     }
 
 

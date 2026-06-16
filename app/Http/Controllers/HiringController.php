@@ -20,20 +20,17 @@ class HiringController extends Controller
     // }
     public function create()
     {
-        // $user = Auth::user();
-        // if (!$user) {
-        //     return redirect()->route('login')->with('error', 'Please login first');
-        // }
-        // No longer fetch dropdown data
-        // return view('hiring.create', compact('user'));
-        // $this->pageTitle = __('app.menu.hiring');
-        // return view('hiring.create', [
-        //     ...$this->data,
-        //     //'user' => $user,
-        // ]);
          $this->globalSetting = GlobalSetting::first();
 
         return view('hiring.create', $this->data);
+    }
+
+
+    public function retainercreate()
+    {
+         $this->globalSetting = GlobalSetting::first();
+
+        return view('retainer.create', $this->data);
     }
 
     public function store(Request $request)
@@ -80,6 +77,46 @@ class HiringController extends Controller
             'payment_status' => 'pending',
             'submitted_at' => now(),
             'expected_date' => $request->expected_date,
+            'submit_type' => 'agent'
+        ]);
+
+        return app(PayuController::class)->redirectToPayu($submission);
+    }
+
+
+    public function retainerstore(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'mobile' => 'required|string|max:20|unique:advance_income_applications,mobile',
+            'email' => 'required|email|unique:advance_income_applications,email',
+            'address' => 'nullable|string',
+            'expected_date' => 'nullable|date',
+            'referred_executive_name' => 'nullable|string',
+            'referred_executive_mobile' => 'nullable|string',
+            'terms_accepted' => 'required|accepted',
+        ]);
+
+        //$txnid = 'ADI' . time() . rand(1000, 9999);
+        $txnid = Str::uuid()->toString();
+
+        $submission = HiringSubmission::create([
+           // 'user_id' => $user->id,
+            'name' => $request->name,
+            'mobile' => $request->mobile,
+            'email' => $request->email,
+            'address' => $request->address,
+            'referred_executive_name' => $request->referred_executive_name,
+            'referred_executive_mobile' => $request->referred_executive_mobile,
+            // relationship_manager_mobile removed
+            'hiring_work_details' => [], // empty array
+            'txnid' => $txnid,
+            'amount' => 100,
+            'terms_accepted' => true,
+            'payment_status' => 'pending',
+            'submitted_at' => now(),
+            'expected_date' => $request->expected_date,
+            'submit_type' => 'retaner'
         ]);
 
         return app(PayuController::class)->redirectToPayu($submission);
