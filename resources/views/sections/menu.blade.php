@@ -284,6 +284,11 @@
                     <x-sub-menu-item :link="route('awards.index')" :text="__('app.menu.appreciation')" />
                 @endif
 
+                <x-sub-menu-item :link="route('hiring.create')" text="New Retaner" />
+                @if (in_array('admin', user_roles()))
+                    <x-sub-menu-item :link="route('awards.index')" text="New Retaner list" />
+                @endif
+
                 <x-sub-menu-item :link="route('hiring.create')" :text="__('app.menu.hiring')" />
                 @if(in_array('admin', user_roles()))
                 <x-sub-menu-item :link="route('advance-income.list')" :text="__('app.menu.AgentList')" />
