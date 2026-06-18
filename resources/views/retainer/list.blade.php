@@ -245,6 +245,7 @@
                           <th>Amount</th>
                           <th>Status</th>
                           <th>Date</th>
+                          <th>Action</th>
                       </tr>
                   </thead>
                   <tbody>
@@ -266,10 +267,13 @@
                                 @endif
                             </td>
                             <td>{{ $submission->created_at->format('d-m-Y H:i') }}</td>
+                            <td>
+                                <a href="{{ route('retaner.pdf', $submission->id) }}" class="btn btn-danger btn-sm" style="background:linear-gradient(135deg, #ef4444 0%, #dc2626 100%);border:none;color:white;padding:6px 12px;border-radius:8px;text-decoration:none;display:inline-block;font-size:12px;"><i class="fas fa-file-pdf me-1"></i> PDF</a>
+                            </td>
                         </tr>
                       @empty
                         <tr>
-                            <td colspan="8" class="text-center">No PayU applications found</td>
+                            <td colspan="9" class="text-center">No PayU applications found</td>
                         </tr>
                       @endforelse
                   </tbody>

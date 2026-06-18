@@ -1147,7 +1147,7 @@ public function executiveReportPdf($id)
 
     public function getList()
     {
-        $hiringSubmissions = HiringSubmission::orderBy('created_at', 'desc')
+        $hiringSubmissions = HiringSubmission::where('submit_type', 'agent')->orderBy('created_at', 'desc')
             ->paginate(10);
         $this->pageTitle = 'app.menu.AgentList';
        // $this->globalSetting = GlobalSetting::first();
@@ -1170,6 +1170,17 @@ public function executiveReportPdf($id)
             ...$this->data,
             'hiringSubmissions' => $hiringSubmissions,
         ]);
+    }
+
+    public function downloadRetanerPdf($id)
+    {
+        $submission = HiringSubmission::where('submit_type', 'retaner')->findOrFail($id);
+
+        $pdf = PDF::loadView('retainer.pdf.single', [
+            'submission' => $submission
+        ]);
+
+        return $pdf->download('Retainer-' . $submission->id . '.pdf');
     }
 
 

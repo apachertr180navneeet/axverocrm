@@ -989,6 +989,7 @@ Route::get(
     // Route::post('/hiring/store', [HiringController::class, 'store'])->name('hiring.store');
     Route::get('/hiring/list', [DashboardController::class, 'getList'])->name('advance-income.list');
     Route::get('/retaner/list', [DashboardController::class, 'getretanerList'])->name('retaner.list');
+    Route::get('/retaner/{id}/pdf', [DashboardController::class, 'downloadRetanerPdf'])->name('retaner.pdf');
     Route::get('/my-applications', [HiringController::class, 'myApplications'])->name('hiring.my-applications');
     Route::get('/hiring/check-status/{id}', [HiringController::class, 'checkStatus'])->name('hiring.check-status');
 

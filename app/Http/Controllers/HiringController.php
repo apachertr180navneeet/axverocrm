@@ -9,7 +9,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use App\Http\Controllers\Payment\PayuController;
+use App\Exports\PayuApplicationExport;
 use App\Models\GlobalSetting;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Maatwebsite\Excel\Facades\Excel;
 
 class HiringController extends Controller
 {
@@ -190,5 +193,48 @@ class HiringController extends Controller
     {
         $hiring = HiringSubmission::findOrFail($id);
         return view('hiring.success', compact('hiring'));
+    }
+
+    public function exportPayuPdf(Request $request)
+    {
+        $search = $request->input('search');
+        $fromDate = $request->input('from_date');
+        $toDate = $request->input('to_date');
+        $paymentStatus = $request->input('payment_status');
+
+        $query = HiringSubmission::query();
+
+        if ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'LIKE', "%{$search}%")
+                    ->orWhere('mobile', 'LIKE', "%{$search}%")
+                    ->orWhere('email', 'LIKE', "%{$search}%")
+                    ->orWhere('txnid', 'LIKE', "%{$search}%");
+            });
+        }
+
+        if ($fromDate) {
+            $query->whereDate('submitted_at', '>=', $fromDate);
+        }
+
+        if ($toDate) {
+            $query->whereDate('submitted_at', '<=', $toDate);
+        }
+
+        if ($paymentStatus) {
+            $query->where('payment_status', $paymentStatus);
+        }
+
+        $data = $query->orderBy('created_at', 'desc')->get();
+
+        $pdf = Pdf::loadView('hiring.pdf.payu_report', compact('data', 'search', 'fromDate', 'toDate', 'paymentStatus'));
+        $pdf->setPaper('A4', 'landscape');
+
+        return $pdf->download('payu_applications_' . date('Y-m-d') . '.pdf');
+    }
+
+    public function exportPayuExcel(Request $request)
+    {
+        return Excel::download(new PayuApplicationExport($request), 'payu_applications_' . date('Y-m-d') . '.xlsx');
     }
 }
