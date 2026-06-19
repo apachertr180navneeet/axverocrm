@@ -203,7 +203,7 @@
   
   @if (array_intersect(['admin', 'employee'], user_roles()))
          <!--Agent & RETAINER-->
-    {{--  <x-menu-item
+    <x-menu-item
     icon="user-group"
     :link="route('agent_retainer.list')"
     :text="'Retainer'">
@@ -215,7 +215,7 @@
               d="M17 20h5V4H2v16h5M12 10a3 3 0 100-6 3 3 0 000 6zm-4 10v-2a4 4 0 018 0v2"/>
     </x-slot>
 
-</x-menu-item>  --}}
+</x-menu-item>
 
     @endif
     
