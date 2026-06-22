@@ -28,9 +28,11 @@
             <a href="<?php echo e(route('agent_retainer.create')); ?>" class="btn btn-primary rounded f-14 p-2 mr-2">
                 <i class="fa fa-plus mr-1"></i> Add Retainer
             </a>
-            <a href="<?php echo e(route('agent_retainer.export-excel')); ?>" class="btn btn-secondary rounded f-14 p-2">
+            <?php if(in_array('admin', user_roles())): ?>
+            <a href="<?php echo e(route('agent_retainer.export-excel', request()->query())); ?>" class="btn btn-secondary rounded f-14 p-2">
                 <i class="fa fa-file-export mr-1"></i> Export Excel
             </a>
+            <?php endif; ?>
         </div>
     </div>
 

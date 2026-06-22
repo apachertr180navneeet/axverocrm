@@ -1,3 +1,5 @@
+
+
 <?php $__env->startPush('styles'); ?>
     <?php if((!is_null($viewEventPermission) && $viewEventPermission != 'none')
         || (!is_null($viewHolidayPermission) && $viewHolidayPermission != 'none')

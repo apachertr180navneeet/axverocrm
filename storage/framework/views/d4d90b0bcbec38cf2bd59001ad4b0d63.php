@@ -907,6 +907,63 @@
 <?php endif; ?>
     <?php endif; ?>
 
+    <?php if(!in_array('client', user_roles())): ?>
+        <?php if (isset($component)) { $__componentOriginal16c5b89192469ba970d54fc9b83541bc = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal16c5b89192469ba970d54fc9b83541bc = $attributes; } ?>
+<?php $component = App\View\Components\MenuItem::resolve(['icon' => 'person-plus','link' => route('retainer.create'),'text' => 'New Retaner'] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('menu-item'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(App\View\Components\MenuItem::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+             <?php $__env->slot('iconPath', null, []); ?> 
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <line x1="19" y1="8" x2="19" y2="14"/>
+                <line x1="22" y1="11" x2="16" y2="11"/>
+             <?php $__env->endSlot(); ?>
+         <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal16c5b89192469ba970d54fc9b83541bc)): ?>
+<?php $attributes = $__attributesOriginal16c5b89192469ba970d54fc9b83541bc; ?>
+<?php unset($__attributesOriginal16c5b89192469ba970d54fc9b83541bc); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal16c5b89192469ba970d54fc9b83541bc)): ?>
+<?php $component = $__componentOriginal16c5b89192469ba970d54fc9b83541bc; ?>
+<?php unset($__componentOriginal16c5b89192469ba970d54fc9b83541bc); ?>
+<?php endif; ?>
+        <?php if(in_array('admin', user_roles())): ?>
+        <?php if (isset($component)) { $__componentOriginal16c5b89192469ba970d54fc9b83541bc = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal16c5b89192469ba970d54fc9b83541bc = $attributes; } ?>
+<?php $component = App\View\Components\MenuItem::resolve(['icon' => 'list-ul','link' => route('retaner.list'),'text' => 'New Retaner List'] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('menu-item'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(App\View\Components\MenuItem::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+             <?php $__env->slot('iconPath', null, []); ?> 
+                <path fill-rule="evenodd" d="M3 4.5a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0z"/>
+                <path fill-rule="evenodd" d="M3 8a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0z"/>
+                <path fill-rule="evenodd" d="M3 11.5a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0z"/>
+                <path d="M6 4h6v1H6V4zm0 3.5h6v1H6v-1zm0 3.5h6v1H6v-1z"/>
+             <?php $__env->endSlot(); ?>
+         <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal16c5b89192469ba970d54fc9b83541bc)): ?>
+<?php $attributes = $__attributesOriginal16c5b89192469ba970d54fc9b83541bc; ?>
+<?php unset($__attributesOriginal16c5b89192469ba970d54fc9b83541bc); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal16c5b89192469ba970d54fc9b83541bc)): ?>
+<?php $component = $__componentOriginal16c5b89192469ba970d54fc9b83541bc; ?>
+<?php unset($__componentOriginal16c5b89192469ba970d54fc9b83541bc); ?>
+<?php endif; ?>
+        <?php endif; ?>
+    <?php endif; ?>
+
 <!-- NAV ITEM - WORK COLLAPSE MENU -->
     <?php if((in_array('contracts', user_modules()) || in_array('projects', user_modules()) || in_array('tasks', user_modules()) || in_array('timelogs', user_modules())) && ($sidebarUserPermissions['view_contract'] != 5 || $sidebarUserPermissions['view_projects'] != 5 || $sidebarUserPermissions['view_tasks'] != 5 || $sidebarUserPermissions['view_timelogs'] != 5) && ($sidebarUserPermissions['view_contract'] != 'none' || $sidebarUserPermissions['view_projects'] != 'none' || $sidebarUserPermissions['view_tasks'] != 'none' || $sidebarUserPermissions['view_timelogs'] != 'none')): ?>
         <?php if (isset($component)) { $__componentOriginal16c5b89192469ba970d54fc9b83541bc = $component; } ?>

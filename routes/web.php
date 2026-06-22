@@ -161,8 +161,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'account'], function () {
     
     // Agent & RETAINER form
  
-     Route::get('agent-retainer', [DashboardController::class,'listAgentRetainer'])->name('agent_retainer.list');
-    Route::get('agent-retainer/create', [DashboardController::class,'agentRetainer'])->name('agent_retainer.create');
+      Route::get('agent-retainer', [DashboardController::class,'listAgentRetainer'])->name('agent_retainer.list');
     Route::post('agent-retainer/store', [DashboardController::class,'storeAgentRetainer'])->name('agent_retainer.store');
     Route::get('agent-retainer/pdf/{id}', [DashboardController::class,'downloadAgentRetainerPdf'])->name('agent_retainer.pdf');
     Route::get('agent-retainer/export-excel', [DashboardController::class,'exportAgentRetainerExcel'])->name('agent_retainer.export-excel');
