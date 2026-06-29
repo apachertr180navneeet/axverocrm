@@ -151,7 +151,7 @@
               <!-- Amount & Terms -->
               <div class="text-center my-4">
                 <div class="price-card">
-                  <div class="price-amount">₹ 100</div>
+                  <div class="price-amount">₹ 499</div>
                   <small>Application Fee</small>
                 </div>
               </div>
@@ -163,7 +163,7 @@
               </div>
 
               <button type="submit" class="btn btn-gradient w-100">
-                <i class="fas fa-credit-card me-2"></i> Retainer ₹100
+                <i class="fas fa-credit-card me-2"></i> Retainer 499
               </button>
             </form>
           </div>
