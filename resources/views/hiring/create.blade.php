@@ -148,13 +148,13 @@
                 </div>
               </div> --}}
 
-              <!-- Amount & Terms -->
+              {{-- Amount & Terms
               <div class="text-center my-4">
                 <div class="price-card">
                   <div class="price-amount">₹ 20</div>
                   <small>Application Fee (non‑refundable)</small>
                 </div>
-              </div>
+              </div> --}}
 
               <div class="form-check mb-4">
                 <input type="checkbox" name="terms_accepted" id="terms" class="form-check-input" value="1" required>
@@ -163,7 +163,7 @@
               </div>
 
               <button type="submit" class="btn btn-gradient w-100">
-                <i class="fas fa-credit-card me-2"></i> Agent ₹20
+                <i class="fas fa-credit-card me-2"></i> Agent
               </button>
             </form>
           </div>

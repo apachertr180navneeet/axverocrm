@@ -201,7 +201,7 @@
 
   
   
-  @if (array_intersect(['admin'], user_roles()))
+  @if (array_intersect(['admin', 'employee'], user_roles()))
          <!--Agent & RETAINER-->
     <x-menu-item
     icon="user-group"

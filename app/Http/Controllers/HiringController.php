@@ -62,13 +62,14 @@ class HiringController extends Controller
             'txnid' => $txnid,
             'amount' => 20,
             'terms_accepted' => true,
-            'payment_status' => 'pending',
+            'payment_status' => 'success',
             'submitted_at' => now(),
             'expected_date' => $request->expected_date,
             'submit_type' => 'agent'
         ]);
 
-        return app(PayuController::class)->redirectToPayu($submission);
+        // return app(PayuController::class)->redirectToPayu($submission);
+        return view('hiring.success', ['hiring' => $submission]);
     }
 
 
