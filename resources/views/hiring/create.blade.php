@@ -91,7 +91,7 @@
                     <label>Address</label>
                     <textarea name="address" class="form-control" rows="2">{{ old('address') }}</textarea>
                   </div>
-                  <div class="col-md-6 mb-3">
+                  {{-- <div class="col-md-6 mb-3">
                     <label class="required">PAN Card Number</label>
                     <input type="text" name="pancard_number" class="form-control" value="{{ old('pancard_number') }}"
                       required>
@@ -99,7 +99,7 @@
                   <div class="col-md-6 mb-3">
                     <label class="required">PAN Card Image</label>
                     <input type="file" name="pancard_image" class="form-control" accept="image/*" required>
-                  </div>
+                  </div> --}}
                 </div>
               </div>
 
@@ -131,7 +131,7 @@
                 </div>
               </div>
 
-              <!-- Relationship Manager (name + optional mobile) -->
+              {{-- <!-- Relationship Manager (name + optional mobile) -->
               <div class="form-section">
                 <h4><i class="fas fa-handshake me-2"></i> Agent Manager</h4>
                 <div class="row">
@@ -146,12 +146,12 @@
                       value="{{ old('relationship_manager_mobile') }}">
                   </div>
                 </div>
-              </div>
+              </div> --}}
 
               <!-- Amount & Terms -->
               <div class="text-center my-4">
                 <div class="price-card">
-                  <div class="price-amount">₹ 91</div>
+                  <div class="price-amount">₹ 20</div>
                   <small>Application Fee (non‑refundable)</small>
                 </div>
               </div>
@@ -163,7 +163,7 @@
               </div>
 
               <button type="submit" class="btn btn-gradient w-100">
-                <i class="fas fa-credit-card me-2"></i> Agent ₹91
+                <i class="fas fa-credit-card me-2"></i> Agent ₹20
               </button>
             </form>
           </div>
@@ -188,7 +188,7 @@
             <li>Advance amount shall not exceed 30% of monthly income.</li>
             <li>Verification takes 4‑5 working days.</li>
             <li>Approved amount disbursed within 3 working days.</li>
-            <li>Application fee of ₹91 is non‑refundable.</li>
+            <li>Application fee of ₹20 is non‑refundable.</li>
             <li>Company reserves the right to reject any application without assigning any reason.</li>
           </ul>
         </div>

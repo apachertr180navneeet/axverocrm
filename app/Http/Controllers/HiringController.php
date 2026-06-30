@@ -43,39 +43,24 @@ class HiringController extends Controller
             'mobile' => 'required|string|max:20|unique:advance_income_applications,mobile',
             'email' => 'required|email|unique:advance_income_applications,email',
             'address' => 'nullable|string',
-            'pancard_number' => 'required|string|max:10|unique:advance_income_applications,pancard_number',
-            'pancard_image' => 'required|image|mimes:jpg,jpeg,png|max:2048',
             'expected_date' => 'nullable|date',
             'referred_executive_name' => 'nullable|string',
             'referred_executive_mobile' => 'nullable|string',
-            'relationship_manager_name' => 'nullable|string',
-            'relationship_manager_mobile' => 'nullable|string|max:20',
             'terms_accepted' => 'required|accepted',
         ]);
 
-       // $user = Auth::user();
-
-        // Store PAN card image
-        $panImagePath = $request->file('pancard_image')->store('pancards', 'public');
-
-        //$txnid = 'ADI' . time() . rand(1000, 9999);
         $txnid = Str::uuid()->toString();
 
         $submission = HiringSubmission::create([
-           // 'user_id' => $user->id,
             'name' => $request->name,
             'mobile' => $request->mobile,
             'email' => $request->email,
             'address' => $request->address,
-            'pancard_number' => $request->pancard_number,
-            'pancard_image' => $panImagePath,
             'referred_executive_name' => $request->referred_executive_name,
             'referred_executive_mobile' => $request->referred_executive_mobile,
-            'relationship_manager_name' => $request->relationship_manager_name,
-            // relationship_manager_mobile removed
-            'hiring_work_details' => [], // empty array
+            'hiring_work_details' => [],
             'txnid' => $txnid,
-            'amount' => 91,
+            'amount' => 20,
             'terms_accepted' => true,
             'payment_status' => 'pending',
             'submitted_at' => now(),
@@ -114,7 +99,7 @@ class HiringController extends Controller
             // relationship_manager_mobile removed
             'hiring_work_details' => [], // empty array
             'txnid' => $txnid,
-            'amount' => 499,
+            'amount' => 68,
             'terms_accepted' => true,
             'payment_status' => 'pending',
             'submitted_at' => now(),
