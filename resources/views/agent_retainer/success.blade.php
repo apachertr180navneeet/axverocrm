@@ -15,7 +15,7 @@
 
             <p>Your data has been submitted successfully.</p>
 
-            <a href="{{ route('agent_retainer_new.create') }}" class="btn btn-primary mt-3">
+            <a href="{{ route('agent_retainer.create') }}" class="btn btn-primary mt-3">
                 Add New Entry
             </a>
 
