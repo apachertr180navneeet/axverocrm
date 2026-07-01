@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <title>Retainer Form</title>
 
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ companyOrGlobalSetting()->favicon_url }}">
+    <link rel="manifest" href="{{ companyOrGlobalSetting()->favicon_url }}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{{ companyOrGlobalSetting()->favicon_url }}">
+    <meta name="theme-color" content="#ffffff">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
@@ -107,16 +112,16 @@
                     </div>
 
                     {{-- MANAGER NAME --}}
-                    <div class="col-md-4 mb-3">
+                    {{--  <div class="col-md-4 mb-3">
                         <label>Manager Name</label>
                         <input type="text" name="manager_name" class="form-control">
-                    </div>
+                    </div>  --}}
 
                     {{-- MANAGER MOBILE --}}
-                    <div class="col-md-4 mb-3">
+                    {{--  <div class="col-md-4 mb-3">
                         <label>Manager Mobile</label>
                         <input type="text" name="manager_mobile" class="form-control">
-                    </div>
+                    </div>  --}}
 
                     {{-- RECOMMENDED NAME --}}
                     <div class="col-md-4 mb-3">
