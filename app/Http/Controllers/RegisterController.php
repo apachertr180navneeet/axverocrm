@@ -252,8 +252,19 @@ public function agentRetainerStore(Request $request)
 
     $agentRetainer->save();
 
-    return redirect()->route('agent_retainer.success');
+    return redirect()->route('agent_retainer.success', ['id' => $agentRetainer->id]);
     
+}
+
+public function downloadAgentRetainerPdf($id)
+{
+    $agent = AgentRetainer::findOrFail($id);
+
+    $pdf = \PDF::loadView('agent-retainer-pdf',[
+        'agent'=>$agent
+    ]);
+
+    return $pdf->download('Retainer-'.$agent->id.'.pdf');
 }
 
 

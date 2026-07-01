@@ -15,6 +15,12 @@
 
             <p>Your data has been submitted successfully.</p>
 
+            @if(isset($id) && $id)
+                <a href="{{ route('agent_retainer_new.pdf', $id) }}" class="btn btn-success mt-3 mr-2" target="_blank">
+                    Download PDF
+                </a>
+            @endif
+
             <a href="{{ route('agent_retainer.create') }}" class="btn btn-primary mt-3">
                 Add New Entry
             </a>

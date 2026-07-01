@@ -48,9 +48,11 @@ Route::post('/retainer/store', [HiringController::class, 'retainerstore'])->name
 Route::get('agent-retainer/create', [RegisterController::class,'agentRetainer'])->name('agent_retainer.create');
 Route::get('account/agent-retainer/create', [DashboardController::class,'agentRetainer'])->name('agent_retainer.create.auth');
 Route::post('agent-retainer-new/store', [RegisterController::class,'agentRetainerStore'])->name('agent_retainer_new.store');
-Route::get('/agent-retainer-success', function () {
-    return view('agent_retainer.success');
+Route::get('/agent-retainer-success/{id?}', function ($id = null) {
+    return view('agent_retainer.success', compact('id'));
 })->name('agent_retainer.success');
+
+Route::get('/agent-retainer-new/pdf/{id}', [RegisterController::class,'downloadAgentRetainerPdf'])->name('agent_retainer_new.pdf');
 
 Route::get('/change-lang/{locale}', [HomeController::class, 'changeLang'])->name('front.changeLang');
 Route::get('front/show-image', [HomeController::class, 'showImage'])->name('front.public.show_image');

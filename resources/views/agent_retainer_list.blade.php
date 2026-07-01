@@ -105,6 +105,8 @@
         <th>Mobile</th>
         <th>Gender</th>
         <th>DOB</th>
+        <th>Recommended Name</th>
+        <th>Recommended Mobile</th>
         <th>Created At</th>
         <th width="120">Action</th>
         
@@ -128,6 +130,10 @@
         
         <td>{{ $row->date_of_birth }}</td>
         
+        <td>{{ $row->recommended_name }}</td>
+
+        <td>{{ $row->recommended_mobile }}</td>
+        
         <td>{{ $row->created_at->format('d-m-Y') }}</td>
         
         <td>
@@ -147,7 +153,7 @@
         
         <tr>
         
-        <td colspan="7" class="text-center">
+        <td colspan="9" class="text-center">
         No Data Found
         </td>
         
