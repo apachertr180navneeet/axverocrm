@@ -223,7 +223,6 @@ public function agentRetainerStore(Request $request)
         'type' => 'required',
         'name' => 'required',
         'mobile' => 'required|unique:agent_retainers,mobile',
-        'photo' => 'required|image|mimes:jpg,jpeg,png|max:2048',
     ]);
 
     $agentRetainer = new AgentRetainer();
@@ -242,13 +241,7 @@ public function agentRetainerStore(Request $request)
     $agentRetainer->recommended_name = $request->recommended_name;
     $agentRetainer->recommended_mobile = $request->recommended_mobile;
 
-    // PHOTO UPLOAD
-    if ($request->hasFile('photo')) {
-        $file = $request->file('photo');
-        $filename = time().'_'.$file->getClientOriginalName();
-        $file->move(public_path('uploads/agent'), $filename);
-        $agentRetainer->photo = $filename;
-    }
+
 
     $agentRetainer->save();
 

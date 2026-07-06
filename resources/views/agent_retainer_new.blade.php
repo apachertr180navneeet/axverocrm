@@ -65,11 +65,6 @@
                         </select>
                     </div>
 
-                    {{-- PHOTO --}}
-                    <div class="col-md-4 mb-3">
-                        <label>Photo <span class="required">*</span></label>
-                        <input type="file" name="photo" class="form-control" required>
-                    </div>
 
                     {{-- NAME --}}
                     <div class="col-md-4 mb-3">
