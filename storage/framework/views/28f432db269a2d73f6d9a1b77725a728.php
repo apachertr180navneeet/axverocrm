@@ -8,10 +8,51 @@
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
+     <?php $__env->slot('leftPane', null, []); ?> 
+        <h1 class="f-w-700 mb-4" style="font-size: 2.5rem; text-shadow: 1px 1px 4px rgba(0,0,0,0.5);">Take Control of Your Workforce Management</h1>
+        <p class="f-16" style="line-height: 1.6; text-shadow: 1px 1px 4px rgba(0,0,0,0.5);">Log in to a secure and intuitive HRMS that helps you manage your people, streamline internal processes, track performance, and make data-driven decisions that strengthen your teams and culture.</p>
+     <?php $__env->endSlot(); ?>
+
+    <style>
+        #login-form .form-control {
+            background: rgba(255, 255, 255, 0.4) !important;
+            border: 1px solid rgba(255, 255, 255, 0.3) !important;
+            color: #fff !important;
+        }
+        #login-form .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.8) !important;
+        }
+        #login-form label, #login-form p, #login-form a, #login-form h3, #login-form .text-light, #login-form h1 {
+            color: #fff !important;
+        }
+        #login-form .btn-primary {
+            background-color: #fff !important;
+            color: #333 !important;
+            border: none !important;
+            font-weight: 600 !important;
+        }
+        #login-form .btn-primary:hover {
+            background-color: #f0f0f0 !important;
+        }
+        #login-form .toggle-password {
+            background: rgba(255, 255, 255, 0.4) !important;
+            border: 1px solid rgba(255, 255, 255, 0.3) !important;
+            border-left: none !important;
+            color: #fff !important;
+        }
+        #login-form .invalid-feedback {
+            color: #ffb3b3 !important;
+        }
+        #login-form input[type="checkbox"] {
+            accent-color: #fff;
+        }
+    </style>
+
     <form id="login-form" action="<?php echo e(route('login')); ?>" class="ajax-form" method="POST">
         <?php echo e(csrf_field()); ?>
 
-        <h3 class=" mb-4 f-w-500"><?php echo app('translator')->get('app.login'); ?></h3>
+        <h3 class="mb-1 f-w-500">Welcome Back!</h3>
+        <p class="mb-4 text-light">Sign in to manage your workforce.</p>
 
         <script>
             const facebook = "<?php echo e(route('social_login', 'facebook')); ?>";
@@ -61,7 +102,7 @@ endif;
 unset($__errorArgs, $__bag); ?>"
                    autofocus
                    value="<?php echo e(request()->old('email')); ?>"
-                   placeholder="<?php echo app('translator')->get('auth.email'); ?>" id="email">
+                   placeholder="example@gmail.com" id="email">
             <?php if($errors->has('email')): ?>
                 <div class="invalid-feedback"><?php echo e($errors->first('email')); ?></div>
             <?php endif; ?>
@@ -133,13 +174,14 @@ unset($__errorArgs, $__bag); ?>">
                     <div class="invalid-feedback d-block"><?php echo e($errors->first('password')); ?></div>
                 <?php endif; ?>
             </div>
-            <div class="forgot_pswd mb-3">
-                <a href="<?php echo e(url('forgot-password')); ?>"><?php echo app('translator')->get('app.forgotPassword'); ?></a>
-            </div>
-
-            <div class="form-group text-left ">
-                <input id="checkbox-signup" class="cursor-pointer" type="checkbox" name="remember">
-                <label for="checkbox-signup" class="cursor-pointer"><?php echo app('translator')->get('app.rememberMe'); ?></label>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div class="form-group text-left mb-0">
+                    <input id="checkbox-signup" class="cursor-pointer" type="checkbox" name="remember">
+                    <label for="checkbox-signup" class="cursor-pointer mb-0"><?php echo app('translator')->get('app.rememberMe'); ?></label>
+                </div>
+                <div class="forgot_pswd">
+                    <a href="<?php echo e(url('forgot-password')); ?>" class="text-decoration-underline" style="text-underline-offset: 3px;"><?php echo app('translator')->get('app.forgotPassword'); ?></a>
+                </div>
             </div>
 
             <?php if($globalSetting->google_recaptcha_status == 'active'): ?>

@@ -61,13 +61,13 @@
                     </div>
 
                     <div class="col-md-4 mb-3">
-                        <label>Permanent Address</label>
-                        <input type="text" name="address" class="form-control">
+                        <label>Permanent Address <span class="required">*</span></label>
+                        <input type="text" name="address" class="form-control" required>
                     </div>
 
                     <div class="col-md-4 mb-3">
-                        <label>Gender</label>
-                        <select name="gender" class="form-control">
+                        <label>Gender <span class="required">*</span></label>
+                        <select name="gender" class="form-control" required>
                             <option value="">Select</option>
                             <option>Male</option>
                             <option>Female</option>
@@ -76,13 +76,13 @@
                     </div>
 
                     <div class="col-md-4 mb-3">
-                        <label>Date of Birth</label>
-                        <input type="date" name="date_of_birth" class="form-control" max="{{ date('Y-m-d') }}">
+                        <label>Date of Birth <span class="required">*</span></label>
+                        <input type="date" name="date_of_birth" class="form-control" max="{{ date('Y-m-d') }}" required>
                     </div>
 
                     <div class="col-md-4 mb-3">
-                        <label>Marital Status</label>
-                        <select name="marital_status" class="form-control">
+                        <label>Marital Status <span class="required">*</span></label>
+                        <select name="marital_status" class="form-control" required>
                             <option value="">Select</option>
                             <option>Single</option>
                             <option>Married</option>
@@ -90,13 +90,13 @@
                     </div>
 
                     <div class="col-md-4 mb-3">
-                        <label>Recommended Person Name</label>
-                        <input type="text" name="person_name" class="form-control">
+                        <label>Recommended Person Name <span class="required">*</span></label>
+                        <input type="text" name="person_name" class="form-control" required>
                     </div>
 
                     <div class="col-md-4 mb-3">
-                        <label>Recommended Person Mobile</label>
-                        <input type="text" name="person_mobile" class="form-control">
+                        <label>Recommended Person Mobile <span class="required">*</span></label>
+                        <input type="text" name="person_mobile" class="form-control" required>
                     </div>
 
                 </div>

@@ -81,25 +81,25 @@
                     {{-- EMAIL --}}
                     <div class="col-md-4 mb-3">
                         <label>Email ID</label>
-                        <input type="email" name="email" class="form-control">
+                        <input type="email" name="email" class="form-control" required>
                     </div>
 
                     {{-- ADDRESS --}}
                     <div class="col-md-4 mb-3">
                         <label>Permanent Address</label>
-                        <input type="text" name="address" class="form-control">
+                        <input type="text" name="address" class="form-control" required>
                     </div>
 
                     {{-- DOB --}}
                     <div class="col-md-4 mb-3">
                         <label>Date of Birth</label>
-                        <input type="date" name="date_of_birth" class="form-control" max="{{ date('Y-m-d') }}">
+                        <input type="date" name="date_of_birth" class="form-control" max="{{ date('Y-m-d') }}" required>
                     </div>
 
                     {{-- GENDER --}}
                     <div class="col-md-4 mb-3">
                         <label>Gender</label>
-                        <select name="gender" class="form-control">
+                        <select name="gender" class="form-control" required>
                             <option value="">Select</option>
                             <option>Male</option>
                             <option>Female</option>
@@ -110,7 +110,7 @@
                     {{-- MARITAL --}}
                     <div class="col-md-4 mb-3">
                         <label>Marital Status</label>
-                        <select name="marital_status" class="form-control">
+                        <select name="marital_status" class="form-control" required>
                             <option value="">Select</option>
                             <option>Single</option>
                             <option>Married</option>
@@ -132,13 +132,13 @@
                     {{-- RECOMMENDED NAME --}}
                     <div class="col-md-4 mb-3">
                         <label>Recommended Person Name</label>
-                        <input type="text" name="recommended_name" class="form-control">
+                        <input type="text" name="recommended_name" class="form-control" required>
                     </div>
 
                     {{-- RECOMMENDED MOBILE --}}
                     <div class="col-md-4 mb-3">
                         <label>Recommended Person Mobile</label>
-                        <input type="text" name="recommended_mobile" class="form-control">
+                        <input type="text" name="recommended_mobile" class="form-control" required>
                     </div>
 
                 </div>

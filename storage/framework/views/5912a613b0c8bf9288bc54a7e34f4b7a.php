@@ -25,107 +25,132 @@
     <?php echo $__env->yieldPushContent('styles'); ?>
     <script src="<?php echo e(asset('vendor/jquery/jquery.min.js')); ?>"></script>
 
-    <style defer="defer">
-        .login_header {
-            background-color: <?php echo e($globalSetting->logo_background_color); ?>         !important;
-        }
-
-    </style>
     <?php echo $__env->make('sections.theme_css', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <?php if(file_exists(public_path().'/css/login-custom.css')): ?>
         <link href="<?php echo e(asset('css/login-custom.css')); ?>" rel="stylesheet">
     <?php endif; ?>
-
-    <?php if($globalSetting->sidebar_logo_style == 'full'): ?>
-        <style>
-            .login_header img {
-                max-width: 80px;
-            }
-        </style>
-    <?php endif; ?>
-<style>
-    .box_login{
-        width:550px;
-        padding:20px;
-    }
-
-    @media (max-width:768px){
-        .box_login{
-            width:95%;
+    <style>
+        .auth-bg {
+            background: url('<?php echo e(asset('img/login-bg.png')); ?>') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-    }
-</style>
+        .glass-container {
+            display: flex;
+            background: rgba(40, 40, 40, 0.4);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            overflow: hidden;
+            max-width: 1000px;
+            width: 100%;
+            margin: 20px;
+            color: #fff;
+        }
+        .glass-left {
+            flex: 1;
+            padding: 40px;
+            background: rgba(80, 100, 60, 0.4); /* Greenish overlay */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .glass-right {
+            flex: 1;
+            padding: 40px;
+            background: rgba(30, 30, 30, 0.6); /* Darker grey overlay */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+        .glass-logo {
+            height: 80px;
+            margin-bottom: 20px;
+            object-fit: contain;
+        }
+        
+        @media (max-width: 768px) {
+            .glass-container {
+                flex-direction: column;
+                width: 95%;
+            }
+            .glass-left {
+                display: none; 
+            }
+            .glass-right {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 
 <body
     class="<?php echo e($globalSetting->auth_theme == 'dark' ? 'dark-theme' : ''); ?> <?php echo e(isRtl() ? (session('changedRtl') === false ? '' : 'rtl') : (session('changedRtl') == true ? 'rtl' : '')); ?>">
 
-<header class="px-4 bg-white sticky-top d-flex justify-content-center align-items-center login_header">
-    <img class="mr-2 rounded" src="<?php echo e(asset('img/axvero-logo-white.jpeg')); ?>" alt="KACTTO Logo" style="height: 90px !important; max-height: none !important;">
-    <!--<h3 class="mb-0 pl-1">-->
-    <!--    KACTTO-->
-    <!--</h3>-->
-</header>
-
-
-
-<section class="py-3 bg-grey login_section">
-         
-         <div>
-    <div class="container">
-        <div class="row">
-            <div class="text-center col-md-12">
-
-                <div class="mx-auto text-center bg-white rounded box_login">
-                    <?php echo e($slot); ?>
-
-                </div>
-
-                <?php echo e($outsideLoginBox ?? ''); ?>
-
-                <?php if($languages->count() > 1): ?>
-                    <div class="my-3 d-flex flex-column flex-grow-1">
-                        <div class="d-flex flex-wrap align-items-center justify-content-center">
-                            <?php $__currentLoopData = $languages->take(4); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $language): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <span class="mx-3 my-10 f-12">
-                                    <a href="javascript:;" class="text-dark-grey change-lang d-flex align-items-center"
-                                       data-lang="<?php echo e($language->language_code); ?>">
-                                        <span class="mr-2 flag-icon flag-icon-<?php echo e($language->flag_code === 'en' ? 'gb' : $language->flag_code); ?> flag-icon-squared"></span>
-                                        <?php echo e(\App\Models\LanguageSetting::LANGUAGES_TRANS[$language->language_code] ?? $language->language_name); ?>
-
-                                    </a>
-                                </span>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-                            <?php if($languages->count() > 4): ?>
-                                <div class="dropdown" style="z-index:10000">
-                                    <a class="btn btn-lg f-14 px-2 py-1 text-dark-grey  rounded dropdown-toggle"
-                                       type="button" id="languageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fa fa-ellipsis-h"></i>
-                                    </a>
-
-                                    <div class="dropdown-menu dropdown-menu-right border-grey rounded b-shadow-4 p-0"
-                                         aria-labelledby="languageDropdown" style="max-height: 600px; overflow-y: auto;">
-                                        <?php $__currentLoopData = $languages->slice(4); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $language): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <a class="dropdown-item change-lang" href="javascript:;"
-                                               data-lang="<?php echo e($language->language_code); ?>">
-                                                <span class="mr-2 flag-icon flag-icon-<?php echo e($language->flag_code === 'en' ? 'gb' : $language->flag_code); ?> flag-icon-squared"></span>
-                                                <?php echo e(\App\Models\LanguageSetting::LANGUAGES_TRANS[$language->language_code] ?? $language->language_name); ?>
-
-                                            </a>
-                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                    </div>
-                                </div>
-                            <?php endif; ?>
-                        </div>
-                    </div>
-                <?php endif; ?>
+<section class="auth-bg">
+    <div class="glass-container">
+        <?php if(isset($leftPane)): ?>
+            <div class="glass-left">
+                <?php echo e($leftPane); ?>
 
             </div>
+        <?php endif; ?>
+        <div class="glass-right <?php if(!isset($leftPane)): ?> w-100 <?php endif; ?>">
+            <div class="w-100 d-flex justify-content-center">
+                <img class="glass-logo" src="<?php echo e(asset('img/axvero-logo-white.jpeg')); ?>" alt="Logo">
+            </div>
+            
+            <?php echo e($slot); ?>
+
+
+            <?php echo e($outsideLoginBox ?? ''); ?>
+
+            
+            <?php if($languages->count() > 1): ?>
+                <div class="my-3 d-flex flex-column flex-grow-1">
+                    <div class="d-flex flex-wrap align-items-center justify-content-center">
+                        <?php $__currentLoopData = $languages->take(4); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $language): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <span class="mx-3 my-10 f-12">
+                                <a href="javascript:;" class="text-white change-lang d-flex align-items-center"
+                                   data-lang="<?php echo e($language->language_code); ?>">
+                                    <span class="mr-2 flag-icon flag-icon-<?php echo e($language->flag_code === 'en' ? 'gb' : $language->flag_code); ?> flag-icon-squared"></span>
+                                    <?php echo e(\App\Models\LanguageSetting::LANGUAGES_TRANS[$language->language_code] ?? $language->language_name); ?>
+
+                                </a>
+                            </span>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+                        <?php if($languages->count() > 4): ?>
+                            <div class="dropdown" style="z-index:10000">
+                                <a class="btn btn-lg f-14 px-2 py-1 text-white rounded dropdown-toggle"
+                                   type="button" id="languageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-ellipsis-h"></i>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right border-grey rounded b-shadow-4 p-0"
+                                     aria-labelledby="languageDropdown" style="max-height: 600px; overflow-y: auto;">
+                                    <?php $__currentLoopData = $languages->slice(4); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $language): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <a class="dropdown-item change-lang" href="javascript:;"
+                                           data-lang="<?php echo e($language->language_code); ?>">
+                                            <span class="mr-2 flag-icon flag-icon-<?php echo e($language->flag_code === 'en' ? 'gb' : $language->flag_code); ?> flag-icon-squared"></span>
+                                            <?php echo e(\App\Models\LanguageSetting::LANGUAGES_TRANS[$language->language_code] ?? $language->language_name); ?>
+
+                                        </a>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            <?php endif; ?>
         </div>
-
     </div>
-
 </section>
 
 <!-- Font Awesome -->
