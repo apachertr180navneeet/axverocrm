@@ -260,7 +260,7 @@ body {
 
         <p class="section-head">5. Retainer Fee</p>
         <p class="para">
-            You shall be paid a monthly retainer fee of <strong>₹12000/-  (Rupees Twelve Thousand only)</strong>, subject to applicable deductions and compliance with company policies.
+            You shall be paid a monthly retainer fee of <strong>₹{{ number_format($offer->salary, 0) }}/- (Rupees {{ $salary_words }} only)</strong>, subject to applicable deductions and compliance with company policies.
         </p>
 
         <p class="section-head">6. Confidentiality</p>
