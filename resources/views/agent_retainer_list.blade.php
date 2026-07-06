@@ -138,8 +138,12 @@
         
         <td>
         
+        <a href="{{ route('agent_retainer.edit', $row->id) }}" class="btn btn-primary btn-sm mb-1">
+        Edit
+        </a>
+        
         <a href="{{ route('agent_retainer.pdf',$row->id) }}"
-        class="btn btn-danger btn-sm btn-pdf">
+        class="btn btn-danger btn-sm btn-pdf mb-1">
         
         PDF
         
@@ -169,7 +173,7 @@
         
         
         <div class="mt-3">
-      {{ $agentRetainers->appends(request()->query())->links('pagination::simple-bootstrap-4') }}
+      {{ $agentRetainers->appends(request()->query())->links('pagination::bootstrap-4') }}
         </div>
         
         </div>

@@ -1085,6 +1085,40 @@ public function executiveReportPdf($id)
                     return redirect()->back()->with('success','Data saved successfully');
                 }
                 
+                public function editAgentRetainer($id)
+                {
+                    $this->pageTitle = 'Edit Retainer Form';
+                    $this->agent = AgentRetainer::findOrFail($id);
+                    $this->user = user();
+                
+                    return view('agent_retainer_edit', $this->data);
+                }
+
+                public function updateAgentRetainer(Request $request, $id)
+                {
+                    $request->validate([
+                        'name' => 'required',
+                        'mobile' => 'required'
+                    ], [
+                        'name.required' => 'Please enter the name.',
+                        'mobile.required' => 'Please enter the mobile number.'
+                    ]);
+                
+                    $agentRetainer = AgentRetainer::findOrFail($id);
+                
+                    $agentRetainer->name = $request->name;
+                    $agentRetainer->mobile = $request->mobile;
+                    $agentRetainer->address = $request->address;
+                    $agentRetainer->gender = $request->gender;
+                    $agentRetainer->date_of_birth = $request->date_of_birth;
+                    $agentRetainer->marital_status = $request->marital_status;
+                    $agentRetainer->person_name = $request->person_name;
+                    $agentRetainer->person_mobile = $request->person_mobile;
+                
+                    $agentRetainer->save();
+                
+                    return redirect()->route('agent_retainer.list')->with('success','Data updated successfully');
+                }
                 
                 
                 public function listAgentRetainer(Request $request)
