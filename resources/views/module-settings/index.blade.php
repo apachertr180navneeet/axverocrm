@@ -26,26 +26,11 @@
                                     href="{{ route('module-settings.index') }}?tab=client" role="tab"
                                     aria-controls="nav-ticketChannel" aria-selected="true">@lang('app.client')
                                 </a>
-                                <a class="nav-item nav-link f-15 custom" href="{{ route('custom-modules.index') }}?tab=custom"
-                                   role="tab" aria-controls="nav-ticketChannel"
-                                   aria-selected="true">@lang('app.menu.customModule')
-                                </a>
-
                         </div>
                     </nav>
                 </div>
             </x-slot>
                 <x-slot name="buttons">
-                    <div class="row">
-
-                        <div class="col-md-12 my-2">
-                            <x-forms.link-primary :link="route('custom-modules.create')" icon="cog">
-                                @lang('app.install')/@lang('app.update')
-                                @lang('app.module')
-                            </x-forms.link-primary>
-                        </div>
-
-                    </div>
                 </x-slot>
 
             {{-- include tabs here --}}

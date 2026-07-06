@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Helper\Reply;
 use Carbon\Carbon;
-use Froiden\Envato\Traits\AppBoot;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -14,7 +13,7 @@ use Illuminate\Support\Facades\App;
 class Controller extends BaseController
 {
 
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests, AppBoot;
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     /**
      * @var array
@@ -53,8 +52,6 @@ class Controller extends BaseController
 
         $this->middleware(function ($request, $next) {
 
-            $this->checkMigrateStatus();
-
 
             // To keep the session we need to move it to middleware
             $this->gdpr = gdpr_setting();
@@ -89,11 +86,6 @@ class Controller extends BaseController
 
             return $next($request);
         });
-    }
-
-    public function checkMigrateStatus()
-    {
-        return check_migrate_status();
     }
 
     public function returnAjax($view)

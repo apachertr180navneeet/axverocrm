@@ -250,7 +250,6 @@ return [
         App\Providers\FortifyServiceProvider::class,
         Barryvdh\TranslationManager\ManagerServiceProvider::class,
         Macellan\Zip\ZipServiceProvider::class,
-        Froiden\LaravelInstaller\Providers\LaravelInstallerServiceProvider::class,
     ],
 
     /*

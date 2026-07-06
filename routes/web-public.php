@@ -155,8 +155,6 @@ Route::get('paypal-webhook/{hash}', [PaypalController::class, 'getWebhook'])->na
 Route::get('/verify-webhook/{hash?}', [StripeWebhookController::class, 'getWebhook'])->name('get_stripe_webhook');
 Route::post('/verify-webhook/{hash}', [StripeWebhookController::class, 'verifyStripeWebhook'])->name('stripe.webhook');
 
-Route::post('setup-account', [RegisterController::class, 'setupAccount'])->name('setup_account');
-
 // Get quill image uploaded
 Route::get('quill-image/{image}', [ImageController::class, 'getImage'])->name('image.getImage');
 

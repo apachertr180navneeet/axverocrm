@@ -23,7 +23,6 @@
         "eluceo/ical": "^0.16.1",
         "endroid/qr-code": "^5.0",
         "froiden/envato": "^5.0",
-        "froiden/laravel-installer": "^1.6",
         "froiden/laravel-rest-api": "^10.0",
         "google/apiclient": "^2.10",
         "graham-campbell/gitlab": "^7.0",
@@ -60,7 +59,6 @@
         "opcodesio/log-viewer": "^3.8",
         "paragonie/random_compat": "^9.99",
         "paypal/rest-api-sdk-php": "dev-laravel10",
-        "pcinaglia/laraupdater": "^1.0",
         "psr/http-factory-implementation": "*",
         "pusher/pusher-php-server": "^7.2",
         "pusher/pusher-push-notifications": "^2.0",
@@ -148,8 +146,7 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
-            "Modules\\": "Modules/",
-            "Froiden\\Envato\\": "froiden-verify/src"
+            "Modules\\": "Modules/"
         },
         "files": [
             "app/Helper/start.php"

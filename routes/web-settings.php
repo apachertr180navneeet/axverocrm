@@ -13,7 +13,6 @@ use App\Http\Controllers\SmtpSettingController;
 use App\Http\Controllers\TaskSettingController;
 use App\Http\Controllers\TicketAgentController;
 use App\Http\Controllers\TicketGroupController;
-use App\Http\Controllers\CustomModuleController;
 use App\Http\Controllers\LeaveSettingController;
 use App\Http\Controllers\SlackSettingController;
 use App\Http\Controllers\ThemeSettingController;
@@ -55,7 +54,6 @@ use App\Http\Controllers\ShiftRotationController;
 use App\Http\Controllers\SignUpSettingController;
 use App\Http\Controllers\TaxSettingController;
 use App\Http\Controllers\UnitTypeController;
-use App\Http\Controllers\UpdateAppController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth', 'prefix' => 'account/settings'], function () {
@@ -239,10 +237,6 @@ Route::group(['middleware' => 'auth', 'prefix' => 'account/settings'], function 
     // Module settings
     Route::resource('module-settings', ModuleSettingController::class);
 
-    // Custom Modules
-    Route::post('custom-modules/verify-purchase', [CustomModuleController::class, 'verifyingModulePurchase'])->name('custom-modules.verify_purchase');
-    Route::resource('custom-modules', CustomModuleController::class);
-
     Route::post('business-address/set-default', [BusinessAddressController::class, 'setDefaultAddress'])->name('business-address.set_default');
     Route::resource('business-address', BusinessAddressController::class);
 
@@ -255,14 +249,4 @@ Route::group(['middleware' => 'auth', 'prefix' => 'account/settings'], function 
 
     Route::resource('sign-up-settings', SignUpSettingController::class)->only(['index', 'update']);
 
-});
-
-Route::group(['middleware' => 'auth', 'prefix' => 'account'], function () {
-
-    Route::resource('company-settings', SettingsController::class)->only(['edit', 'update', 'index', 'change_language']);
-
-    // Update App
-    Route::post('update-settings/deleteFile', [UpdateAppController::class, 'deleteFile'])->name('update-settings.deleteFile');
-    Route::get('update-settings/install', [UpdateAppController::class, 'install'])->name('update-settings.install');
-    Route::resource('update-settings', UpdateAppController::class);
 });

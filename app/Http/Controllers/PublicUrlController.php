@@ -428,7 +428,7 @@ class PublicUrlController extends Controller
         $smtpVerified = SmtpSetting::value('verified');
 
         return [
-            'app' => config('froiden_envato.envato_product_name'),
+            'app' => 'worksuite-new',
             'redirect_https' => config('app.redirect_https'),
             'version' => trim(File::get('version.txt')),
             'debug' => config('app.debug'),
