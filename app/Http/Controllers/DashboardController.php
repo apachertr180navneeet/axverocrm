@@ -1063,6 +1063,9 @@ public function executiveReportPdf($id)
                     $request->validate([
                         'name' => 'required',
                         'mobile' => 'required'
+                    ], [
+                        'name.required' => 'Please enter the name.',
+                        'mobile.required' => 'Please enter the mobile number.'
                     ]);
                 
                     $agentRetainer = new AgentRetainer();
