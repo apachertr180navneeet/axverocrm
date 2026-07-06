@@ -222,7 +222,7 @@ class RegisterController extends Controller
         $request->validate([
             'type' => 'required',
             'name' => 'required',
-            'mobile' => 'required|unique:agent_retainers,mobile',
+            'mobile' => 'required|unique:agent_retainers,mobile'
         ]);
 
         $agentRetainer = new AgentRetainer();
