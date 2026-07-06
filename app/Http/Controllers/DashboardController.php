@@ -1067,7 +1067,7 @@ public function executiveReportPdf($id)
                 
                     $agentRetainer = new AgentRetainer();
                 
-                    $agentRetainer->user_id = auth()->id();
+                    $agentRetainer->user_id = auth()->id() ?? 1; // Fallback to 1 (admin) if guest
                     $agentRetainer->name = $request->name;
                     $agentRetainer->mobile = $request->mobile;
                     $agentRetainer->address = $request->address;
@@ -1079,8 +1079,7 @@ public function executiveReportPdf($id)
                 
                     $agentRetainer->save();
                 
-                    return redirect()->route('agent_retainer.list')
-                        ->with('success','Data saved successfully');
+                    return redirect()->back()->with('success','Data saved successfully');
                 }
                 
                 
