@@ -14,9 +14,22 @@
                 type="link" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
                 <?php if(companyOrGlobalSetting()->sidebar_logo_style !== 'full'): ?>
+                    <!-- SIDEBAR BRAND NAME START -->
+                    <div class="sidebar-brand-name">
+                        <h1 class="mb-0 f-16 f-w-500 text-white-shade mt-0" data-placement="bottom" data-toggle="tooltip"
+                            data-original-title="<?php echo e($appName); ?>">Axvero
+                            <i class="icon-arrow-down icons pl-2"></i>
+                        </h1>
+                        <div class="mb-0 position-relative pro-name">
+                            <span class="bg-light-green rounded-circle"></span>
+                            <p class="f-13 text-lightest mb-0" data-placement="bottom" data-toggle="tooltip"
+                                data-original-title="<?php echo e($userName); ?>"><?php echo e($userName); ?></p>
+                        </div>
+                    </div>
+                    <!-- SIDEBAR BRAND NAME END -->
                     <!-- SIDEBAR BRAND LOGO START -->
-                    <div class="sidebar-brand-logo w-100 text-center py-4">
-                        <img src="<?php echo e(companyOrGlobalSetting()->logo_url); ?>" style="max-width: 120px; height: auto;">
+                    <div class="sidebar-brand-logo">
+                        <img src="<?php echo e(companyOrGlobalSetting()->logo_url); ?>">
                     </div>
                     <!-- SIDEBAR BRAND LOGO END -->
                 <?php else: ?>
@@ -35,43 +48,14 @@
                     <!-- SIDEBAR BRAND LOGO END -->
                 <?php endif; ?>
             </div>
-            <!-- The original dropdown menu was moved to the bottom profile section -->
-        </div>
-        <!-- SIDEBAR BRAND END -->
-
-        <!-- SIDEBAR MENU START -->
-        <div class="sidebar-menu <?php echo e(user()->dark_theme ? 'bg-dark' : ''); ?>" id="sideMenuScroll">
-            <?php echo $__env->make('sections.menu', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-        </div>
-        <!-- SIDEBAR MENU END -->
-    </div>
-    <!-- MAIN SIDEBAR END -->
-    
-    <!-- BOTTOM PROFILE START -->
-    <div class="sidebar-profile-bottom mt-auto w-100 pb-4">
-        <hr style="border-top: 1px solid #e9ecef; margin: 10px 20px 20px 20px;">
-        <div class="d-flex align-items-center px-4 dropdown">
-            <a class="d-flex align-items-center text-decoration-none w-100" href="javascript:void(0)" type="link" id="dropdownMenuProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <div class="profileImg position-relative mr-3">
-                    <img class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;" src="<?php echo e($user->image_url ?? (user()->image_url ?? '')); ?>" alt="<?php echo e($userName); ?>">
-                </div>
-                <div class="ProfileData flex-grow-1">
-                    <h3 class="f-14 f-w-600 text-dark mb-0" style="font-size: 14px; font-weight: 600; color: #2d3748 !important; margin: 0;"><?php echo e($userName); ?></h3>
-                    <p class="mb-0 text-muted" style="font-size: 11px; color: #718096 !important; margin: 0;"><?php echo e(user()->employeeDetail->designation->name ?? 'HR Manager'); ?></p>
-                </div>
-                <div class="online-status">
-                   <span class="bg-success rounded-circle d-inline-block" style="width: 8px; height: 8px; background-color: #38c172 !important;"></span>
-                </div>
-            </a>
-
             <!-- DROPDOWN - INFORMATION -->
             <div class="dropdown-menu dropdown-menu-right sidebar-brand-dropdown ml-3"
-                aria-labelledby="dropdownMenuProfile" tabindex="0">
+                aria-labelledby="dropdownMenuLink" tabindex="0">
                 <div class="d-flex justify-content-between align-items-center profile-box">
                     <a <?php if(!in_array('client', user_roles())): ?> href="<?php echo e(route('employees.show', user()->id)); ?>" <?php endif; ?> >
                             <div class="profileInfo d-flex align-items-center mr-1 flex-wrap">
                                 <div class="profileImg mr-2">
-                                    <img class="h-100" src="<?php echo e($user->image_url ?? (user()->image_url ?? '')); ?>"
+                                    <img class="h-100" src="<?php echo e($user->image_url); ?>"
                                         alt="<?php echo e($userName); ?>">
                                 </div>
                                 <div class="ProfileData">
@@ -90,7 +74,7 @@
                 <?php if(!in_array('client', user_roles()) && ($sidebarUserPermissions['add_employees'] == 4 || $sidebarUserPermissions['add_employees'] == 1) && in_array('employees', user_modules())): ?>
                     <a class="dropdown-item d-flex justify-content-between align-items-center f-15 text-dark invite-member"
                         href="javascript:;">
-                        <span><?php echo app('translator')->get('app.inviteMember'); ?> <?php echo e($companyName ?? ''); ?></span>
+                        <span><?php echo app('translator')->get('app.inviteMember'); ?> <?php echo e($companyName); ?></span>
                         <i class="side-icon bi bi-person-plus"></i>
                     </a>
                 <?php endif; ?>
@@ -112,12 +96,18 @@
                 </a>
             </div>
         </div>
-    </div>
-    <!-- BOTTOM PROFILE END -->
+        <!-- SIDEBAR BRAND END -->
 
+        <!-- SIDEBAR MENU START -->
+        <div class="sidebar-menu <?php echo e(user()->dark_theme ? 'bg-dark' : ''); ?>" id="sideMenuScroll">
+            <?php echo $__env->make('sections.menu', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+        </div>
+        <!-- SIDEBAR MENU END -->
+    </div>
+    <!-- MAIN SIDEBAR END -->
     <!-- Sidebar Toggler -->
     <div
-        class="text-center justify-content-between align-items-center position-fixed sidebarTogglerBox d-none <?php echo e(user()->dark_theme ? 'bg-dark' : ''); ?>">
+        class="text-center d-flex justify-content-between align-items-center position-fixed sidebarTogglerBox <?php echo e(user()->dark_theme ? 'bg-dark' : ''); ?>">
         <button class="border-0 d-lg-block d-none text-lightest font-weight-bold" id="sidebarToggle"></button>
 
         <p class="mb-0 text-dark-grey px-1 py-0 rounded f-10">v<?php echo e(\Illuminate\Support\Facades\File::get('version.txt')); ?></p>
