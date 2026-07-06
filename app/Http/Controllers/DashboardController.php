@@ -1059,6 +1059,7 @@ public function executiveReportPdf($id)
                                 
                 public function storeAgentRetainer(Request $request)
                 {
+
                     $request->validate([
                         'name' => 'required',
                         'mobile' => 'required'

@@ -46,7 +46,7 @@ Route::get('/retainer/create', [HiringController::class, 'retainercreate'])->nam
 Route::post('/retainer/store', [HiringController::class, 'retainerstore'])->name('retainer.store');
 
 Route::get('agent-retainer/create', [RegisterController::class,'agentRetainer'])->name('agent_retainer.create');
-Route::get('account/agent-retainer/create', [DashboardController::class,'agentRetainer'])->name('agent_retainer.create.auth');
+
 Route::post('agent-retainer-new/store', [RegisterController::class,'agentRetainerStore'])->name('agent_retainer_new.store');
 Route::get('/agent-retainer-success/{id?}', function ($id = null) {
     return view('agent_retainer.success', compact('id'));

@@ -34,7 +34,18 @@
             </div>
             @endif
 
-            <form method="POST" action="{{ route('agent_retainer.store') }}">
+            {{-- Error Messages --}}
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul class="mb-0">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+
+            <form method="POST" action="{{ route('agent_retainer.storedata') }}">
                 @csrf
 
                 <div class="row">
