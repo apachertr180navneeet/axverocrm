@@ -208,64 +208,63 @@ class RegisterController extends Controller
         return Reply::success(__('messages.signupSuccess'));
     }
     
-         public function agentRetainer()
-                {
-                    $this->pageTitle = 'Add Retainer';
-                    $this->user = 1;
+    public function agentRetainer()
+    {
+        $this->pageTitle = 'Add Retainer';
+        $this->user = 1;
+    
+        
+        return view('agent_retainer_new', $this->data);
+    }
                 
-                   
-                    return view('agent_retainer_new', $this->data);
-                }
-                
-public function agentRetainerStore(Request $request)
-{
-    $request->validate([
-        'type' => 'required',
-        'name' => 'required',
-        'mobile' => 'required|unique:agent_retainers,mobile',
-        'photo' => 'required|image|mimes:jpg,jpeg,png|max:2048',
-    ]);
+    public function agentRetainerStore(Request $request)
+    {
+        $request->validate([
+            'type' => 'required',
+            'name' => 'required',
+            'mobile' => 'required|unique:agent_retainers,mobile',
+        ]);
 
-    $agentRetainer = new AgentRetainer();
+        $agentRetainer = new AgentRetainer();
 
-    $agentRetainer->user_id = 1;
-    $agentRetainer->type = $request->type;
-    $agentRetainer->name = $request->name;
-    $agentRetainer->mobile = $request->mobile;
-    $agentRetainer->email = $request->email;
-    $agentRetainer->address = $request->address;
-    $agentRetainer->date_of_birth = $request->date_of_birth;
-    $agentRetainer->gender = $request->gender;
-    $agentRetainer->marital_status = $request->marital_status;
-    $agentRetainer->manager_name = $request->manager_name;
-    $agentRetainer->manager_mobile = $request->manager_mobile;
-    $agentRetainer->recommended_name = $request->recommended_name;
-    $agentRetainer->recommended_mobile = $request->recommended_mobile;
+        $agentRetainer->user_id = 1;
+        $agentRetainer->type = $request->type;
+        $agentRetainer->name = $request->name;
+        $agentRetainer->mobile = $request->mobile;
+        $agentRetainer->email = $request->email;
+        $agentRetainer->address = $request->address;
+        $agentRetainer->date_of_birth = $request->date_of_birth;
+        $agentRetainer->gender = $request->gender;
+        $agentRetainer->marital_status = $request->marital_status;
+        $agentRetainer->manager_name = $request->manager_name;
+        $agentRetainer->manager_mobile = $request->manager_mobile;
+        $agentRetainer->recommended_name = $request->recommended_name;
+        $agentRetainer->recommended_mobile = $request->recommended_mobile;
 
-    // PHOTO UPLOAD
-    if ($request->hasFile('photo')) {
-        $file = $request->file('photo');
-        $filename = time().'_'.$file->getClientOriginalName();
-        $file->move(public_path('uploads/agent'), $filename);
-        $agentRetainer->photo = $filename;
+        // PHOTO UPLOAD
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $filename = time().'_'.$file->getClientOriginalName();
+            $file->move(public_path('uploads/agent'), $filename);
+            $agentRetainer->photo = $filename;
+        }
+
+        $agentRetainer->save();
+
+        return redirect()->route('agent_retainer.success', ['id' => $agentRetainer->id]);
+        
     }
 
-    $agentRetainer->save();
+    public function downloadAgentRetainerPdf($id)
+    {
+        $agent = AgentRetainer::findOrFail($id);
 
-    return redirect()->route('agent_retainer.success', ['id' => $agentRetainer->id]);
-    
-}
+        $pdf = \PDF::loadView('agent-retainer-pdf',[
+            'agent'=>$agent
+        ]);
 
-public function downloadAgentRetainerPdf($id)
-{
-    $agent = AgentRetainer::findOrFail($id);
-
-    $pdf = \PDF::loadView('agent-retainer-pdf',[
-        'agent'=>$agent
-    ]);
-
-    return $pdf->download('Retainer-'.$agent->id.'.pdf');
-}
+        return $pdf->download('Retainer-'.$agent->id.'.pdf');
+    }
 
 
 }

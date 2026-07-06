@@ -58,154 +58,92 @@
                     {{-- TYPE --}}
                     <div class="col-md-4 mb-3">
                         <label>Type <span class="required">*</span></label>
-                        <select name="type" class="form-control @error('type') is-invalid @enderror" required>
+                        <select name="type" class="form-control" required>
                             <option value="">Select</option>
-                            <option value="Retainer" {{ old('type') == 'Retainer' ? 'selected' : '' }}>Retainer</option>
-                            <option value="Agent" {{ old('type') == 'Agent' ? 'selected' : '' }}>Agent</option>
-                        </select>@error('type')
-                            <span class="text-danger small" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                            <option value="Retainer">Retainer</option>
+                            <option value="Agent">Agent</option>
+                        </select>
                     </div>
 
                     {{-- PHOTO --}}
                     <div class="col-md-4 mb-3">
                         <label>Photo <span class="required">*</span></label>
-                        <input type="file" name="photo" class="form-control @error('photo') is-invalid @enderror" required>
-                        @error('photo')
-                            <span class="text-danger small" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="file" name="photo" class="form-control" required>
                     </div>
 
                     {{-- NAME --}}
                     <div class="col-md-4 mb-3">
                         <label>Name <span class="required">*</span></label>
-                        <input type="text" name="name" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror" required>
-                        @error('name')
-                            <span class="text-danger small" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="text" name="name" class="form-control" required>
                     </div>
 
                     {{-- MOBILE --}}
                     <div class="col-md-4 mb-3">
                         <label>Mobile <span class="required">*</span></label>
-                        <input type="text" name="mobile" value="{{ old('mobile') }}" class="form-control @error('mobile') is-invalid @enderror" required>
-                        @error('mobile')
-                            <span class="text-danger small" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="text" name="mobile" class="form-control" required>
                     </div>
 
                     {{-- EMAIL --}}
                     <div class="col-md-4 mb-3">
                         <label>Email ID</label>
-                        <input type="email" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror">
-                        @error('email')
-                            <span class="text-danger small" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="email" name="email" class="form-control">
                     </div>
 
                     {{-- ADDRESS --}}
                     <div class="col-md-4 mb-3">
                         <label>Permanent Address</label>
-                        <input type="text" name="address" value="{{ old('address') }}" class="form-control @error('address') is-invalid @enderror">
-                        @error('address')
-                            <span class="text-danger small" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="text" name="address" class="form-control">
                     </div>
 
                     {{-- DOB --}}
                     <div class="col-md-4 mb-3">
                         <label>Date of Birth</label>
-                        <input type="date" name="date_of_birth" value="{{ old('date_of_birth') }}" class="form-control @error('date_of_birth') is-invalid @enderror" max="{{ date('Y-m-d') }}">
-                        @error('date_of_birth')
-                            <span class="text-danger small" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="date" name="date_of_birth" class="form-control" max="{{ date('Y-m-d') }}">
                     </div>
 
                     {{-- GENDER --}}
                     <div class="col-md-4 mb-3">
                         <label>Gender</label>
-                        <select name="gender" class="form-control @error('gender') is-invalid @enderror">
+                        <select name="gender" class="form-control">
                             <option value="">Select</option>
-                            <option {{ old('gender') == 'Male' ? 'selected' : '' }}>Male</option>
-                            <option {{ old('gender') == 'Female' ? 'selected' : '' }}>Female</option>
-                            <option {{ old('gender') == 'Other' ? 'selected' : '' }}>Other</option>
-                        </select>@error('gender')
-                            <span class="text-danger small" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                        </select>
                     </div>
 
                     {{-- MARITAL --}}
                     <div class="col-md-4 mb-3">
                         <label>Marital Status</label>
-                        <select name="marital_status" class="form-control @error('marital_status') is-invalid @enderror">
+                        <select name="marital_status" class="form-control">
                             <option value="">Select</option>
-                            <option {{ old('marital_status') == 'Single' ? 'selected' : '' }}>Single</option>
-                            <option {{ old('marital_status') == 'Married' ? 'selected' : '' }}>Married</option>
-                        </select>@error('marital_status')
-                            <span class="text-danger small" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                            <option>Single</option>
+                            <option>Married</option>
+                        </select>
                     </div>
 
                     {{-- MANAGER NAME --}}
                     {{--  <div class="col-md-4 mb-3">
                         <label>Manager Name</label>
-                        <input type="text" name="manager_name" value="{{ old('manager_name') }}" class="form-control @error('manager_name') is-invalid @enderror">
-                        @error('manager_name')
-                            <span class="text-danger small" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="text" name="manager_name" class="form-control">
                     </div>  --}}
 
                     {{-- MANAGER MOBILE --}}
                     {{--  <div class="col-md-4 mb-3">
                         <label>Manager Mobile</label>
-                        <input type="text" name="manager_mobile" value="{{ old('manager_mobile') }}" class="form-control @error('manager_mobile') is-invalid @enderror">
-                        @error('manager_mobile')
-                            <span class="text-danger small" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="text" name="manager_mobile" class="form-control">
                     </div>  --}}
 
                     {{-- RECOMMENDED NAME --}}
                     <div class="col-md-4 mb-3">
                         <label>Recommended Person Name</label>
-                        <input type="text" name="recommended_name" value="{{ old('recommended_name') }}" class="form-control @error('recommended_name') is-invalid @enderror">
-                        @error('recommended_name')
-                            <span class="text-danger small" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="text" name="recommended_name" class="form-control">
                     </div>
 
                     {{-- RECOMMENDED MOBILE --}}
                     <div class="col-md-4 mb-3">
                         <label>Recommended Person Mobile</label>
-                        <input type="text" name="recommended_mobile" value="{{ old('recommended_mobile') }}" class="form-control @error('recommended_mobile') is-invalid @enderror">
-                        @error('recommended_mobile')
-                            <span class="text-danger small" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="text" name="recommended_mobile" class="form-control">
                     </div>
 
                 </div>
