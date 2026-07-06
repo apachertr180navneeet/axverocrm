@@ -186,6 +186,14 @@
             @includeIf(strtolower($item).'::sections.setting-sidebar')
         @endforeach
 
+        @if(isWorksuite())
+            @if (in_array('admin', user_roles()) && global_setting()->system_update)
+                <x-setting-menu-item :active="$activeMenu" menu="update_settings" :href="route('update-settings.index')"
+                                     :text="__('app.menu.updates')"/>
+            @endif
+        @endif
+
+
     </ul>
     <!-- SETTINGS MENU END -->
 

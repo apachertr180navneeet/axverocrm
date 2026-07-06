@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Laravel\Fortify\Fortify;
 use App\Models\GlobalSetting;
 use Laravel\Fortify\Features;
+use Froiden\Envato\Traits\AppBoot;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Cache;
@@ -27,6 +28,8 @@ use Laravel\Fortify\Actions\PrepareAuthenticatedSession;
 
 class FortifyServiceProvider extends ServiceProvider
 {
+    use AppBoot;
+
     public function register()
     {
         $this->app->instance(LogoutResponse::class, new class implements LogoutResponse {
@@ -118,6 +121,12 @@ class FortifyServiceProvider extends ServiceProvider
 
         Fortify::loginView(function () use ($getGlobalSetting, $getCompany) {
 
+            // Prevent unnecessary checks in console
+            if (!app()->runningInConsole()) {
+                $this->showInstall();
+                $this->checkMigrateStatus();
+            }
+
             $globalSetting = $getGlobalSetting();
             $company = $getCompany();
 
@@ -195,4 +204,8 @@ class FortifyServiceProvider extends ServiceProvider
         });
     }
 
+    public function checkMigrateStatus()
+    {
+        return check_migrate_status();
+    }
 }

@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Laravel\Fortify\Fortify;
 use App\Events\TwoFactorCodeEvent;
 use App\Traits\SocialAuthSettings;
+use Froiden\Envato\Traits\AppBoot;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +20,7 @@ use \Illuminate\Validation\ValidationException;
 class LoginController extends Controller
 {
 
-    use SocialAuthSettings;
+    use AppBoot, SocialAuthSettings;
 
     protected $redirectTo = 'account/dashboard';
 
