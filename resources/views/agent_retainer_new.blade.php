@@ -144,13 +144,13 @@
                 </div>
 
                 {{-- TERMS --}}
-                <div class="form-group mt-3">
+                <!-- <div class="form-group mt-3">
                     <input type="checkbox" required>
                     I agree to 
                     <a href="https://kactto.com/termscondition" target="_blank">
                         Terms & Conditions
                     </a>
-                </div>
+                </div> -->
 
                 <button class="btn btn-danger btn-block mt-3">Submit</button>
 
