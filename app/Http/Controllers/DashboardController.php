@@ -1073,6 +1073,7 @@ public function executiveReportPdf($id)
                     $agentRetainer->user_id = auth()->id() ?? 1; // Fallback to 1 (admin) if guest
                     $agentRetainer->name = $request->name;
                     $agentRetainer->mobile = $request->mobile;
+                    $agentRetainer->email = $request->email;
                     $agentRetainer->address = $request->address;
                     $agentRetainer->gender = $request->gender;
                     $agentRetainer->date_of_birth = $request->date_of_birth;
@@ -1108,6 +1109,7 @@ public function executiveReportPdf($id)
                 
                     $agentRetainer->name = $request->name;
                     $agentRetainer->mobile = $request->mobile;
+                    $agentRetainer->email = $request->email;
                     $agentRetainer->address = $request->address;
                     $agentRetainer->gender = $request->gender;
                     $agentRetainer->date_of_birth = $request->date_of_birth;

@@ -103,8 +103,11 @@
         <th>#</th>
         <th>Name</th>
         <th>Mobile</th>
+        <th>Email</th>
         <th>Gender</th>
         <th>DOB</th>
+        <th>Address</th>
+        <th>Marital Status</th>
         <th>Recommended Name</th>
         <th>Recommended Mobile</th>
         <th>Created At</th>
@@ -126,13 +129,19 @@
         
         <td>{{ $row->mobile }}</td>
         
+        <td>{{ $row->email }}</td>
+        
         <td>{{ $row->gender }}</td>
         
         <td>{{ $row->date_of_birth }}</td>
         
-        <td>{{ $row->recommended_name }}</td>
+        <td>{{ $row->address }}</td>
 
-        <td>{{ $row->recommended_mobile }}</td>
+        <td>{{ $row->marital_status }}</td>
+        
+        <td>{{ $row->person_name }}</td>
+
+        <td>{{ $row->person_mobile }}</td>
         
         <td>{{ $row->created_at->format('d-m-Y') }}</td>
         
@@ -157,7 +166,7 @@
         
         <tr>
         
-        <td colspan="9" class="text-center">
+        <td colspan="12" class="text-center">
         No Data Found
         </td>
         

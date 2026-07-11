@@ -63,6 +63,11 @@
                     </div>
 
                     <div class="col-md-4 mb-3">
+                        <label>Email</label>
+                        <input type="email" name="email" class="form-control" value="{{ old('email', $agent->email) }}">
+                    </div>
+
+                    <div class="col-md-4 mb-3">
                         <label>Permanent Address <span class="required">*</span></label>
                         <input type="text" name="address" class="form-control" value="{{ old('address', $agent->address) }}" required>
                     </div>

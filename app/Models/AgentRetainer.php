@@ -14,6 +14,7 @@ class AgentRetainer extends Model
     protected $fillable = [
         'name',
         'mobile',
+        'email',
         'address',
         'gender',
         'date_of_birth',

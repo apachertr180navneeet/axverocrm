@@ -49,6 +49,11 @@ text-align:center;
 </tr>
 
 <tr>
+<th>Email</th>
+<td>{{ $agent->email }}</td>
+</tr>
+
+<tr>
 <th>Address</th>
 <td>{{ $agent->address }}</td>
 </tr>
