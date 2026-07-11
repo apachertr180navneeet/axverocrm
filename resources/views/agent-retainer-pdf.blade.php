@@ -75,12 +75,12 @@ text-align:center;
 
 <tr>
 <th>Recommended Person Name </th>
-<td>{{ $agent->person_name }}</td>
+<td>{{ $agent->recommended_name }}</td>
 </tr>
 
 <tr>
 <th>Recommended Person Mobile</th>
-<td>{{ $agent->person_mobile }}</td>
+<td>{{ $agent->recommended_mobile }}</td>
 </tr>
 
 </table>

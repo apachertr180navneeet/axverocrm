@@ -19,7 +19,7 @@ class AgentRetainer extends Model
         'gender',
         'date_of_birth',
         'marital_status',
-        'person_name',
-        'person_mobile'
+        'recommended_name',
+        'recommended_mobile'
     ];
 }

@@ -139,9 +139,9 @@
 
         <td>{{ $row->marital_status }}</td>
         
-        <td>{{ $row->person_name }}</td>
+        <td>{{ $row->recommended_name }}</td>
 
-        <td>{{ $row->person_mobile }}</td>
+        <td>{{ $row->recommended_mobile }}</td>
         
         <td>{{ $row->created_at->format('d-m-Y') }}</td>
         

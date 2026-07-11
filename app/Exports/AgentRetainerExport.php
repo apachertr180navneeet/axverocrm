@@ -53,8 +53,8 @@ class AgentRetainerExport implements FromCollection, WithHeadings, WithMapping
             'Gender',
             'Date of Birth',
             'Marital Status',
-            'Person Name',
-            'Person Mobile',
+            'Recommended Name',
+            'Recommended Mobile',
             'Created At',
         ];
     }
@@ -70,8 +70,8 @@ class AgentRetainerExport implements FromCollection, WithHeadings, WithMapping
             $retainer->gender ?? '--',
             $retainer->date_of_birth ?? '--',
             $retainer->marital_status ?? '--',
-            $retainer->person_name ?? '--',
-            $retainer->person_mobile ?? '--',
+            $retainer->recommended_name ?? '--',
+            $retainer->recommended_mobile ?? '--',
             $retainer->created_at ? $retainer->created_at->format('d-m-Y h:i A') : '--',
         ];
     }

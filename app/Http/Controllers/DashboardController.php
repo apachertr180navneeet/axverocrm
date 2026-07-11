@@ -1078,8 +1078,8 @@ public function executiveReportPdf($id)
                     $agentRetainer->gender = $request->gender;
                     $agentRetainer->date_of_birth = $request->date_of_birth;
                     $agentRetainer->marital_status = $request->marital_status;
-                    $agentRetainer->person_name = $request->person_name;
-                    $agentRetainer->person_mobile = $request->person_mobile;
+                    $agentRetainer->recommended_name = $request->recommended_name;
+                    $agentRetainer->recommended_mobile = $request->recommended_mobile;
                 
                     $agentRetainer->save();
                 
@@ -1114,8 +1114,8 @@ public function executiveReportPdf($id)
                     $agentRetainer->gender = $request->gender;
                     $agentRetainer->date_of_birth = $request->date_of_birth;
                     $agentRetainer->marital_status = $request->marital_status;
-                    $agentRetainer->person_name = $request->person_name;
-                    $agentRetainer->person_mobile = $request->person_mobile;
+                    $agentRetainer->recommended_name = $request->recommended_name;
+                    $agentRetainer->recommended_mobile = $request->recommended_mobile;
                 
                     $agentRetainer->save();
                 

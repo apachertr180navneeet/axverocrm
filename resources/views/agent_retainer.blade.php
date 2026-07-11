@@ -96,12 +96,12 @@
 
                     <div class="col-md-4 mb-3">
                         <label>Recommended Person Name <span class="required">*</span></label>
-                        <input type="text" name="person_name" class="form-control" required>
+                        <input type="text" name="recommended_name" class="form-control" required>
                     </div>
 
                     <div class="col-md-4 mb-3">
                         <label>Recommended Person Mobile <span class="required">*</span></label>
-                        <input type="text" name="person_mobile" class="form-control" required>
+                        <input type="text" name="recommended_mobile" class="form-control" required>
                     </div>
 
                 </div>

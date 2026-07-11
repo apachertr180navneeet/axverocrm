@@ -98,12 +98,12 @@
 
                     <div class="col-md-4 mb-3">
                         <label>Recommended Person Name <span class="required">*</span></label>
-                        <input type="text" name="person_name" class="form-control" value="{{ old('person_name', $agent->person_name) }}" required>
+                        <input type="text" name="recommended_name" class="form-control" value="{{ old('recommended_name', $agent->recommended_name) }}" required>
                     </div>
 
                     <div class="col-md-4 mb-3">
                         <label>Recommended Person Mobile <span class="required">*</span></label>
-                        <input type="text" name="person_mobile" class="form-control" value="{{ old('person_mobile', $agent->person_mobile) }}" required>
+                        <input type="text" name="recommended_mobile" class="form-control" value="{{ old('recommended_mobile', $agent->recommended_mobile) }}" required>
                     </div>
 
                 </div>
