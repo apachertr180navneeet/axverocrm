@@ -100,7 +100,7 @@ class HiringController extends Controller
             // relationship_manager_mobile removed
             'hiring_work_details' => [], // empty array
             'txnid' => $txnid,
-            'amount' => 68,
+            'amount' => 399,
             'terms_accepted' => true,
             'payment_status' => 'pending',
             'submitted_at' => now(),

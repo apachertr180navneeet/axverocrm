@@ -59,7 +59,7 @@
       <div class="col-md-12">
         <div class="card shadow-sm border-0">
           <div class="card-header bg-primary text-white py-3">
-            <h4 class="mb-0"><i class="fas fa-file-invoice-dollar me-2"></i> Retainer Apply Form</h4>
+            <h4 class="mb-0"><i class="fas fa-file-invoice-dollar me-2"></i> Retainer Income form</h4>
           </div>
           <div class="card-body p-4">
             @if($errors->any())
@@ -151,7 +151,7 @@
               <!-- Amount & Terms -->
               <div class="text-center my-4">
                 <div class="price-card">
-                  <div class="price-amount">₹ 68</div>
+                  <div class="price-amount">₹ 399</div>
                   <small>Application Fee</small>
                 </div>
               </div>
@@ -163,7 +163,7 @@
               </div>
 
               <button type="submit" class="btn btn-gradient w-100">
-                <i class="fas fa-credit-card me-2"></i> Retainer 68
+                <i class="fas fa-credit-card me-2"></i> Retainer 399
               </button>
             </form>
           </div>
