@@ -59,7 +59,7 @@
       <div class="col-md-12">
         <div class="card shadow-sm border-0">
           <div class="card-header bg-primary text-white py-3">
-            <h4 class="mb-0"><i class="fas fa-file-invoice-dollar me-2"></i> Retainer Income form</h4>
+            <h4 class="mb-0"><i class="fas fa-file-invoice-dollar me-2"></i> Retainer Joining Form</h4>
           </div>
           <div class="card-body p-4">
             @if($errors->any())
@@ -156,11 +156,11 @@
                 </div>
               </div>
 
-              <div class="form-check mb-4">
+              <!-- <div class="form-check mb-4">
                 <input type="checkbox" name="terms_accepted" id="terms" class="form-check-input" value="1" required>
                 <label for="terms" class="form-check-label">I have read and agree to the <a href="#"
                     data-bs-toggle="modal" data-bs-target="#termsModal">Terms & Conditions</a></label>
-              </div>
+              </div> -->
 
               <button type="submit" class="btn btn-gradient w-100">
                 <i class="fas fa-credit-card me-2"></i> Retainer 399
