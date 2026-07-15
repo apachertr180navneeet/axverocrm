@@ -18,8 +18,8 @@ class OfferLetterController extends AccountBaseController
         // 'mailer'    => 'sendmail',
         'host'      => 'smtp.hostinger.com',
         'port'      => 465,
-        'username'  => 'hr@axvero.in',
-        'password'  => 'Axvero@2026#$&@',
+        'username'  => 'hr@virexon.in',
+        'password'  => 'Virexon@2026',
         'from'      => 'hr@virexon.in',
         'from_name' => 'Virexon Hr',
     ];
