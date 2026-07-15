@@ -6,11 +6,18 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+@page {
+    margin-top: 0px;
+    margin-bottom: 30mm;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
 body {
     font-family: 'DejaVu Sans', sans-serif;
-    font-size: 10pt;
+    font-size: 9pt;
     color: #111;
-    line-height: 1.6;
+    line-height: 1.35;
 }
 
 /* ── Page layout ─────────────────────────────────── */
@@ -24,12 +31,11 @@ body {
     page-break-after: auto;
 }
 
-/* ── Header ──────────────────────────────────────── */
 .header {
     width: 100%;
     position: relative;
     height: 28mm;
-    margin-bottom: 6mm;
+    margin-bottom: 3mm;
 }
 
 .header-logo {
@@ -58,17 +64,17 @@ body {
 
 /* ── Content area ────────────────────────────────── */
 .content {
-    padding: 0 16mm 6mm 16mm;
+    padding: 0 16mm 4mm 16mm;
 }
 
 /* ── Ref + Date row ──────────────────────────────── */
 .ref-row {
     width: 100%;
-    margin-bottom: 6mm;
+    margin-bottom: 3mm;
 }
 
 .ref-row td {
-    font-size: 9pt;
+    font-size: 8.5pt;
     font-weight: bold;
     color: #111;
     vertical-align: middle;
@@ -80,52 +86,52 @@ body {
 
 /* ── Candidate name ──────────────────────────────── */
 .candidate-name {
-    font-size: 10pt;
+    font-size: 9.5pt;
     font-weight: bold;
-    margin-bottom: 5mm;
+    margin-bottom: 3mm;
 }
 
 /* ── Title ───────────────────────────────────────── */
 .letter-title {
     text-align: center;
-    font-size: 13pt;
+    font-size: 11.5pt;
     font-weight: bold;
     text-decoration: underline;
-    margin-bottom: 5mm;
+    margin-bottom: 3mm;
 }
 
 /* ── Body paragraphs ─────────────────────────────── */
 .para {
     text-align: justify;
-    margin-bottom: 4mm;
-    font-size: 10pt;
+    margin-bottom: 2.5mm;
+    font-size: 9pt;
 }
 
 /* ── Section heading ─────────────────────────────── */
 .section-head {
     font-weight: bold;
-    font-size: 10pt;
-    margin-bottom: 2mm;
-    margin-top: 3mm;
+    font-size: 9pt;
+    margin-bottom: 1.5mm;
+    margin-top: 2mm;
 }
 
 /* ── Numbered list ───────────────────────────────── */
 .num-list {
     margin-left: 4mm;
-    margin-bottom: 3mm;
+    margin-bottom: 2.5mm;
 }
 
 .num-list li {
     text-align: justify;
-    font-size: 10pt;
-    margin-bottom: 2mm;
+    font-size: 9pt;
+    margin-bottom: 1mm;
     list-style-type: decimal;
 }
 
 /* ── Signature section ───────────────────────────── */
 .sign-table {
     width: 100%;
-    margin-top: 5mm;
+    margin-top: 3mm;
 }
 
 .sign-table td {
@@ -227,12 +233,7 @@ body {
             Your engagement shall commence from Date  <strong>{{ $joining_fmt }}</strong>. ( Date of Joining) 
         </p>
 
-        <p class="section-head">3. Confidentiality</p>
-        <p class="para">
-            You shall maintain strict confidentiality regarding all company information, business data, customer details, and internal processes during and after the tenure of your engagement.
-        </p>
-
-        <p class="section-head">4. Roles & Responsibilities</p>
+        <p class="section-head">3. Roles & Responsibilities</p>
         <ol class="num-list">
             <li>Promote and market the Company's products and services through social media and other approved online platforms.</li>
             <li>Complete all marketing tasks assigned by the Company on the same day, unless otherwise instructed by the Reporting Manager.</li>
@@ -257,6 +258,15 @@ body {
 
     <div class="content">
 
+        <p class="section-head">4. Working Hours, Attendance & Working ID</p>
+        <ol class="num-list">
+            <li>The Retainer is required to mark <strong>Clock-In Attendance between 09:00 AM and 10:00 AM</strong> on all working days.</li>
+            <li>The Retainer is required to mark <strong>Clock-Out Attendance between 06:00 PM and 06:30 PM</strong> on all working days.</li>
+            <li>Attendance must be recorded through the Company's prescribed attendance system or platform.</li>
+            <li>A <strong>Working ID</strong> will be issued only after the successful hiring and onboarding of a minimum of <strong>3 Retainers</strong> through the Retainer's reference.</li>
+            <li>The Retainer's official working period and attendance records shall be considered effective only from the date the <strong>Working ID</strong> is issued. Any activities performed prior to the issuance of the Working ID shall not be counted as official working days unless otherwise approved in writing by the Company.</li>
+        </ol>
+
         <p class="section-head">5. Retainer Fee & Weekly Payment Schedule</p>
         <p class="para">
             The Retainer shall receive weekly payments as per the following schedule, subject to compliance with the Company's terms, attendance requirements, and work performance:
@@ -271,29 +281,10 @@ body {
             The weekly payment schedule shall commence from the date of joining. Regardless of the joining date, the first week's payment will be processed and released on the Company's next scheduled weekly payment date, provided all applicable terms and work requirements have been fulfilled.
         </p>
 
-        <p class="section-head">6. Working Hours, Attendance & Working ID</p>
-        <ol class="num-list">
-            <li>The Retainer is required to mark <strong>Clock-In Attendance between 09:00 AM and 10:00 AM</strong> on all working days.</li>
-            <li>The Retainer is required to mark <strong>Clock-Out Attendance between 06:00 PM and 06:30 PM</strong> on all working days.</li>
-            <li>Attendance must be recorded through the Company's prescribed attendance system or platform.</li>
-            <li>A <strong>Working ID</strong> will be issued only after the successful hiring and onboarding of a minimum of <strong>3 Retainers</strong> through the Retainer's reference.</li>
-            <li>The Retainer's official working period and attendance records shall be considered effective only from the date the <strong>Working ID</strong> is issued. Any activities performed prior to the issuance of the Working ID shall not be counted as official working days unless otherwise approved in writing by the Company.</li>
-        </ol>
-
-    </div>
-
-</div>
-
-{{-- ── INTERNSHIP: PAGE 3 ──────────────────────────────── --}}
-<div class="page">
-
-    <div class="header">
-        @if($logo_b64)  <img src="{{ $logo_b64 }}"   class="header-logo"> @endif
-        <!--@if($header_b64)<img src="{{ $header_b64 }}" class="header-banner"> @endif-->
-        <!--<span class="header-website">https://exvero.in</span>-->
-    </div>
-
-    <div class="content">
+        <p class="section-head">6. Confidentiality</p>
+        <p class="para">
+            You shall maintain strict confidentiality regarding all company information, business data, customer details, and internal processes during and after the tenure of your engagement.
+        </p>
 
         <p class="section-head">7. Code of Conduct</p>
         <p class="para">
@@ -345,8 +336,6 @@ body {
         </table>
 
     </div>
-
-</div>
 
 </div>
 
