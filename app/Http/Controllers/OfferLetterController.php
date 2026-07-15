@@ -289,7 +289,7 @@ class OfferLetterController extends AccountBaseController
             'logo_b64'     => $this->imgBase64(global_setting()->logo ? public_path('user-uploads/app-logo/' . global_setting()->logo) : public_path('img/worksuite-logo.png')),
             'stamp_b64'    => $this->imgBase64(public_path('images/axvero-stamp.png')),
             'header_b64'   => $this->imgBase64(public_path('images/kactto-header.jpg')),
-            'footer_b64'   => $this->imgBase64(public_path('images/axvero-footer.png')),
+            'footer_b64'   => $this->imgBase64(public_path('images/axvero-footer.jpeg')),
         ])
         ->setPaper('a4', 'portrait')
         ->setOptions([

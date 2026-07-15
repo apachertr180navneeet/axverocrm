@@ -177,7 +177,7 @@ body {
 
 @if($offer->employment_type === 'Internship')
 
-{{-- ── INTERNSHIP: PAGE 1 (condensed) ──────────────────────────────── --}}
+{{-- ── INTERNSHIP: PAGE 1 ──────────────────────────────── --}}
 <div class="page">
 
     <div class="header">
@@ -227,27 +227,26 @@ body {
             Your engagement shall commence from Date  <strong>{{ $joining_fmt }}</strong>. ( Date of Joining) 
         </p>
 
-        <p class="section-head">3. Working Hours & Attendance</p>
+        <p class="section-head">3. Confidentiality</p>
         <p class="para">
-            * You are required to mark your <strong>Clock-In attendance between 09:00 AM and 10:00 AM</strong> daily.<br>
-            * You are required to mark your <strong>Clock-Out attendance between 06:00 PM and 06:30 PM</strong> daily.<br>
-            * Attendance shall be marked through the system/platform prescribed by the company.
+            You shall maintain strict confidentiality regarding all company information, business data, customer details, and internal processes during and after the tenure of your engagement.
         </p>
 
         <p class="section-head">4. Roles & Responsibilities</p>
-        <p class="para">
-            1. Marketing and promotion of the company's products and services.<br>
-            2. Daily execution of marketing activities assigned by the company.<br>
-            3. Recruitment and onboarding support for sales &amp; marketing.<br>
-            4. Ensuring the hiring of <strong>Retainer &amp; Agent</strong> for the company as per business requirements.<br>
-            5. Submission of daily work reports and updates to the reporting manager.<br>
-            6. Any other related tasks assigned by the management from time to time.
-        </p>
+        <ol class="num-list">
+            <li>Promote and market the Company's products and services through social media and other approved online platforms.</li>
+            <li>Complete all marketing tasks assigned by the Company on the same day, unless otherwise instructed by the Reporting Manager.</li>
+            <li>Successfully onboard a minimum of 3 Retainers to support the Company's marketing operations.</li>
+            <li>Ensure the recruitment and onboarding of a minimum of 3 Retainers in accordance with the Company's business requirements.</li>
+            <li>Submit daily work reports, activity updates, and progress reports to the Reporting Manager within the prescribed timelines.</li>
+            <li>Perform any other duties, responsibilities, or assignments as directed by the Management from time to time and carry them out professionally, honestly, and within the required timelines.</li>
+        </ol>
 
     </div>
 
 </div>
 
+{{-- ── INTERNSHIP: PAGE 2 ──────────────────────────────── --}}
 <div class="page">
 
     <div class="header">
@@ -258,15 +257,43 @@ body {
 
     <div class="content">
 
-        <p class="section-head">5. Retainer Fee</p>
+        <p class="section-head">5. Retainer Fee & Weekly Payment Schedule</p>
         <p class="para">
-            You shall be paid a monthly retainer fee of <strong>₹{{ number_format($offer->salary, 0) }}/- (Rupees {{ $salary_words }} only)</strong>, subject to applicable deductions and compliance with company policies.
+            The Retainer shall receive weekly payments as per the following schedule, subject to compliance with the Company's terms, attendance requirements, and work performance:
+        </p>
+        <ul style="margin-left: 6mm; margin-bottom: 4mm; list-style-type: disc;">
+            <li style="margin-bottom: 2px;"><strong>1st Week:</strong> ₹1,500/-</li>
+            <li style="margin-bottom: 2px;"><strong>2nd Week:</strong> ₹3,500/-</li>
+            <li style="margin-bottom: 2px;"><strong>3rd Week:</strong> ₹4,500/-</li>
+            <li style="margin-bottom: 2px;"><strong>4th Week:</strong> ₹5,500/-</li>
+        </ul>
+        <p class="para">
+            The weekly payment schedule shall commence from the date of joining. Regardless of the joining date, the first week's payment will be processed and released on the Company's next scheduled weekly payment date, provided all applicable terms and work requirements have been fulfilled.
         </p>
 
-        <p class="section-head">6. Confidentiality</p>
-        <p class="para">
-            You shall maintain strict confidentiality regarding all company information, business data, customer details, and internal processes during and after the tenure of your engagement.
-        </p>
+        <p class="section-head">6. Working Hours, Attendance & Working ID</p>
+        <ol class="num-list">
+            <li>The Retainer is required to mark <strong>Clock-In Attendance between 09:00 AM and 10:00 AM</strong> on all working days.</li>
+            <li>The Retainer is required to mark <strong>Clock-Out Attendance between 06:00 PM and 06:30 PM</strong> on all working days.</li>
+            <li>Attendance must be recorded through the Company's prescribed attendance system or platform.</li>
+            <li>A <strong>Working ID</strong> will be issued only after the successful hiring and onboarding of a minimum of <strong>3 Retainers</strong> through the Retainer's reference.</li>
+            <li>The Retainer's official working period and attendance records shall be considered effective only from the date the <strong>Working ID</strong> is issued. Any activities performed prior to the issuance of the Working ID shall not be counted as official working days unless otherwise approved in writing by the Company.</li>
+        </ol>
+
+    </div>
+
+</div>
+
+{{-- ── INTERNSHIP: PAGE 3 ──────────────────────────────── --}}
+<div class="page">
+
+    <div class="header">
+        @if($logo_b64)  <img src="{{ $logo_b64 }}"   class="header-logo"> @endif
+        <!--@if($header_b64)<img src="{{ $header_b64 }}" class="header-banner"> @endif-->
+        <!--<span class="header-website">https://exvero.in</span>-->
+    </div>
+
+    <div class="content">
 
         <p class="section-head">7. Code of Conduct</p>
         <p class="para">
