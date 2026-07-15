@@ -61,7 +61,7 @@
     class="{{ $globalSetting->auth_theme == 'dark' ? 'dark-theme' : '' }} {{ isRtl() ? (session('changedRtl') === false ? '' : 'rtl') : (session('changedRtl') == true ? 'rtl' : '') }}">
 
 <header class="px-4 bg-white sticky-top d-flex justify-content-center align-items-center login_header">
-    <img class="mr-2 rounded" src="{{ asset('img/axvero-logo-white.jpeg') }}" alt="KACTTO Logo" style="height: 90px !important; max-height: none !important;">
+    <img class="mr-2 rounded" src="{{ $globalSetting->logo_url }}" alt="{{ $globalSetting->global_app_name }} Logo" style="height: 90px !important; max-height: none !important; object-fit: contain;">
     <!--<h3 class="mb-0 pl-1">-->
     <!--    KACTTO-->
     <!--</h3>-->

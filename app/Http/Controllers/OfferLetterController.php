@@ -287,7 +287,7 @@ class OfferLetterController extends AccountBaseController
             'salary_words' => $this->numberToWords((int) $offer->salary),
             'today'        => now()->format('d/F/Y'),
             'joining_fmt'  => \Carbon\Carbon::parse($offer->joining_date)->format('d F Y'),
-            'logo_b64'     => $this->imgBase64(public_path('images/axvero-logo-white.jpeg')),
+            'logo_b64'     => $this->imgBase64(global_setting()->logo ? public_path('user-uploads/app-logo/' . global_setting()->logo) : public_path('img/worksuite-logo.png')),
             'stamp_b64'    => $this->imgBase64(public_path('images/axvero-stamp.png')),
             'header_b64'   => $this->imgBase64(public_path('images/kactto-header.jpg')),
             'footer_b64'   => $this->imgBase64(public_path('images/axvero-footer.png')),
