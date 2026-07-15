@@ -19,7 +19,7 @@
     <link href="{{ asset('vendor/froiden-helper/helper.css') }}" rel="stylesheet" defer="defer">
     <link type="text/css" rel="stylesheet" media="all" href="{{ asset('css/main.css') }}">
 
-    <title>CRM Axvero</title>
+    <title>CRM Virexon</title>
 
 
     @stack('styles')

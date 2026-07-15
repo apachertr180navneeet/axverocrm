@@ -211,7 +211,7 @@ body {
 
         {{-- Intro --}}
         <p class="para">
-            We are pleased to appoint you as a <strong>Retainer</strong> with EASY ONLINE MARKETING <strong>AXVERO</strong>, subject to the terms and conditions mentioned below:
+            We are pleased to appoint you as a <strong>Retainer</strong> with EASY ONLINE MARKETING <strong>VIREXON</strong>, subject to the terms and conditions mentioned below:
         </p>
 
         {{-- Terms & Conditions --}}
@@ -280,7 +280,7 @@ body {
         
         <p class="section-head">9. Acceptance</p>
         <p class="para">
-            Please sign and return a copy of this letter as a token of your acceptance of the above terms and conditions. We welcome you and look forward to a successful association with AXVERO. We look forward to your contribution and hope this engagement will be a valuable learning experience for you.
+            Please sign and return a copy of this letter as a token of your acceptance of the above terms and conditions. We welcome you and look forward to a successful association with VIREXON. We look forward to your contribution and hope this engagement will be a valuable learning experience for you.
         </p>
 
         <p class="para">Best Regards,</p>
@@ -288,14 +288,14 @@ body {
         <table class="sign-table" cellpadding="0" cellspacing="0">
             <tr>
                 <td>
-                    <strong>For AXVERO</strong><br>
+                    <strong>For VIREXON</strong><br>
                     @if($stamp_b64)
                         <img src="{{ $stamp_b64 }}" class="stamp-img"><br>
                     @else
                         <br><br><br>
                     @endif
                     <strong>Naira</strong><br>
-                    <strong>HR Manager, Axvero</strong><br>
+                    <strong>HR Manager, Virexon</strong><br>
                     <a href="mailto:hr@axvero.in" style="font-weight:normal; font-size:9pt;">hr@axvero.in</a>
                 </td>
                 <td class="right-cell"></td>
@@ -304,7 +304,7 @@ body {
 
         <p class="section-head">Acceptance by Retainer</p>
         <p class="para">
-            I, <strong>{{ $prefix }} {{ $offer->full_name }}</strong>, have read and understood the terms and conditions mentioned above and hereby accept the appointment as Retainer with AXVERO.
+            I, <strong>{{ $prefix }} {{ $offer->full_name }}</strong>, have read and understood the terms and conditions mentioned above and hereby accept the appointment as Retainer with VIREXON.
         </p>
         <table class="sign-table" cellpadding="0" cellspacing="0">
             <tr>
@@ -435,7 +435,7 @@ body {
 
         <p class="para">Please sign a duplicate copy of this letter and fill the joining form as a token of your acceptance and send the same email id <strong>hr@axvero.in</strong> (<strong>HR Manager</strong>) back to us. The letter and joining kit will be valid for 2 days only from the day it is issued.</p>
 
-        <p class="para">We Welcome you and look forward for your arrival in AXVERO.</p>
+        <p class="para">We Welcome you and look forward for your arrival in VIREXON.</p>
 
         <br>
         <p class="para">Thanking You Sincerely</p>
@@ -444,7 +444,7 @@ body {
         <table class="sign-table" cellpadding="0" cellspacing="0">
             <tr>
                 <td>
-                    <strong>For AXVERO</strong><br>
+                    <strong>For VIREXON</strong><br>
                     @if($stamp_b64)
                         <img src="{{ $stamp_b64 }}" class="stamp-img"><br>
                     @else

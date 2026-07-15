@@ -53,9 +53,9 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .sidebar-menu .nav-item.active > .nav-link {
-    background: linear-gradient(135deg, #4318FF 0%, #39B8FF 100%) !important;
+    background: linear-gradient(135deg, #A05AFF 0%, #1BCFB4 100%) !important;
     color: #FFFFFF !important;
-    box-shadow: 0 4px 15px rgba(67, 24, 255, 0.25) !important;
+    box-shadow: 0 4px 15px rgba(160, 90, 255, 0.25) !important;
 }
 
 .sidebar-menu .nav-item .nav-link .icon {
@@ -161,7 +161,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 .dropdown-item:hover {
     background: #F4F7FE !important;
-    color: #4318FF !important;
+    color: #A05AFF !important;
 }
 
 .modal-content {
@@ -191,12 +191,52 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #4318FF 0%, #39B8FF 100%) !important;
+    background: linear-gradient(135deg, #A05AFF 0%, #1BCFB4 100%) !important;
     border: none !important;
-    box-shadow: 0 4px 15px rgba(67, 24, 255, 0.2) !important;
+    box-shadow: 0 4px 15px rgba(160, 90, 255, 0.2) !important;
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(67, 24, 255, 0.3) !important;
+    box-shadow: 0 6px 20px rgba(160, 90, 255, 0.3) !important;
+    background: linear-gradient(135deg, #9E58FF 0%, #4BCBEB 100%) !important;
+}
+
+.btn-info {
+    background: #4BCBEB !important;
+    border: none !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 4px 15px rgba(75, 203, 235, 0.2) !important;
+}
+
+.btn-info:hover {
+    background: #3eb5d4 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(75, 203, 235, 0.3) !important;
+}
+
+.btn-danger {
+    background: #FE9496 !important;
+    border: none !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 4px 15px rgba(254, 148, 150, 0.2) !important;
+}
+
+.btn-danger:hover {
+    background: #e67d7f !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(254, 148, 150, 0.3) !important;
+}
+
+.btn-secondary {
+    background: #9E58FF !important;
+    border: none !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 4px 15px rgba(158, 88, 255, 0.2) !important;
+}
+
+.btn-secondary:hover {
+    background: #8741e8 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(158, 88, 255, 0.3) !important;
 }

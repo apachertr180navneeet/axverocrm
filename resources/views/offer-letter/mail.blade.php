@@ -18,7 +18,7 @@
         <p>Dear <strong>{{ $prefix }} {{ $offer->full_name }},</strong></p>
 
         <p>We are pleased to inform you that you have been selected for the position of
-        <strong>{{ $offer->designation }}</strong> at <strong>Axvero</strong>.</p>
+        <strong>{{ $offer->designation }}</strong> at <strong>Virexon</strong>.</p>
 
         <p>Please find attached your official offer and joining kit detailing the terms and
         conditions of your work. We request you to go through the letter carefully and confirm

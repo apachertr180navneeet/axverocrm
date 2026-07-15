@@ -17,7 +17,7 @@
                     <!-- SIDEBAR BRAND NAME START -->
                     <div class="sidebar-brand-name">
                         <h1 class="mb-0 f-16 f-w-500 text-white-shade mt-0" data-placement="bottom" data-toggle="tooltip"
-                            data-original-title="{{ $appName }}">Axvero
+                            data-original-title="{{ $appName }}">Virexon
                             <i class="icon-arrow-down icons pl-2"></i>
                         </h1>
                         <div class="mb-0 position-relative pro-name">
