@@ -296,7 +296,7 @@ body {
                     @endif
                     <strong>Naira</strong><br>
                     <strong>HR Manager, Virexon</strong><br>
-                    <a href="mailto:hr@axvero.in" style="font-weight:normal; font-size:9pt;">hr@axvero.in</a>
+                    <a href="mailto:hr@virexon.in" style="font-weight:normal; font-size:9pt;">hr@virexon.in</a>
                 </td>
                 <td class="right-cell"></td>
             </tr>
@@ -433,7 +433,7 @@ body {
 
         <p class="para">All applicable terms and conditions are detailed in the joining kit. Submission of the duly filled joining kit along with the signed appointment letter shall be mandatory, and only upon receipt of both shall the appointment be deemed to have been accepted.</p>
 
-        <p class="para">Please sign a duplicate copy of this letter and fill the joining form as a token of your acceptance and send the same email id <strong>hr@axvero.in</strong> (<strong>HR Manager</strong>) back to us. The letter and joining kit will be valid for 2 days only from the day it is issued.</p>
+        <p class="para">Please sign a duplicate copy of this letter and fill the joining form as a token of your acceptance and send the same email id <strong>hr@virexon.in</strong> (<strong>HR Manager</strong>) back to us. The letter and joining kit will be valid for 2 days only from the day it is issued.</p>
 
         <p class="para">We Welcome you and look forward for your arrival in VIREXON.</p>
 

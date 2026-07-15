@@ -14,15 +14,14 @@ class OfferLetterController extends AccountBaseController
     
     
 
-    // ── Hardcoded SMTP config ─────────────────────────────────────────────────
     private array $smtpConfig = [
         // 'mailer'    => 'sendmail',
         'host'      => 'smtp.hostinger.com',
         'port'      => 465,
         'username'  => 'hr@axvero.in',
         'password'  => 'Axvero@2026#$&@',
-        'from'      => 'hr@axvero.in',
-        'from_name' => 'Axvero Hr',
+        'from'      => 'hr@virexon.in',
+        'from_name' => 'Virexon Hr',
     ];
 
 

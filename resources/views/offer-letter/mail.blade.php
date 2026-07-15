@@ -38,12 +38,12 @@
         <p>
             Regards,<br>
             <strong>HR Department</strong><br>
-            <a href="mailto:hr@axvero.in">hr@axvero.in</a>
+            <a href="mailto:hr@virexon.in">hr@virexon.in</a>
         </p>
     </div>
 
     <div class="footer">
-        This is an automated email from Axvero HR System. Please do not reply directly to this email.
+        This is an automated email from Virexon HR System. Please do not reply directly to this email.
     </div>
 
 </div>
