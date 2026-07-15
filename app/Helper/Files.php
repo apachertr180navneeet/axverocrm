@@ -238,19 +238,24 @@ class Files
 
         $newPath = $folder . '/' . $newName;
 
-        $uploadedFile->storeAs('temp', $newName, 'local');
+        self::createDirectoryIfNotExist('temp');
+        File::copy($uploadedFile->getRealPath(), $tempPath);
 
         // Resizing image if width and height is provided
         $svgNot = File::extension($uploadedFile->getClientOriginalName()) !== 'svg';
         $webPNot = File::extension($uploadedFile->getClientOriginalName()) !== 'webp';
 
         if ($width && $height && $svgNot && $webPNot) {
-            Image::make($tempPath)
-                ->resize($width, $height, function ($constraint) {
-                    $constraint->aspectRatio();
-                    $constraint->upsize();
-                })
-                ->save();
+            try {
+                Image::make($tempPath)
+                    ->resize($width, $height, function ($constraint) {
+                        $constraint->aspectRatio();
+                        $constraint->upsize();
+                    })
+                    ->save();
+            } catch (\Exception $e) {
+                // If image processing fails (e.g. unsupported format, unreadable), skip resizing
+            }
         }
 
         Storage::disk(config('filesystems.default'))->put($newPath, File::get($tempPath));
