@@ -28,7 +28,7 @@
 
         <p>Please find the login link below.</p>
 
-        <a href="https://crmaxvero.in/login" class="btn">Login to Portal</a>
+        <a href="https://crm.virexon.in/login" class="btn">Login to Portal</a>
 
         <p>If you have any questions or need further clarification, feel free to contact us
         at our official email ID.</p>
