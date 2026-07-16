@@ -351,13 +351,13 @@ body {
 {{-- ── EMPLOYEE: PAGE 1 ─────────────────────────────────────────────── --}}
 <div class="page">
 
-    <div class="header">
+    <div class="header mb-2">
         @if($logo_b64)
             <img src="{{ $logo_b64 }}" class="header-logo">
         @endif
     </div>
 
-    <div class="content">
+    <div class="content" style="padding-top: 20px;">
 
         <table class="ref-row" cellpadding="0" cellspacing="0">
             <tr>
@@ -406,6 +406,21 @@ body {
         <p class="section-head">5. Hours of Work &amp; Salary</p>
         <p class="para">The normal working days are Monday through Saturday. You will be required to work for such hours as necessary for the proper discharge of your duties to the Company. The normal working hours are from 9.00 AM to 6:00 PM and you are expected to work not less than 8 hours each day, and if necessary for additional hours depending on your responsibilities. Salary from the company will be available monthly basis. income will be credited to your bank account on the 10th of every month. To earn income, a person must have minimum 15 attendances in a month. If you do not attend in any month, then the income will be credited along with the next income.</p>
 
+    </div>
+
+</div>
+
+{{-- ── EMPLOYEE: PAGE 2 ─────────────────────────────────────────────── --}}
+<div class="page">
+
+    <div class="header">
+        @if($logo_b64)
+            <img src="{{ $logo_b64 }}" class="header-logo">
+        @endif
+    </div>
+
+    <div class="content">
+
         <p class="section-head">6. Leave and Holidays</p>
         <p class="para">6.1 You shall not be entitled to any casual leave.</p>
         <p class="para">6.2 You shall not be entitled to any paid sick leave. Any absence due to illness shall be treated as unpaid leave.</p>
@@ -423,11 +438,18 @@ body {
         <p class="para">9.3 The Company may terminate your engagement without notice in case of misconduct, negligence, breach of contract, or loss/damage caused to the Company.</p>
         <p class="para">9.4 Final settlement shall be processed within 45 to 90 working days from the date of termination.</p>
 
+
+        <p class="section-head">10. Confidentiality and Exclusivity</p>
+        <p class="para">10.1 During your engagement, you shall devote your full time and attention to the Company's business and shall not engage in any other employment, business, or professional activity without prior written consent.</p>
+        <p class="para">10.2 You shall maintain strict confidentiality of all Company information during and after your engagement.</p>
+        <p class="para">10.3 Confidential information shall not be removed or disclosed without written authorization.</p>
+        <p class="para">10.4 These obligations shall survive termination of engagement.</p>
+
     </div>
 
 </div>
 
-{{-- ── EMPLOYEE: PAGE 2 ─────────────────────────────────────────────── --}}
+{{-- ── EMPLOYEE: PAGE 3 ─────────────────────────────────────────────── --}}
 <div class="page">
 
     <div class="header">
@@ -435,12 +457,6 @@ body {
     </div>
 
     <div class="content">
-
-        <p class="section-head">10. Confidentiality and Exclusivity</p>
-        <p class="para">10.1 During your engagement, you shall devote your full time and attention to the Company's business and shall not engage in any other employment, business, or professional activity without prior written consent.</p>
-        <p class="para">10.2 You shall maintain strict confidentiality of all Company information during and after your engagement.</p>
-        <p class="para">10.3 Confidential information shall not be removed or disclosed without written authorization.</p>
-        <p class="para">10.4 These obligations shall survive termination of engagement.</p>
 
         <p class="section-head">11. Company Policies</p>
         <p class="para">The Company reserves the right to amend, modify, or update policies and terms of engagement from time to time, and such changes shall be binding upon you.</p>
